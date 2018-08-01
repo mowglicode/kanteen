@@ -28,12 +28,7 @@ public class ParentController {
         return parentService.displayParentById(id);
     }
 
-    @ApiOperation(value = "Save parent",
-            notes = "Parent can be save without account nor children")
-    @RequestMapping(method = RequestMethod.POST)
-    public ParentDtoFull saveParent(@RequestBody ParentDtoFull parentDtoFull){
-        return parentService.saveParent(parentDtoFull);
-    }
+
 
     @ApiOperation(value = "Save parent linked with account ID",
             notes = "")

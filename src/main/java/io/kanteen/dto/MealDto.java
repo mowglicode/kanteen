@@ -10,6 +10,12 @@ public class MealDto {
     private Date day;
     private Child child;
 
+    public MealDto(long id, Date day, Child child) {
+        this.id = id;
+        this.day = day;
+        this.child = child;
+    }
+
     public Date getDay() {
         return day;
     }

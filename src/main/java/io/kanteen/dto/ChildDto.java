@@ -5,6 +5,12 @@ public class ChildDto {
     private String name;
     private String grade;
 
+    public ChildDto(long id, String name, String grade) {
+        this.id = id;
+        this.name = name;
+        this.grade = grade;
+    }
+
     public long getId() {
         return id;
     }

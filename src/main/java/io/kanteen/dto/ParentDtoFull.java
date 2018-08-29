@@ -4,14 +4,28 @@ import io.kanteen.persistance.entity.Account;
 import io.kanteen.persistance.entity.Child;
 import io.kanteen.persistance.entity.School;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ParentDtoFull {
     private long id;
     private String name;
     private Account account;
-    private List<Child> children;
+    private List<Child> children = new ArrayList<>();
     private School school;
+
+
+    public ParentDtoFull() {
+    }
+
+
+    public ParentDtoFull(String name, String email) {
+        this.name = name;
+        this.school = new School();
+        this.account = new Account(email);
+    }
+
+
 
     public long getId() {
         return id;

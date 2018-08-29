@@ -7,6 +7,12 @@ public class School {
     private String email;
     private String name;
 
+
+    public School() {
+    }
+
+
+
     public String getName() {
         return name;
     }

@@ -71,6 +71,8 @@ public class ParentService implements IParentService {
             //if no account, create it !
             Account account = modelMapper.map(parentDtoFull.getAccount(),Account.class);
             account = accountRepository.save(account);
+            parent.setAccount(account);
+            parentRepository.save(parent);
         }
         return displayParentById(parent.getId());
     }

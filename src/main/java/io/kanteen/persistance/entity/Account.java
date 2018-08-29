@@ -12,10 +12,17 @@ public class Account {
     private long id;
 
     @Column
-    private String email;
+    private String email = "john@doe.com";
 
     @Column
-    private String phone;
+    private String phone = "06.06.06.06.06";
+
+    public Account() {
+    }
+
+    public Account(String email) {
+        this.email = email;
+    }
 
     public long getId() {
         return id;

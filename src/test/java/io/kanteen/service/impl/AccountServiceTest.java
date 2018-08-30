@@ -67,28 +67,27 @@ public class AccountServiceTest {
 
     @Test
     public void deleteAccount (){
-        AccountDto totoAccount= new AccountDto();
-        totoAccount.setEmail("toto@mail.com");
-        totoAccount.setPhone("06.12.34.56.78");
+        AccountDto samDto = new AccountDto();
+        samDto.setEmail("toto@mail.com");
+        samDto.setPhone("06.12.34.56.78");
 
-        AccountDto toto = service.saveAccount(totoAccount);
-        service.deleteAccount(toto.getId());
+        AccountDto sam = service.saveAccount(samDto);
+        service.deleteAccount(sam.getId());
 
-        assertFalse(toto.getEmail() == "toto@mail.com");
+        assertFalse(sam.getEmail() == "sam@mail.com");
 
     }
 
     @Test
     public void getAccountById(){
-        AccountDto titiAccount = new AccountDto();
-        titiAccount.setEmail("titi@mail.com");
-        titiAccount.setPhone("06.12.34.56.79");
+        AccountDto anaDto = new AccountDto();
+        anaDto.setEmail("ana@mail.com");
+        anaDto.setPhone("06.12.34.56.79");
 
-       AccountDto titiDto = service.saveAccount(titiAccount);
-        AccountDto titi = service.getAccountById(titiDto.getId());
-        assertEquals(titi.getId(), titiDto.getId());
-        assertTrue(titi.getEmail().equals("titi@mail.com"));
-        service.deleteAccount(titi.getId());
+        anaDto = service.saveAccount(anaDto);
+        AccountDto ana = service.getAccountById(anaDto.getId());
+        assertEquals(ana.getId(), anaDto.getId());
+        service.deleteAccount(ana.getId());
 
     }
 

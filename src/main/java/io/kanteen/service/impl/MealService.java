@@ -71,9 +71,10 @@ public class MealService implements IMealService {
             meal.setDay(day);
             mealRepository.save(meal);
             return getMealById(meal.getId());
+        } else {
+            throw new NotFoundException("Child not found Meal can't be add");
         }
 
-        return null;
     }
 
     @Override

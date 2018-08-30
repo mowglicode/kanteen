@@ -11,6 +11,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
@@ -28,17 +30,18 @@ public class MealService implements IMealService {
         List<Meal> tmp = mealRepository.findAll();
         List<MealDto> result = new ArrayList<>();
         Meal meal = new Meal();
-        for (Meal m : tmp){
-            result.add(modelMapper.map(m,MealDto.class));
+        for (Meal m : tmp) {
+            result.add(modelMapper.map(m, MealDto.class));
         }
         return result;
     }
 
+    // A VIRER, INUTILISE?
     @Override
     public MealDto getMealById(long id) {
         Optional<Meal> tmp = mealRepository.findById(id);
         if (tmp.isPresent()) {
-            MealDto meal=modelMapper.map(tmp.get(),MealDto.class);
+            MealDto meal = modelMapper.map(tmp.get(), MealDto.class);
             return meal;
         } else {
             throw new NotFoundException("Meal not found");
@@ -46,8 +49,28 @@ public class MealService implements IMealService {
     }
 
     @Override
+    public List<MealDto> getMealsByDay(Date day) {
+
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Optional<List<Meal>> tmp = mealRepository.findMealsByDay(df.format(day));
+
+        List<MealDto> result = new ArrayList<>();
+        if (tmp.isPresent()) {
+            for (Meal m : tmp.get()) {
+
+                MealDto meal = modelMapper.map(m, MealDto.class);
+                result.add(meal);
+            }
+            return result;
+        } else {
+            throw new NotFoundException("Meals not found for this date");
+        }
+
+    }
+
+    @Override
     public MealDto saveMeal(MealDto mealDto) {
-        Meal meal = modelMapper.map(mealDto,Meal.class);
+        Meal meal = modelMapper.map(mealDto, Meal.class);
         mealRepository.save(meal);
         return getMealById(meal.getId());
     }
@@ -55,7 +78,7 @@ public class MealService implements IMealService {
     @Override
     public List<MealDto> saveMeals(List<MealDto> meals) {
         List<MealDto> result = new ArrayList<>();
-        for (MealDto md: meals) {
+        for (MealDto md : meals) {
             result.add(saveMeal(md));
         }
         return result;
@@ -65,7 +88,7 @@ public class MealService implements IMealService {
     public MealDto saveMealNoDto(long idChild, Date day) {
         Optional<Child> tmp = childRepository.findById(idChild);
         if (tmp.isPresent()) {
-            Child child = modelMapper.map(tmp.get(),Child.class);
+            Child child = modelMapper.map(tmp.get(), Child.class);
             Meal meal = new Meal();
             meal.setChild(child);
             meal.setDay(day);
@@ -79,8 +102,8 @@ public class MealService implements IMealService {
     @Override
     public void deleteMealById(long id_meal) {
         Optional<Meal> tmp = mealRepository.findById(id_meal);
-        if (tmp.isPresent()){
-            mealRepository.delete(modelMapper.map(tmp.get(),Meal.class));
+        if (tmp.isPresent()) {
+            mealRepository.delete(modelMapper.map(tmp.get(), Meal.class));
         } else {
             throw new NotFoundException("Meal not found and can't be deleted");
         }

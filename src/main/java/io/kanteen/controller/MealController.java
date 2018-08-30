@@ -29,6 +29,14 @@ public class MealController {
         return mealService.getMealById(id);
     }
 
+
+    @ApiOperation(value = "Get meals by day")
+    @RequestMapping(value = "/{day}", method =RequestMethod.GET)
+    public List<MealDto> getMealsByDay(@PathVariable(name="day") @DateTimeFormat(pattern = "yyyy-MM-dd") Date day){
+        return mealService.getMealsByDay(day);
+    }
+
+
 //    @ApiOperation(value = "Save meal", notes = "The meal saved comes from a MealDto")
 //    @RequestMapping(method = RequestMethod.POST)
 //    public MealDto saveMeal(@RequestBody MealDto mealDto){

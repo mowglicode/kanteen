@@ -5,8 +5,8 @@ public class ChildDto {
     private String name;
     private String grade;
 
-    public ChildDto(long id, String name, String grade) {
-        this.id = id;
+    public ChildDto( String name, String grade) {
+
         this.name = name;
         this.grade = grade;
     }

@@ -12,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @RunWith(SpringRunner.class)
@@ -20,15 +23,22 @@ import java.util.Date;
 public class MealServiceTest {
 
     @Autowired
-     MealService mealService;
+    MealService mealService;
     @Autowired
     ChildService childService;
 
     @Autowired
      ModelMapper modelMapper;
 
+    ChildDto childDto;
+    ChildDto childDto2;
+
+
     @org.junit.Before
     public void setUp() throws Exception {
+        ChildDto childDto = new ChildDto("Dina","CM2");
+        ChildDto childDto2 = new ChildDto("Tom","CM2");
+
     }
 
     @org.junit.After
@@ -67,14 +77,20 @@ public class MealServiceTest {
 
     @Test
     public void saveMealNoDto() {
-        ChildDto childDto = new ChildDto("Dina","CM2");
-        ChildDto childDto2 = new ChildDto("Tom","CM2");
 
-        Child child = modelMapper.map(childDto,Child.class);
-        Child child2 = modelMapper.map(childDto2,Child.class);
+        ChildDto childAvecId = childService.saveChild(childDto);
+        ChildDto childAvecId2 = childService.saveChild(childDto2);
 
         Date day = new Date();
 
+        MealDto m1 = mealService.saveMealNoDto(childAvecId.getId(), day);
+        MealDto m2 = mealService.saveMealNoDto(childAvecId2.getId(), day);
+
+        mealService.deleteMealById(m1.getId());
+        mealService.deleteMealById(m2.getId());
+
+        childService.deleteChildren(childAvecId.getId());
+        childService.deleteChildren(childAvecId2.getId());
 
     }
 

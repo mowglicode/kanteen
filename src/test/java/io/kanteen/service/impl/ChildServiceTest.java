@@ -31,8 +31,8 @@ public class ChildServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        this.miniJo = new ChildDto("MiniJo", "cp");
-        this.bobby = new ChildDto("Bobby", "cm1");
+        miniJo = new ChildDto("MiniJo", "cp");
+        bobby = new ChildDto("Bobby", "cm1");
     }
 
 
@@ -43,52 +43,54 @@ public class ChildServiceTest {
 
     @Test
     public void displayChildren() {
-        service.saveChild(this.miniJo);
-        service.saveChild(this.bobby);
+        ChildDto m = service.saveChild(this.miniJo);
+        ChildDto b = service.saveChild(this.bobby);
         tmp = service.displayChildren();
         assertEquals(2, tmp.size());
-        service.deleteChildren(1);
-        service.deleteChildren(2);
+        service.deleteChildren(m.getId());
+        service.deleteChildren(b.getId());
     }
 
     @Test
     public void displayChildrenById() {
-        service.saveChild(this.miniJo);
-        service.saveChild(this.bobby);
-        ChildDto c = service.displayChildrenById(1);
+        ChildDto m = service.saveChild(this.miniJo);
+        ChildDto b = service.saveChild(this.bobby);
+        ChildDto c = service.displayChildrenById(m.getId());
         assertEquals("MiniJo", c.getName());
-        ChildDto d = service.displayChildrenById(2);
+        ChildDto d = service.displayChildrenById(b.getId());
         assertEquals("Bobby", d.getName());
-        service.deleteChildren(1);
-        service.deleteChildren(2);
+        service.deleteChildren(c.getId());
+        service.deleteChildren(d.getId());
     }
 
 
     @Test
     public void deleteChildren() {
-        service.saveChild(this.miniJo);
-        service.saveChild(this.bobby);
-        service.deleteChildren(1);
-        service.deleteChildren(2);
+        ChildDto m = service.saveChild(this.miniJo);
+        ChildDto b = service.saveChild(this.bobby);
+        service.deleteChildren(m.getId());
+        service.deleteChildren(b.getId());
         tmp = service.displayChildren();
         assertEquals(0, tmp.size());
     }
 
     @Test
     public void saveChild() {
-        service.saveChild(this.miniJo);
-        service.saveChild(this.bobby);
+        ChildDto m = service.saveChild(this.miniJo);
+        ChildDto b = service.saveChild(this.bobby);
         tmp = service.displayChildren();
         assertEquals(2, tmp.size());
         ChildDto jack = new ChildDto("Jack", "cm2");
-        service.saveChild(jack);
+        ChildDto j = service.saveChild(jack);
         tmp = service.displayChildren();
         assertEquals(3, tmp.size());
-        assertEquals("MiniJo", tmp.get(0).getName());
-        assertEquals("Bobby", tmp.get(1).getName());
-        assertEquals("Jack", tmp.get(2).getName());
-        service.deleteChildren(1);
-        service.deleteChildren(2);
-        service.deleteChildren(3);
+        assertEquals("MiniJo", m.getName());
+        assertEquals("Bobby", b.getName());
+        assertEquals("Jack", j.getName());
+        service.deleteChildren(m.getId());
+        service.deleteChildren(b.getId());
+        service.deleteChildren(j.getId());
+        tmp = service.displayChildren();
+        assertEquals(0, tmp.size());
     }
 }

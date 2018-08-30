@@ -26,13 +26,13 @@ public class ChildServiceTest {
 
     ChildDto childDto;
     List <ChildDto> tmp;
+    ChildDto miniJo;
+    ChildDto bobby;
 
     @Before
     public void setUp() throws Exception {
-        ChildDto MiniJo = new ChildDto("MiniJo", "cp");
-        ChildDto Bobby = new ChildDto("Bobby", "cm1");
-        service.saveChild(MiniJo);
-        service.saveChild(Bobby);
+        this.miniJo = new ChildDto("MiniJo", "cp");
+        this.bobby = new ChildDto("Bobby", "cm1");
     }
 
 
@@ -43,18 +43,31 @@ public class ChildServiceTest {
 
     @Test
     public void displayChildren() {
+        service.saveChild(this.miniJo);
+        service.saveChild(this.bobby);
         tmp = service.displayChildren();
         assertEquals(2, tmp.size());
+        service.deleteChildren(1);
+        service.deleteChildren(2);
     }
 
     @Test
     public void displayChildrenById() {
+        service.saveChild(this.miniJo);
+        service.saveChild(this.bobby);
         ChildDto c = service.displayChildrenById(1);
         assertEquals("MiniJo", c.getName());
+        ChildDto d = service.displayChildrenById(2);
+        assertEquals("Bobby", d.getName());
+        service.deleteChildren(1);
+        service.deleteChildren(2);
     }
+
 
     @Test
     public void deleteChildren() {
+        service.saveChild(this.miniJo);
+        service.saveChild(this.bobby);
         service.deleteChildren(1);
         service.deleteChildren(2);
         tmp = service.displayChildren();
@@ -63,6 +76,8 @@ public class ChildServiceTest {
 
     @Test
     public void saveChild() {
+        service.saveChild(this.miniJo);
+        service.saveChild(this.bobby);
         tmp = service.displayChildren();
         assertEquals(2, tmp.size());
         ChildDto jack = new ChildDto("Jack", "cm2");
@@ -72,5 +87,8 @@ public class ChildServiceTest {
         assertEquals("MiniJo", tmp.get(0).getName());
         assertEquals("Bobby", tmp.get(1).getName());
         assertEquals("Jack", tmp.get(2).getName());
+        service.deleteChildren(1);
+        service.deleteChildren(2);
+        service.deleteChildren(3);
     }
 }

@@ -1,6 +1,7 @@
 package io.kanteen.persistance.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table
@@ -13,6 +14,14 @@ public class Child {
 
     @Column(nullable = false)
     private String name;
+
+    public Child(){
+    }
+
+    public Child(String name, String grade) {
+        this.name = name;
+        this.grade = grade;
+    }
 
     @Column
     private String grade;
@@ -39,5 +48,24 @@ public class Child {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Child)) return false;
+        Child child = (Child) o;
+        return getId() == child.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }

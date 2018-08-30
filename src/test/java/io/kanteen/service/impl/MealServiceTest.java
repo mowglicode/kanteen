@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import static junit.framework.TestCase.assertNull;
 import static junit.framework.TestCase.assertTrue;
 
 @RunWith(SpringRunner.class)
@@ -93,7 +94,8 @@ public class MealServiceTest {
 
         mealService.deleteMealById(m1.getId());
         mealService.deleteMealById(m2.getId());
-        assertTrue(mealService.getAllMeals().size() == 0);
+        assertNull(m1);
+        assertNull(m2);
 
     }
 

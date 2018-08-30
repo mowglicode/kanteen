@@ -2,28 +2,27 @@ package io.kanteen.dto;
 
 import io.kanteen.persistance.entity.Child;
 
-import java.util.Date;
 
 public class MealDto {
 
     private long id;
-    private Date day;
+    private String day;
     private Child child;
 
     public MealDto (){
 
     }
-    public MealDto(long id, Date day, Child child) {
+    public MealDto(long id, String day, Child child) {
         this.id = id;
         this.day = day;
         this.child = child;
     }
 
-    public Date getDay() {
+    public String getDay() {
         return day;
     }
 
-    public void setDay(Date day) {
+    public void setDay(String day) {
         this.day = day;
     }
 

@@ -33,7 +33,7 @@ public class MealServiceTest {
     ChildDto childDto2;
     ChildDto childAvecId;
     ChildDto childAvecId2;
-
+    String dateString;
 
     @org.junit.Before
     public void setUp() throws Exception {
@@ -43,6 +43,7 @@ public class MealServiceTest {
         // avec id car persistes avec save
         childAvecId = childService.saveChild(childDto);
         childAvecId2 = childService.saveChild(childDto2);
+        dateString = "2018-08-30";
     }
 
     @org.junit.After
@@ -56,8 +57,8 @@ public class MealServiceTest {
 
         Date day = new Date();
 
-        MealDto m1 = mealService.saveMealNoDto(childAvecId.getId(), day);
-        MealDto m2 = mealService.saveMealNoDto(childAvecId2.getId(), day);
+        MealDto m1 = mealService.saveMealNoDto(childAvecId.getId(), dateString);
+        MealDto m2 = mealService.saveMealNoDto(childAvecId2.getId(), dateString);
 
         //assert get
         List<MealDto> allMeals = mealService.getAllMeals();
@@ -74,8 +75,8 @@ public class MealServiceTest {
 
         Date day = new Date();
 
-        MealDto m1 = mealService.saveMealNoDto(childAvecId.getId(), day);
-        MealDto m2 = mealService.saveMealNoDto(childAvecId2.getId(), day);
+        MealDto m1 = mealService.saveMealNoDto(childAvecId.getId(), dateString);
+        MealDto m2 = mealService.saveMealNoDto(childAvecId2.getId(), dateString);
 
         mealService.deleteMealById(m1.getId());
         mealService.deleteMealById(m2.getId());
@@ -88,8 +89,8 @@ public class MealServiceTest {
 
         Date day = new Date();
 
-        MealDto m1 = mealService.saveMealNoDto(childAvecId.getId(), day);
-        MealDto m2 = mealService.saveMealNoDto(childAvecId2.getId(), day);
+        MealDto m1 = mealService.saveMealNoDto(childAvecId.getId(), dateString);
+        MealDto m2 = mealService.saveMealNoDto(childAvecId2.getId(), dateString);
 
         mealService.deleteMealById(m1.getId());
         mealService.deleteMealById(m2.getId());
@@ -102,13 +103,16 @@ public class MealServiceTest {
         Date day = new Date();
         Date day2 = new Date(day.getTime()+1000 * 60 * 60 * 25);
 
+        String dateTest = "2018-05-25";
+        String dateTest2 = "2018-05-24";
+
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
-        MealDto m1 = mealService.saveMealNoDto(childAvecId.getId(), day);
-        MealDto m2 = mealService.saveMealNoDto(childAvecId2.getId(), day);
-        MealDto m3 = mealService.saveMealNoDto(childAvecId2.getId(), day2);
+        MealDto m1 = mealService.saveMealNoDto(childAvecId.getId(), dateTest);
+        MealDto m2 = mealService.saveMealNoDto(childAvecId2.getId(), dateTest);
+        MealDto m3 = mealService.saveMealNoDto(childAvecId2.getId(), dateTest2);
 
-        List<MealDto> listMeals = mealService.getMealsByDay(day);
+        List<MealDto> listMeals = mealService.getMealsByDay(dateTest);
         assertTrue(listMeals.size()==2);
 
         //sup les meals

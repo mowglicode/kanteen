@@ -1,10 +1,15 @@
 package io.kanteen.dto;
 
+import io.kanteen.persistance.entity.Child;
+
 public class ChildDto {
     private long id;
     private String name;
     private String grade;
 
+    public ChildDto(){
+
+    }
     public ChildDto( String name, String grade) {
 
         this.name = name;

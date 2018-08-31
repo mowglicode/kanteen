@@ -17,23 +17,17 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class MenuServiceTest {
 
-    private static boolean setupIsDone = false;
-    private static boolean tearIsDone = false;
+
 
     @Autowired MenuService service;
 
-    MenuDto lundi;
-    MenuDto mardi;
-    MenuDto mercredi;
 
     @Before
     public void setUp() throws Exception{
-
     }
 
     @After
     public void tearDown() throws Exception{
-
     }
 
     @Test

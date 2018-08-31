@@ -71,8 +71,8 @@ public class AccountServiceTest {
         sam.setEmail("toto@mail.com");
         sam.setPhone("06.12.34.56.78");
 
-        AccountDto samDto = service.saveAccount(sam);
-        service.deleteAccount(samDto.getId());
+        AccountDto sam = service.saveAccount(samDto);
+        service.deleteAccount(sam.getId());
 
         assertFalse(samDto.getEmail() == "sam@mail.com");
 

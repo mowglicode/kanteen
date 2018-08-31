@@ -107,7 +107,7 @@ public class ParentService implements IParentService {
         Parent parent = modelMapper.map(parentDtoFull, Parent.class);
         Optional<Child> tmp = childRepository.findById(id);
 
-        if (parent.getAccount() != null){
+        if (parent.getAccount() != null) {
             accountRepository.save(parent.getAccount());
         }
 
@@ -121,27 +121,28 @@ public class ParentService implements IParentService {
         }
     }
 
+
     @Override
     public ParentDtoFull removeChildFromParent(long id_parent, long id_child) {
 
-        Optional<Parent> tmp_parent = parentRepository.findById(id_child);
-        Optional<Child> tmp_child = childRepository.findById(id_parent);
+        Optional<Parent> tmp_parent = parentRepository.findById(id_parent);
+        Optional<Child> tmp_child = childRepository.findById(id_child);
+
         //check of both objects exists
         if (tmp_child.isPresent() && tmp_parent.isPresent()) {
-            Parent parent = modelMapper.map(tmp_parent.get(), Parent.class);
-            Child child = modelMapper.map(tmp_child.get(), Child.class);
+            Parent parent = tmp_parent.get();
+            Child child = tmp_child.get();
 
             //check if child belong to parent
 
-            for (int i = 0; i < parent.getChildren().size(); i++) {
-                if (parent.getChildren().get(i).equals(child)) {
-                    parent.getChildren().remove(child);
-                    parentRepository.save(parent);
-                    return displayParentById(parent.getId());
-                }
+            if (parent.getChildren().contains(child)) {
+                parent.getChildren().remove(child);
+                //parent = parentRepository.save(parent);
+                return modelMapper.map(parent, ParentDtoFull.class);
+            } else {
+                throw new NotFoundException("Child don't belong to this parent");
             }
 
-                throw new NotFoundException("Child don't belong to this parent");
         } else {
             if (!tmp_child.isPresent()) {
                 throw new NotFoundException("Child not found, it can't be removed from parent");
@@ -149,6 +150,7 @@ public class ParentService implements IParentService {
             throw new NotFoundException("Parent not found, you can't remove child from it");
 
         }
+
 
     }
 }

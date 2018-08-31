@@ -1,5 +1,6 @@
 package io.kanteen.service.impl;
 
+import io.kanteen.dto.AccountDto;
 import io.kanteen.dto.ChildDto;
 import io.kanteen.dto.ParentDtoFull;
 import io.kanteen.exception.NotFoundException;
@@ -35,11 +36,17 @@ public class ParentServiceTest {
     IParentRepository parentRepository;
     @Autowired
     IChildRepository childRepository;
+    @Autowired
+    AccountService accountService;
+
+    ModelMapper modelMapper;
 
     ParentDtoFull parentDtoFull;
 
     Account parentAccount;
-    ChildDto childDto = new ChildDto();
+
+
+    ChildDto childDto;
 
     @org.junit.Before
     public void setUp() throws Exception {
@@ -49,7 +56,13 @@ public class ParentServiceTest {
          */
         parentDtoFull = new ParentDtoFull("JeanneDo", "jeanne@jo.com");
         parentAccount = parentDtoFull.getAccount();
+        System.out.println(parentAccount.getId());
+        System.out.println("-----------------------");
 
+
+        accountService.saveAccount(parentDtoFull.getAccount());
+
+        childDto = new ChildDto();
         childDto.setName("Wilson");
         childDto.setGrade("cm2");
         childDto = childService.saveChild(childDto);
@@ -91,7 +104,6 @@ public class ParentServiceTest {
     public void saveParent() {
 
 
-
         ParentDtoFull p = service.saveParent(parentDtoFull);
 
         assertTrue(p.getId() > 0);
@@ -103,22 +115,19 @@ public class ParentServiceTest {
     }
 
     @Test
-    public void saveParentWithChildId() {
+    public void saveAndRemoveParentWithChildId() {
 
 
         // Save parent
         ParentDtoFull result = service.saveParentWithChildId(parentDtoFull, childDto.getId());
         assertTrue(result.getId() > 0);
+        assertEquals(1, result.getChildren().size());
+        result = service.removeChildFromParent(result.getId(), childDto.getId());
+        assertEquals(0, result.getChildren().size());
 
     }
 
-    @Test
-    public void removeChildFromParent() {
 
-       parentDtoFull = service.saveParentWithChildId(parentDtoFull, childDto.getId());
-       parentDtoFull = service.removeChildFromParent(parentDtoFull.getId(), childDto.getId());
-       assertTrue(parentDtoFull.getId()>0);
-    }
 
 }
 

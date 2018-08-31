@@ -29,6 +29,14 @@ public class MealController {
         return mealService.getMealById(id);
     }
 
+
+    @ApiOperation(value = "Get meals by day")
+    @RequestMapping(value = "/{day}", method =RequestMethod.GET)
+    public List<MealDto> getMealsByDay(@PathVariable(name="day") String day){
+        return mealService.getMealsByDay(day);
+    }
+
+
 //    @ApiOperation(value = "Save meal", notes = "The meal saved comes from a MealDto")
 //    @RequestMapping(method = RequestMethod.POST)
 //    public MealDto saveMeal(@RequestBody MealDto mealDto){
@@ -44,7 +52,7 @@ public class MealController {
     @ApiOperation(value = "Save meal without DTO",
             notes = "While child already exists, the meal can be create with the child ID and the date (yyyy-mm-dd format)")
     @RequestMapping(value = "/{id_child}/{day}", method = RequestMethod.POST)
-    public MealDto saveMealNoDto(@PathVariable(name = "id_child") long idChild, @PathVariable(name = "day") @DateTimeFormat(pattern = "yyyy-MM-dd") Date day){
+    public MealDto saveMealNoDto(@PathVariable(name = "id_child") long idChild, @PathVariable(name = "day") String day){
         return mealService.saveMealNoDto(idChild,day);
     }
 
@@ -54,3 +62,4 @@ public class MealController {
         mealService.deleteMealById(idMeal);
     }
 }
+

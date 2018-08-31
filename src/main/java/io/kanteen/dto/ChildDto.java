@@ -1,5 +1,7 @@
 package io.kanteen.dto;
 
+import io.kanteen.persistance.entity.Child;
+
 public class ChildDto {
     private long id;
     private String name;
@@ -10,6 +12,13 @@ public class ChildDto {
 
     public ChildDto(long id, String name, String grade) {
         this.id = id;
+        this.name = name;
+        this.grade = grade;
+    }
+
+
+    public ChildDto( String name, String grade) {
+
         this.name = name;
         this.grade = grade;
     }

@@ -121,9 +121,9 @@ public class MealService implements IMealService {
         ParentDtoFull parentDtoFull = parentService.displayParentById(id);
         List<Child> children = parentDtoFull.getChildren();
         List<MealDto> meals = new ArrayList<>();
-        for (Child c: children){
+        for (Child c : children) {
             List<MealDto> mealTmp = getMealsByChildId(c.getId());
-            for (MealDto m: mealTmp){
+            for (MealDto m : mealTmp) {
                 meals.add(m);
             }
         }
@@ -132,12 +132,14 @@ public class MealService implements IMealService {
 
     @Override
     public List<MealDto> getMealsByChildId(long id) {
-        Optional<Meal> tmp = mealRepository.findMealByChildId(id);
+        Optional<List<Meal>> tmp = mealRepository.findMealByChildId(id);
         List<MealDto> result = new ArrayList<>();
-        if(tmp.isPresent()){
-            result.add(modelMapper.map(tmp.get(),MealDto.class));
+        if (tmp.isPresent()) {
+            for (Meal m : tmp.get()) {
+                result.add(modelMapper.map(tmp.get(), MealDto.class));
+            }
             return result;
-        }else {
+        } else {
             throw new NotFoundException("Meal not found for this Child ID");
         }
     }

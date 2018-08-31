@@ -8,8 +8,15 @@ public class ChildDto {
     private String grade;
 
     public ChildDto(){
-
     }
+
+    public ChildDto(long id, String name, String grade) {
+        this.id = id;
+        this.name = name;
+        this.grade = grade;
+    }
+
+
     public ChildDto( String name, String grade) {
 
         this.name = name;

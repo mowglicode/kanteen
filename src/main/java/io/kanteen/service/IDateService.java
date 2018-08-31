@@ -6,5 +6,6 @@ import java.util.List;
 public interface IDateService {
     List<String> getNextDates();
     Date eatableDay(Date date);
-//    List<String> getNextWeek();
+    List<String> getNextWeek();
+
 }

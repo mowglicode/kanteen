@@ -5,14 +5,10 @@ import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class DateService implements IDateService {
-
 
 
     private static long DAY_IN_MS = 1000 * 60 * 60 * 25;
@@ -20,7 +16,6 @@ public class DateService implements IDateService {
     public List<String> getNextDates() {
         int number = 5;
         Date now = new Date();
-
         int deadline = 1;
 
         List<Date> result = new ArrayList<>();
@@ -31,7 +26,6 @@ public class DateService implements IDateService {
             current = new Date(current.getTime()+DAY_IN_MS);
             current = eatableDay(current);
             result.add(current);
-
         }
         //convert date to string
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -60,4 +54,31 @@ public class DateService implements IDateService {
                 return date;
         }
     }
+
+    @Override
+    public List<String> getNextWeek() {
+        int number = 6;
+        Date now = new Date();
+
+        List<Date> result = new ArrayList<>();
+        Date current = new Date(now.getTime());
+        current = eatableDay(current);
+        result.add(current);
+        while (result.size() < number) {
+            current = new Date(current.getTime()+DAY_IN_MS);
+            current = eatableDay(current);
+            result.add(current);
+        }
+        //convert date to string
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        List<String> resultString = new ArrayList<>();
+        for (Date d: result){
+            String s = df.format(d);
+            resultString.add(s);
+        }
+        return resultString;
+    }
+
+
+
 }

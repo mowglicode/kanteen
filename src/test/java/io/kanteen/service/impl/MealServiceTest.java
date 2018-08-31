@@ -39,8 +39,8 @@ public class MealServiceTest {
     ChildDto childDto2;
     ChildDto childAvecId;
     ChildDto childAvecId2;
-    ParentDtoFull parentDto;
-    ParentDtoFull parentDtoAvecId;
+//    ParentDtoFull parentDto;
+//    ParentDtoFull parentDtoAvecId;
     String dateString;
 
     @org.junit.Before
@@ -48,10 +48,10 @@ public class MealServiceTest {
         // sans id car pas persistes
         childDto = new ChildDto("Dina", "CM2");
         childDto2 = new ChildDto("Tom", "CM2");
-        parentDto = new ParentDtoFull("Jacques","jc@toto.com");
+//        parentDto = new ParentDtoFull("Jacques","jc@toto.com");
         // avec id car persistes avec save
-        parentDto = parentService.saveParentWithChildId(parentDto,childAvecId.getId());
-        parentService.saveParentWithChildId(parentDto,childAvecId2.getId());
+//        parentDto = parentService.saveParentWithChildId(parentDto,childAvecId.getId());
+//        parentService.saveParentWithChildId(parentDto,childAvecId2.getId());
         childAvecId = childService.saveChild(childDto);
         childAvecId2 = childService.saveChild(childDto2);
         dateString = "2018-08-30";
@@ -61,7 +61,7 @@ public class MealServiceTest {
     public void tearDown() throws Exception {
         childService.deleteChildren(childAvecId.getId());
         childService.deleteChildren(childAvecId2.getId());
-        parentService.displayParentById(parentDto.getId());
+//        parentService.displayParentById(parentDto.getId());
     }
 
     @Test

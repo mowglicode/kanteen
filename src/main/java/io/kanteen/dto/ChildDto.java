@@ -48,8 +48,4 @@ public class ChildDto {
     }
 
 
-    public ChildDto(String name, String grade) {
-        this.name = name;
-        this.grade = grade;
-    }
 }

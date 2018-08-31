@@ -29,6 +29,11 @@ public class AccountService implements IAccountService {
         return getAccountById(account.getId());
     }
 
+    // overloading
+    public Account saveAccount(Account account) {
+        return accountRepository.save(account);
+    }
+
     @Override
     public List<AccountDto> getAllAccounts() {
         List<Account> accounts = accountRepository.findAll();

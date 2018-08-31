@@ -18,28 +18,17 @@ import static org.junit.Assert.*;
 public class MenuServiceTest {
 
     private static boolean setupIsDone = false;
+    private static boolean tearIsDone = false;
 
     @Autowired MenuService service;
 
+    MenuDto lundi;
+    MenuDto mardi;
+    MenuDto mercredi;
+
     @Before
     public void setUp() throws Exception{
-        if (setupIsDone){
-            return;
-        }
 
-        MenuDto lundiDto = new MenuDto();
-        lundiDto.setContent("sauceGombo");
-
-        MenuDto mardiDto = new MenuDto();
-        mardiDto.setContent("pouletYassa");
-
-        MenuDto mercrediDto = new MenuDto();
-        mercrediDto.setContent("grillade");
-
-        MenuDto lundi = service.saveMenu(lundiDto);
-        MenuDto mardi = service.saveMenu(mardiDto);
-        MenuDto mercredi = service.saveMenu(mercrediDto);
-        setupIsDone=true;
     }
 
     @After
@@ -52,8 +41,8 @@ public class MenuServiceTest {
         MenuDto menuDejeuner = new MenuDto();
         menuDejeuner.setContent("puree");
          MenuDto dejeuner = service.saveMenu(menuDejeuner);
-
          assertTrue(dejeuner.getId()>0);
+        service.delete(dejeuner.getId());
     }
 
     @Test
@@ -64,16 +53,37 @@ public class MenuServiceTest {
        MenuDto poulet = service.saveMenu(menuViande);
         MenuDto viande= service.getMenuById(poulet.getId());
         assertEquals(poulet.getId(), viande.getId());
+        service.delete(poulet.getId());
     }
 
     @Test
     public void getAllMenus() {
+
+        MenuDto lundi = new MenuDto();
+        lundi.setContent("sauceGombo");
+
+        MenuDto mardi = new MenuDto();
+        mardi.setContent("pouletYassa");
+
+        MenuDto mercredi = new MenuDto();
+        mercredi.setContent("grillade");
+
+        lundi = service.saveMenu(lundi);
+        mardi = service.saveMenu(mardi);
+        mercredi = service.saveMenu(mercredi);
+
         List<MenuDto> menus = service.getAllMenus();
+
         assertEquals(3, menus.size());
+        
+        service.delete(lundi.getId());
+        service.delete(mardi.getId());
+        service.delete(mercredi.getId());
     }
 
     @Test
     public void delete() {
+
         MenuDto menuPatte = new MenuDto();
         menuPatte.setContent("patte");
         MenuDto patte= service.saveMenu(menuPatte);

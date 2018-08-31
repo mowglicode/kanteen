@@ -29,15 +29,15 @@ public class AccountServiceTest {
             return;
         }
 
-        AccountDto raymond = new AccountDto();
+        Account raymond = new Account();
         raymond.setEmail("raymond@brady.nfl");
         raymond.setPhone("0101010101");
 
-        AccountDto travis = new AccountDto();
+        Account travis = new Account();
         travis.setEmail("travis@brady.nfl");
         travis.setPhone("0202020202");
 
-        AccountDto kevin = new AccountDto();
+        Account kevin = new Account();
         kevin.setEmail("kevin@brady.fr");
         kevin.setPhone("0303030303");
 
@@ -54,7 +54,7 @@ public class AccountServiceTest {
     @Test
     public void saveAccount(){
 
-        AccountDto accountLuck= new AccountDto();
+        Account accountLuck= new Account();
         accountLuck.setEmail("lucky@luck.com");
         accountLuck.setPhone("06.12.34.56.78");
 
@@ -67,25 +67,25 @@ public class AccountServiceTest {
 
     @Test
     public void deleteAccount (){
-        AccountDto samDto = new AccountDto();
-        samDto.setEmail("toto@mail.com");
-        samDto.setPhone("06.12.34.56.78");
+        Account sam = new Account();
+        sam.setEmail("toto@mail.com");
+        sam.setPhone("06.12.34.56.78");
 
-        AccountDto sam = service.saveAccount(samDto);
+        AccountDto samDto = service.saveAccount(sam);
         service.deleteAccount(sam.getId());
 
-        assertFalse(sam.getEmail() == "sam@mail.com");
+        assertFalse(samDto.getEmail() == "sam@mail.com");
 
     }
 
     @Test
     public void getAccountById(){
-        AccountDto anaDto = new AccountDto();
-        anaDto.setEmail("ana@mail.com");
-        anaDto.setPhone("06.12.34.56.79");
+        Account ana = new Account();
+        ana.setEmail("ana@mail.com");
+        ana.setPhone("06.12.34.56.79");
 
-        anaDto = service.saveAccount(anaDto);
-        AccountDto ana = service.getAccountById(anaDto.getId());
+       AccountDto anaDto = service.saveAccount(ana);
+         anaDto = service.getAccountById(anaDto.getId());
         assertEquals(ana.getId(), anaDto.getId());
         service.deleteAccount(ana.getId());
 

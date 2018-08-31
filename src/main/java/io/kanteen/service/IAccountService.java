@@ -6,7 +6,7 @@ import io.kanteen.persistance.entity.Account;
 import java.util.List;
 
 public interface IAccountService {
-    AccountDto saveAccount(AccountDto accountDto);
+    AccountDto saveAccount(Account account);
     List<AccountDto> getAllAccounts();
     AccountDto getAccountById(long id);
     void deleteAccount(long id);

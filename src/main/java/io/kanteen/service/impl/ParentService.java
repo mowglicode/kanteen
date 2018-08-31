@@ -124,8 +124,8 @@ public class ParentService implements IParentService {
     @Override
     public ParentDtoFull removeChildFromParent(long id_parent, long id_child) {
 
-        Optional<Parent> tmp_parent = parentRepository.findById(id_child);
-        Optional<Child> tmp_child = childRepository.findById(id_parent);
+        Optional<Parent> tmp_parent = parentRepository.findById(id_parent);
+        Optional<Child> tmp_child = childRepository.findById(id_child);
         //check of both objects exists
         if (tmp_child.isPresent() && tmp_parent.isPresent()) {
             Parent parent = modelMapper.map(tmp_parent.get(), Parent.class);

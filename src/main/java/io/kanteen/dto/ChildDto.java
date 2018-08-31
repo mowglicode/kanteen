@@ -38,8 +38,6 @@ public class ChildDto {
         this.grade = grade;
     }
 
-    public ChildDto() {
-    }
 
     public ChildDto(String name, String grade) {
         this.name = name;

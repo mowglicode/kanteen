@@ -19,32 +19,13 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class AccountServiceTest {
 
-    private static boolean setupIsDone = false;
+
 
     @Autowired AccountService service;
 
     @org.junit.Before
     public void setUp() throws Exception {
-        if (setupIsDone) {
-            return;
-        }
 
-        AccountDto raymond = new AccountDto();
-        raymond.setEmail("raymond@brady.nfl");
-        raymond.setPhone("0101010101");
-
-        AccountDto travis = new AccountDto();
-        travis.setEmail("travis@brady.nfl");
-        travis.setPhone("0202020202");
-
-        AccountDto kevin = new AccountDto();
-        kevin.setEmail("kevin@brady.fr");
-        kevin.setPhone("0303030303");
-
-        AccountDto raymondDto = service.saveAccount(raymond);
-        AccountDto travisDto = service.saveAccount(travis);
-        AccountDto kevinDto = service.saveAccount(kevin);
-        setupIsDone = true;
     }
 
     @org.junit.After
@@ -93,7 +74,28 @@ public class AccountServiceTest {
 
     @Test
     public void getAllAccounts(){
+        AccountDto raymond = new AccountDto();
+        raymond.setEmail("raymond@brady.nfl");
+        raymond.setPhone("0101010101");
+
+        AccountDto travis = new AccountDto();
+        travis.setEmail("travis@brady.nfl");
+        travis.setPhone("0202020202");
+
+        AccountDto kevin = new AccountDto();
+        kevin.setEmail("kevin@brady.fr");
+        kevin.setPhone("0303030303");
+
+        raymond = service.saveAccount(raymond);
+        travis = service.saveAccount(travis);
+        kevin = service.saveAccount(kevin);
+
         List<AccountDto> accounts = service.getAllAccounts();
         assertEquals(3, accounts.size());
+
+        service.deleteAccount(raymond.getId());
+        service.deleteAccount(travis.getId());
+        service.deleteAccount(kevin.getId());
+
     }
 }

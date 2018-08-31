@@ -100,13 +100,13 @@ public class MealServiceTest {
 
     @Test
     public void getMealsByDay() {
-        Date day = new Date();
-        Date day2 = new Date(day.getTime()+1000 * 60 * 60 * 25);
+//        Date day = new Date();
+//        Date day2 = new Date(day.getTime()+1000 * 60 * 60 * 25);
 
         String dateTest = "2018-05-25";
         String dateTest2 = "2018-05-24";
 
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+//        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
         MealDto m1 = mealService.saveMealNoDto(childAvecId.getId(), dateTest);
         MealDto m2 = mealService.saveMealNoDto(childAvecId2.getId(), dateTest);

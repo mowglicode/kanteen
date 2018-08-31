@@ -1,9 +1,6 @@
 package io.kanteen.persistance.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table
@@ -14,11 +11,12 @@ public class Meal {
     @Column
     private long id;
 
+
     @OneToOne
     private Child child;
 
     @Column(nullable = false)
-    private Date day;
+    private String day;
 
     public long getId() {
         return id;
@@ -36,11 +34,11 @@ public class Meal {
         this.child = child;
     }
 
-    public Date getDay() {
+    public String getDay() {
         return day;
     }
 
-    public void setDay(Date day) {
+    public void setDay(String day) {
         this.day = day;
     }
 }

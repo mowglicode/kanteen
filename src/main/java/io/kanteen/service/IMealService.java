@@ -10,10 +10,10 @@ public interface IMealService  {
 
     List<MealDto> getAllMeals();
     MealDto getMealById(long id);
-    List<MealDto> getMealsByDay(Date day);
+    List<MealDto> getMealsByDay(String day);
     MealDto saveMeal(MealDto mealDto);
     List<MealDto> saveMeals(List<MealDto> meals);
-    MealDto saveMealNoDto(long idChild, Date day);
+    MealDto saveMealNoDto(long idChild, String day);
     void deleteMealById(long idMeal);
 
 }

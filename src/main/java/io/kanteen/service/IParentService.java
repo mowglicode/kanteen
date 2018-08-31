@@ -11,7 +11,7 @@ public interface IParentService {
     ParentDtoFull displayParentById(long id);
     ParentDtoFull saveParent(ParentDtoFull parentDtoFull);
     void deleteParent(long id);
-    ParentDtoFull saveParentWithId(ParentDtoFull parentDtoFull, long id);
+    ParentDtoFull saveParentWithIdAccount(ParentDtoFull parentDtoFull, long id);
     ParentDtoFull saveParentWithChildId(ParentDtoFull parentDtoFull,long id);
     ParentDtoFull removeChildFromParent(long id_parent, long id_child);
 }

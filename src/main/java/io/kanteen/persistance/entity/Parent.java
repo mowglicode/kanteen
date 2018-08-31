@@ -57,6 +57,8 @@ public class Parent {
         this.school = school;
     }
 
+    public void setChild(Child child){this.children.add(child); }
+
     public List<Child> getChildren() {
         return children;
     }

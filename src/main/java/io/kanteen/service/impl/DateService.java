@@ -3,6 +3,8 @@ package io.kanteen.service.impl;
 import io.kanteen.service.IDateService;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -15,7 +17,7 @@ public class DateService implements IDateService {
 
     private static long DAY_IN_MS = 1000 * 60 * 60 * 25;
     @Override
-    public List<Date> getNextDates() {
+    public List<String> getNextDates() {
         int number = 5;
         Date now = new Date();
 
@@ -31,7 +33,14 @@ public class DateService implements IDateService {
             result.add(current);
 
         }
-        return result;
+        //convert date to string
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        List<String> resultString = new ArrayList<>();
+        for (Date d: result){
+            String s = df.format(d);
+            resultString.add(s);
+        }
+        return resultString;
     }
 
     @Override

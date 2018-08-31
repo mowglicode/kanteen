@@ -20,7 +20,7 @@ public class DateController {
     @ApiOperation(value = "Get next days available for lunch",
             notes = "The deadline before the first next meal is set to 1 day, then the 5 next available days are displayed skipping wednesdays and week-ends")
     @RequestMapping(method = RequestMethod.GET)
-    public List<Date> getNextDates(){
+    public List<String> getNextDates(){
         return dateService.getNextDates();
     }
 }

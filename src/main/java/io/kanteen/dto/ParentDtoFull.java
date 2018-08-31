@@ -59,6 +59,8 @@ public class ParentDtoFull {
         this.children = children;
     }
 
+    public void setChild(Child child){this.children.add(child); }
+
     public School getSchool() {
         return school;
     }

@@ -15,6 +15,9 @@ public class Child {
     @Column(nullable = false)
     private String name;
 
+    @Column
+    private String grade;
+
     public Child(){
     }
 
@@ -23,8 +26,7 @@ public class Child {
         this.grade = grade;
     }
 
-    @Column
-    private String grade;
+
 
     public long getId() {
         return id;

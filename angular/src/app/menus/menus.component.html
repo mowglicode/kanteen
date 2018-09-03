@@ -1,5 +1,12 @@
-<p>
-  menu works
-<br>a
-  <br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a
-</p>
+<h2>List of menus</h2>
+<div *ngFor="let menu of this.service.menus" > {{menu.content}}
+  <button (click)="onDelete(menu)"> delete </button>
+</div>
+
+
+
+<form (submit)="onSubmit(content)">
+  <textarea [(ngModel)]="content" name="content">   </textarea>
+  <button> save </button>
+</form>
+

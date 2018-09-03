@@ -29,7 +29,7 @@ public class Contract {
     /*
     @ElementCollection
     @CollectionTable
-    private List<ContractOption> options = new ArrayList<>();
+    private List<ContractOptionDto> options = new ArrayList<>();
     */
 
     public long getId() {

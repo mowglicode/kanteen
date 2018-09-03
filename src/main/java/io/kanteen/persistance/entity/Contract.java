@@ -26,9 +26,11 @@ public class Contract {
     @Column(nullable = false)
     private boolean withOption;
 
+    /*
     @ElementCollection
     @CollectionTable
     private List<ContractOption> options = new ArrayList<>();
+    */
 
     public long getId() {
         return id;
@@ -70,11 +72,5 @@ public class Contract {
         this.withOption = withOption;
     }
 
-    public List<ContractOption> getOptions() {
-        return options;
-    }
 
-    public void setOptions(List<ContractOption> options) {
-        this.options = options;
-    }
 }

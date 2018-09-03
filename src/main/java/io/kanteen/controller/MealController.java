@@ -2,6 +2,7 @@ package io.kanteen.controller;
 
 import io.kanteen.dto.MealDto;
 import io.kanteen.service.IMealService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -36,6 +37,13 @@ public class MealController {
         return mealService.getMealsByDay(day);
     }
 
+    @ApiOperation(value = "Get meals by factured parent")
+    @RequestMapping(value = "/{id_parent}",method = RequestMethod.GET)
+    public List<MealDto> getMealsByParentId (@PathVariable(name="id_parent") long id){
+        return mealService.getMealsByParentId(id);
+
+
+    }
 
 //    @ApiOperation(value = "Save meal", notes = "The meal saved comes from a MealDto")
 //    @RequestMapping(method = RequestMethod.POST)

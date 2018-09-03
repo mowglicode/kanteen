@@ -9,9 +9,15 @@ public class ContractDto {
     private long id;
     private String title;
     private String description;
-    private boolean status;
-    private boolean withOption;
-    private List<ContractOption> options;
+
+    public ContractDto() {
+
+    }
+
+    public ContractDto(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
 
     public long getId() {
         return id;
@@ -37,27 +43,4 @@ public class ContractDto {
         this.description = description;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public boolean isWithOption() {
-        return withOption;
-    }
-
-    public void setWithOption(boolean withOption) {
-        this.withOption = withOption;
-    }
-
-    public List<ContractOption> getOptions() {
-        return options;
-    }
-
-    public void setOptions(List<ContractOption> options) {
-        this.options = options;
-    }
 }

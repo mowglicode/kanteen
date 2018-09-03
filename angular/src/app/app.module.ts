@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { MenusComponent } from './menus/menus.component';
 import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -12,7 +13,7 @@ import {HttpClientModule} from "@angular/common/http";
     MenusComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule
+    BrowserModule, HttpClientModule, FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

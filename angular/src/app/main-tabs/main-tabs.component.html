@@ -9,14 +9,14 @@
   <div class="overflow">
     <app-menus *ngIf="this.service.activeTab==='menus'"></app-menus>
     <app-meals *ngIf="this.service.activeTab==='meals'"></app-meals>
-    <!--app-privacy *ngIf="this.service.activeTab==='privacy'"></app-privacy>
-    <app-home *ngIf="this.service.activeTab==='home'"></app-home-->
+    <!--app-privacy *ngIf="this.service.activeTab==='privacy'"></app-privacy-->
+    <app-home *ngIf="this.service.activeTab==='home'"></app-home>
   </div>
 
 
   <div class="container">
     <div class="buttonenbas">
-      <button>
+      <button (click)="setHome()">
         Accueil
       </button>
       <button (click)="setMeals()">

@@ -7,6 +7,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { MainTabsComponent } from './main-tabs/main-tabs.component';
 import { MealsComponent } from './meals/meals.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { MealsComponent } from './meals/meals.component';
     AppComponent,
     MenusComponent,
     MainTabsComponent,
-    MealsComponent
+    MealsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule

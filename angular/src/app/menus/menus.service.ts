@@ -23,12 +23,4 @@ export class MenusService {
     });
   }
 
-
-  saveMenu(content){
-    let menu:Menu = {
-      content:content
-    }
-    this.http.post('http://localhost:8585/api/menus', menu).subscribe(r => console.log(r));
-  }
-
 }

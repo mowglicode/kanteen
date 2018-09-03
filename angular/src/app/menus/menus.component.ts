@@ -8,18 +8,11 @@ import {MenusService} from "./menus.service";
 })
 export class MenusComponent implements OnInit {
 
-  content:string;
-
   constructor(public service: MenusService) {
     service.getAllMenus();
   }
 
   ngOnInit() {
-  }
-
-
-  onSubmit(){
-    this.service.saveMenu(this.content);
   }
 
 }

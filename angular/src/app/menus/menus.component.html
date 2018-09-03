@@ -1,12 +1,5 @@
-<h2>List of menus</h2>
-<div *ngFor="let menu of this.service.menus" > {{menu.content}}
-  <button (click)="onDelete(menu)"> delete </button>
+<h1>Menu</h1>
+
+<div>
+  {{ getMenuById() }}
 </div>
-
-
-
-<form (submit)="onSubmit(content)">
-  <textarea [(ngModel)]="content" name="content">   </textarea>
-  <button> save </button>
-</form>
-

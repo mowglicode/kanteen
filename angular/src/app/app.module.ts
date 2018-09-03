@@ -7,6 +7,9 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { MainTabsComponent } from './main-tabs/main-tabs.component';
 import { MealsComponent } from './meals/meals.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatButtonModule, MatListModule} from "@angular/material";
+import { MenuAdminComponent } from './menus/menu-admin/menu-admin.component';
 
 
 @NgModule({
@@ -14,10 +17,11 @@ import { MealsComponent } from './meals/meals.component';
     AppComponent,
     MenusComponent,
     MainTabsComponent,
-    MealsComponent
+    MealsComponent,
+    MenuAdminComponent,
   ],
   imports: [
-    BrowserModule, HttpClientModule, FormsModule
+    BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, MatButtonModule, MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

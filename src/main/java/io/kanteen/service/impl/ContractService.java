@@ -2,8 +2,11 @@ package io.kanteen.service.impl;
 
 
 import io.kanteen.dto.ContractDto;
+import io.kanteen.dto.ContractOptionDto;
 import io.kanteen.exception.NotFoundException;
 import io.kanteen.persistance.entity.Contract;
+import io.kanteen.persistance.entity.ContractOption;
+import io.kanteen.persistance.repository.IContractOptionRepository;
 import io.kanteen.persistance.repository.IContractRepository;
 import io.kanteen.service.IContractService;
 import org.modelmapper.ModelMapper;
@@ -19,6 +22,9 @@ public class ContractService implements IContractService {
 
     @Autowired
     private IContractRepository contractRepository;
+
+    @Autowired
+    private IContractOptionRepository contractOptionRepository;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -56,11 +62,26 @@ public class ContractService implements IContractService {
     }
 
     @Override
-    public ContractDto saveContract(ContractDto contractDto) {
+    public ContractDto saveContract(ContractDto contractDto, ContractOptionDto contractOptionDto) {
         Contract contract = modelMapper.map(contractDto, Contract.class);
-
-        // save each options
-        contractRepository.save(contract);
+        ContractOption contractOption = modelMapper.map(contractOptionDto, ContractOption.class);
+        if (contract.isWithOption()){
+           contractRepository.save(contract);
+        } else {
+            contractRepository.save(contract);
+        }
         return displayContractById(contract.getId());
     }
+
+
+
+
+//    @Override
+//    public ContractDto saveContract(ContractDto contractDto) {
+//        Contract contract = modelMapper.map(contractDto, Contract.class);
+//
+//        // save each options
+//        contractRepository.save(contract);
+//        return displayContractById(contract.getId());
+//    }
 }

@@ -2,6 +2,22 @@
   Ecole Privée Saint-Roch
 </header>
 
+<div class="container">
+  <div class="buttonenbas">
+    <button>
+      Accueil
+    </button>
+    <button (click)="setMeals()">
+      Retirer repas
+    </button>
+    <button (click)="setMenus()">
+      Menus
+    </button>
+    <button>
+      Confidentialité
+    </button>
+  </div>
+</div>
 
 
 <div>
@@ -13,23 +29,6 @@
     <app-home *ngIf="this.service.activeTab==='home'"></app-home-->
   </div>
 
-
-  <div class="container">
-    <div class="buttonenbas">
-      <button>
-        Accueil
-      </button>
-      <button (click)="setMeals()">
-        Retirer repas
-      </button>
-      <button (click)="setMenus()">
-        Menus
-      </button>
-      <button>
-        Confidentialité
-      </button>
-    </div>
-  </div>
 
 
 

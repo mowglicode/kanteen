@@ -96,6 +96,5 @@ public class AccountServiceTest {
         service.deleteAccount(raymond.getId());
         service.deleteAccount(travis.getId());
         service.deleteAccount(kevin.getId());
-
     }
 }

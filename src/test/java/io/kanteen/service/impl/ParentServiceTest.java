@@ -18,6 +18,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
@@ -56,8 +57,8 @@ public class ParentServiceTest {
          */
         parentDtoFull = new ParentDtoFull("JeanneDo", "jeanne@jo.com");
         parentAccount = parentDtoFull.getAccount();
-        System.out.println(parentAccount.getId());
-        System.out.println("-----------------------");
+//        System.out.println(parentAccount.getId());
+//        System.out.println("-----------------------");
 
 
         accountService.saveAccount(parentDtoFull.getAccount());
@@ -85,6 +86,13 @@ public class ParentServiceTest {
         if (childTmp.isPresent()) {
             childService.deleteChildren(childTmp.get().getId());
         }
+
+//        List<Parent> par = parentRepository.findAll();
+//        if(par.size()>=1){
+//            for(Parent a:par){
+//                parentRepository.deleteById(a.getId());
+//            }
+//        }
     }
 
     @Test

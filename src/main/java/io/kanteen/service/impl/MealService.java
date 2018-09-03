@@ -1,9 +1,12 @@
 package io.kanteen.service.impl;
 
+import io.kanteen.dto.ChildDto;
 import io.kanteen.dto.MealDto;
+import io.kanteen.dto.ParentDtoFull;
 import io.kanteen.exception.NotFoundException;
 import io.kanteen.persistance.entity.Child;
 import io.kanteen.persistance.entity.Meal;
+import io.kanteen.persistance.entity.Parent;
 import io.kanteen.persistance.repository.IChildRepository;
 import io.kanteen.persistance.repository.IMealRepository;
 import io.kanteen.service.IMealService;
@@ -11,6 +14,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -22,6 +26,9 @@ public class MealService implements IMealService {
     private IMealRepository mealRepository;
     @Autowired
     private IChildRepository childRepository;
+    @Autowired
+    private ParentService parentService;
+
     @Autowired
     private ModelMapper modelMapper;
 
@@ -106,6 +113,34 @@ public class MealService implements IMealService {
             mealRepository.delete(modelMapper.map(tmp.get(), Meal.class));
         } else {
             throw new NotFoundException("Meal not found and can't be deleted");
+        }
+    }
+
+    @Override
+    public List<MealDto> getMealsByParentId(long id) {
+        ParentDtoFull parentDtoFull = parentService.displayParentById(id);
+        List<Child> children = parentDtoFull.getChildren();
+        List<MealDto> meals = new ArrayList<>();
+        for (Child c : children) {
+            List<MealDto> mealTmp = getMealsByChildId(c.getId());
+            for (MealDto m : mealTmp) {
+                meals.add(m);
+            }
+        }
+        return meals;
+    }
+
+    @Override
+    public List<MealDto> getMealsByChildId(long id) {
+        Optional<List<Meal>> tmp = mealRepository.findMealByChildId(id);
+        List<MealDto> result = new ArrayList<>();
+        if (tmp.isPresent()) {
+            for (Meal m : tmp.get()) {
+                result.add(modelMapper.map(tmp.get(), MealDto.class));
+            }
+            return result;
+        } else {
+            throw new NotFoundException("Meal not found for this Child ID");
         }
     }
 }

@@ -1,8 +1,12 @@
-<div class="button-row">
-  <button mat-flat-button>Basic</button>
-  <button mat-flat-button color="primary">Primary</button>
-  <button mat-flat-button color="accent">Accent</button>
-  <button mat-flat-button color="warn">Warn</button>
-  <button mat-flat-button disabled>Disabled</button>
-  <a mat-flat-button routerLink=".">Link</a>
+<h2>List of menus</h2>
+<div *ngFor="let menu of this.service.menus" > {{menu.content}}
+  <button (click)="onDelete(menu)"> delete </button>
 </div>
+
+
+
+<form (submit)="onSubmit(content)">
+  <textarea [(ngModel)]="content" name="content">   </textarea>
+  <button> save </button>
+</form>
+

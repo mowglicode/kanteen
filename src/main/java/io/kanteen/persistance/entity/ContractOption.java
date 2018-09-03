@@ -1,6 +1,7 @@
 package io.kanteen.persistance.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table
@@ -11,7 +12,7 @@ public class ContractOption {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private long id;
 
-        @ManyToOne
+        @ManyToOne(cascade = {CascadeType.ALL})
         Contract contract;
 
         private String optionName;
@@ -39,5 +40,28 @@ public class ContractOption {
         public void setOptionName(String optionName) {
             this.optionName = optionName;
         }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContractOption that = (ContractOption) o;
+        return id == that.id &&
+                Objects.equals(optionName, that.optionName);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, optionName);
+    }
+
+    @Override
+    public String toString() {
+        return "ContractOption{" +
+                "id=" + id +
+                ", optionName='" + optionName + '\'' +
+                '}';
+    }
+}
 

@@ -9,6 +9,8 @@ public class ContractDto {
     private long id;
     private String title;
     private String description;
+    private List<ContractOption> options;
+
 
     public ContractDto() {
 
@@ -43,4 +45,11 @@ public class ContractDto {
         this.description = description;
     }
 
+    public List<ContractOption> getOptions() {
+        return options;
+    }
+
+    public void setOptions(List<ContractOption> options) {
+        this.options = options;
+    }
 }

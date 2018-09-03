@@ -1,12 +1,10 @@
 package io.kanteen.service.impl;
 
-import io.kanteen.dto.ChildDto;
 import io.kanteen.dto.MealDto;
 import io.kanteen.dto.ParentDtoFull;
 import io.kanteen.exception.NotFoundException;
 import io.kanteen.persistance.entity.Child;
 import io.kanteen.persistance.entity.Meal;
-import io.kanteen.persistance.entity.Parent;
 import io.kanteen.persistance.repository.IChildRepository;
 import io.kanteen.persistance.repository.IMealRepository;
 import io.kanteen.service.IMealService;
@@ -14,7 +12,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;

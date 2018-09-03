@@ -23,8 +23,7 @@ public class AccountService implements IAccountService {
     private ModelMapper modelMapper;
 
     @Override
-    public AccountDto saveAccount(AccountDto accountDto) {
-        Account account = modelMapper.map(accountDto,Account.class);
+    public AccountDto saveAccount(Account account) {
         accountRepository.save(account);
         return getAccountById(account.getId());
     }

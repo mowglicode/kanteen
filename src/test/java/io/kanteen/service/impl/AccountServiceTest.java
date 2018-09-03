@@ -35,11 +35,11 @@ public class AccountServiceTest {
     @Test
     public void saveAccount(){
 
-        AccountDto accountLuck= new AccountDto();
-        accountLuck.setEmail("lucky@luck.com");
-        accountLuck.setPhone("06.12.34.56.78");
+        Account luck = new Account();
+        luck.setEmail("lucky@luck.com");
+        luck.setPhone("06.12.34.56.78");
 
-        AccountDto luck = service.saveAccount(accountLuck);
+        AccountDto luckDto = service.saveAccount(luck);
 
         assertTrue(luck.getId() > 0);
 
@@ -48,47 +48,50 @@ public class AccountServiceTest {
 
     @Test
     public void deleteAccount (){
-        AccountDto samDto = new AccountDto();
-        samDto.setEmail("toto@mail.com");
-        samDto.setPhone("06.12.34.56.78");
+        Account sam = new Account();
+        sam.setEmail("toto@mail.com");
+        sam.setPhone("06.12.34.56.78");
 
-        AccountDto sam = service.saveAccount(samDto);
-        service.deleteAccount(sam.getId());
+        AccountDto samDto = service.saveAccount(sam);
+        service.deleteAccount(samDto.getId());
 
-        assertFalse(sam.getEmail() == "sam@mail.com");
+        assertFalse(samDto.getEmail() == "sam@mail.com");
 
     }
 
     @Test
     public void getAccountById(){
-        AccountDto anaDto = new AccountDto();
-        anaDto.setEmail("ana@mail.com");
-        anaDto.setPhone("06.12.34.56.79");
 
-        anaDto = service.saveAccount(anaDto);
-        AccountDto ana = service.getAccountById(anaDto.getId());
-        assertEquals(ana.getId(), anaDto.getId());
-        service.deleteAccount(ana.getId());
+        Account ana = new Account();
+        ana.setEmail("ana@mail.com");
+        ana.setPhone("06.12.34.56.79");
+
+        AccountDto anaDto = service.saveAccount(ana);
+        AccountDto anaGet = service.getAccountById(anaDto.getId());
+
+        assertEquals(anaDto.getId(), anaGet.getId());
+        service.deleteAccount(anaDto.getId());
 
     }
 
     @Test
     public void getAllAccounts(){
-        AccountDto raymond = new AccountDto();
+
+        Account raymond = new Account();
         raymond.setEmail("raymond@brady.nfl");
         raymond.setPhone("0101010101");
 
-        AccountDto travis = new AccountDto();
+        Account travis = new Account();
         travis.setEmail("travis@brady.nfl");
         travis.setPhone("0202020202");
 
-        AccountDto kevin = new AccountDto();
+        Account kevin = new Account();
         kevin.setEmail("kevin@brady.fr");
         kevin.setPhone("0303030303");
 
-        raymond = service.saveAccount(raymond);
-        travis = service.saveAccount(travis);
-        kevin = service.saveAccount(kevin);
+        AccountDto raymondDto = service.saveAccount(raymond);
+        AccountDto travisDto = service.saveAccount(travis);
+        AccountDto kevinDto = service.saveAccount(kevin);
 
         List<AccountDto> accounts = service.getAllAccounts();
         assertEquals(3, accounts.size());
@@ -96,7 +99,6 @@ public class AccountServiceTest {
         service.deleteAccount(raymond.getId());
         service.deleteAccount(travis.getId());
         service.deleteAccount(kevin.getId());
-
 
     }
 }

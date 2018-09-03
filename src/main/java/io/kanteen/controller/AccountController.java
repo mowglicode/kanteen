@@ -1,6 +1,7 @@
 package io.kanteen.controller;
 
 import io.kanteen.dto.AccountDto;
+import io.kanteen.persistance.entity.Account;
 import io.kanteen.service.IAccountService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,8 @@ public class AccountController {
 
     @ApiOperation(value = "Save account")
     @RequestMapping(method = RequestMethod.POST)
-    public AccountDto saveAccount(@RequestBody AccountDto accountDto){
-        return accountService.saveAccount(accountDto);
+    public AccountDto saveAccount(@RequestBody Account account){
+        return accountService.saveAccount(account);
     }
 
     @ApiOperation(value = "Delete account by ID")

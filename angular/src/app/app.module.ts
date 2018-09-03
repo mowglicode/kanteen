@@ -24,7 +24,8 @@ import {MatButtonModule, MatCheckboxModule, MatTabsModule} from "@angular/materi
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatTabsModule
+    MatTabsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -61,6 +61,21 @@ public class ContractService implements IContractService {
         }
     }
 
+//    @Override
+//    public ContractDto saveContract(ContractDto contractDto, ContractOptionDto contractOptionDto) {
+//        Contract contract = modelMapper.map(contractDto, Contract.class);
+//        ContractOption contractOption = modelMapper.map(contractOptionDto, ContractOption.class);
+//        if (contract.isWithOption()){
+//           contractRepository.save(contract);
+//        } else {
+//            contractRepository.save(contract);
+//        }
+//        return displayContractById(contract.getId());
+//    }
+
+
+
+
     @Override
     public ContractDto saveContract(ContractDto contractDto) {
 

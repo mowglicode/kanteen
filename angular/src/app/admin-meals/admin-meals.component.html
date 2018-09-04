@@ -1,0 +1,29 @@
+
+<div class="container">
+  <div>
+    <button (click)="setDates()">
+      Dates
+    </button>
+    <button (click)="setChildren()">
+      Recap
+    </button>
+  </div>
+</div>
+
+<div>
+
+<div>
+  <p>
+    admin-meals works!
+  </p>
+  <app-admin-meals-dates *ngIf="this.service.activeTab==='dates'"></app-admin-meals-dates>
+  <app-admin-meals-childs *ngIf="this.service.activeTab==='children'"></app-admin-meals-childs>
+
+</div>
+
+
+
+
+</div>
+
+

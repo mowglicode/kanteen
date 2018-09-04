@@ -7,6 +7,7 @@ public class ParentDtoLight {
     private String name;
     private Account account;
 
+
     public long getId() {
         return id;
     }

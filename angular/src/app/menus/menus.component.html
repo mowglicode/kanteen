@@ -1,0 +1,20 @@
+<h2 class="mat-h2">Menu</h2>
+
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let menu of this.service.menus">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{menu.content}}
+      </mat-panel-title>
+      <mat-panel-description>
+       Cliquez pour voir le menu
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>{{menu.content}}</p>
+    <button mat-flat-button (click)="onDelete(menu)"><mat-icon>delete</mat-icon></button>
+  </mat-expansion-panel>
+</mat-accordion>
+<!--<form (ngSubmit)="onSubmit()">
+  <input type="text" name="content" [(ngModel)]="content">
+  <button>save</button>
+</form>-->

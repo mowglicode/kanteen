@@ -58,7 +58,7 @@ public class ContractOption {
 
     @Override
     public String toString() {
-        return "ContractOption{" +
+        return "ContractOptionDto{" +
                 "id=" + id +
                 ", optionName='" + optionName + '\'' +
                 '}';

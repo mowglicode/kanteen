@@ -26,7 +26,8 @@ public class Child {
         this.grade = grade;
     }
 
-
+    @Column
+    private String grade;
 
     public long getId() {
         return id;

@@ -9,4 +9,5 @@ public interface IChildService {
     ChildDto displayChildrenById(long id);
     void deleteChildren(long id);
     ChildDto saveChild(ChildDto childDto);
+    List<ChildDto> getChildrenByParentId(long parentId);
 }

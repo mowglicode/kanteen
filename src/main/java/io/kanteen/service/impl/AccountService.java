@@ -29,10 +29,12 @@ public class AccountService implements IAccountService {
         return getAccountById(accountService.getId());
     }
 
-    // overloading
-    /*public Account saveAccount(Account account) {
-        return accountRepository.save(account);
-    }*/
+    @Override
+    public AccountDto saveAccount(AccountDto accountDto){
+        Account account = modelMapper.map(accountDto,Account.class);
+        accountRepository.save(account);
+        return getAccountById(account.getId());
+    }
 
     @Override
     public List<AccountDto> getAllAccounts() {

@@ -1,1 +1,32 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+body{
+  margin: 0;
+}
+
+.container{
+  margin-top: 1em;
+}
+h2{
+  padding-left: 8px;
+}
+/*mat-accordion{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+*/
+md-icon{
+  font-family: 'Material Icons' !important;
+}
+/*
+mat-tab-group{
+  align: end;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+*/

@@ -24,8 +24,7 @@ public class MenuService implements IMenuService {
     private ModelMapper modelMapper;
 
     @Override
-    public MenuDto saveMenu(MenuDto menuDto) {
-        Menu menu = modelMapper.map(menuDto, Menu.class);
+    public MenuDto saveMenu(Menu menu) {
         menuRepository.save(menu);
         return getMenuById(menu.getId());
     }

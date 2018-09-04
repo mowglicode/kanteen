@@ -17,6 +17,7 @@ public class Account {
     @Column
     private String phone = "06.06.06.06.06";
 
+
     public Account() {
     }
 

@@ -107,7 +107,7 @@ public class ParentServiceTest {
         ParentDtoFull pdh = service.saveParentWithChildId(henri,jsaved.getId());
         assertTrue(pdh.getChildren().size()==1);
 
-        ParentDtoFull psaved = service.saveParent(henri);
+        service.saveParent(henri);
         pdh = service.removeChildFromParent(pdh.getId(),jsaved.getId());
         assertTrue(pdh.getChildren().size()==0);
 

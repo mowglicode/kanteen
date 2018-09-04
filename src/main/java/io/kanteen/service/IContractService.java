@@ -10,7 +10,7 @@ public interface IContractService {
     List<ContractDto> displayContracts();
     ContractDto displayContractById(long id);
     void deleteContract(long id);
-    ContractDto saveContract(ContractDto contractDto, ContractOptionDto contractOptionDto);
-//    ContractDto saveContract(ContractDto contractDto);
+    // ContractDto saveContract(ContractDto contractDto, ContractOptionDto contractOptionDto);
+    ContractDto saveContract(ContractDto contractDto);
 }
 

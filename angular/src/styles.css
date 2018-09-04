@@ -9,16 +9,16 @@ body{
   margin-top: 1em;
 }
 
-mat-accordion{
+/*mat-accordion{
   position: fixed;
   bottom: 0;
   width: 100%;
 }
-
+*/
 md-icon{
   font-family: 'Material Icons' !important;
 }
-
+/*
 mat-tab-group{
   align: end;
   position: fixed;
@@ -26,3 +26,4 @@ mat-tab-group{
   right: 0;
   left: 0;
 }
+*/

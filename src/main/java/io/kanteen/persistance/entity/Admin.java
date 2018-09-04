@@ -3,11 +3,10 @@ package io.kanteen.persistance.entity;
 import io.kanteen.persistance.KanteenUser;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table
-public class Parent implements KanteenUser {
+public class Admin implements KanteenUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,15 +18,6 @@ public class Parent implements KanteenUser {
 
     @Column
     private String name;
-
-    @Transient
-    School school;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @Column
-    private List<Child> children;
-
-
 
     public long getId() {
         return id;
@@ -53,27 +43,8 @@ public class Parent implements KanteenUser {
         this.name = name;
     }
 
-    public School getSchool() {
-        return school;
-    }
-
-    public void setSchool(School school) {
-        this.school = school;
-    }
-
-    public void setChild(Child child){this.children.add(child); }
-
-    public List<Child> getChildren() {
-        return children;
-    }
-
-    public void setChildren(List<Child> children) {
-        this.children = children;
-    }
-
-
     @Override
     public boolean isAdmin() {
-        return false;
+        return true;
     }
 }

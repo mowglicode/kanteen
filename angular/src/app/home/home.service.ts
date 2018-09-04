@@ -16,7 +16,7 @@ export class HomeService {
   informations: Information[] = [];
   information: Information;
   show = false;
-
+  idDiv = -1;
   constructor(public http: HttpClient) {
 
   }
@@ -35,8 +35,10 @@ export class HomeService {
       });
   }
 
-  showDescription() {
+  showDescription(id) {
     !this.show ?  this.show = true : this.show = false;
+    this.idDiv = id;
+
   }
 }
 

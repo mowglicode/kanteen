@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MenusService} from './menus.service';
+import {Menu, MenusService} from './menus.service';
 
 @Component({
   selector: 'app-menus',
@@ -8,11 +8,26 @@ import {MenusService} from './menus.service';
 })
 export class MenusComponent implements OnInit {
 
+  content: string;
+  id: number;
+
   constructor(public service: MenusService) {
     service.getAllMenus();
+    //service.getMenuById(id);
+
+
   }
 
   ngOnInit() {
+  }
+
+
+  onSubmit(){
+    this.service.saveMenu(this.content);
+  }
+
+  onDelete(menu:Menu){
+    this.service.deleteMenu(menu);
   }
 
 }

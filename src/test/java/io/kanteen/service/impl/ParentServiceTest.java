@@ -3,7 +3,7 @@ package io.kanteen.service.impl;
 import io.kanteen.dto.AccountDto;
 import io.kanteen.dto.ChildDto;
 import io.kanteen.dto.ParentDtoFull;
-import io.kanteen.exception.NotFoundException;
+import io.kanteen.dto.ParentDtoLight;
 import io.kanteen.persistance.entity.Account;
 import io.kanteen.persistance.entity.Child;
 import io.kanteen.persistance.entity.Parent;
@@ -12,13 +12,12 @@ import io.kanteen.persistance.repository.IChildRepository;
 import io.kanteen.persistance.repository.IParentRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Optional;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -39,96 +38,80 @@ public class ParentServiceTest {
     @Autowired
     AccountService accountService;
 
-    ModelMapper modelMapper;
-
-    ParentDtoFull parentDtoFull;
-
-    Account parentAccount;
-
-
-    ChildDto childDto;
+    ParentDtoFull henri;
+    ParentDtoFull david;
+    ChildDto julie;
+    AccountDto accHenri;
 
     @org.junit.Before
     public void setUp() throws Exception {
+        henri = new ParentDtoFull("henri","h@dd.com");
+        david = new ParentDtoFull("david","hddd@dd.com");
+        accHenri = accountService.saveAccount(henri.getAccount());
 
-        /**
-         * Set up for testing saveParentWithIdAccount() function.
-         */
-        parentDtoFull = new ParentDtoFull("JeanneDo", "jeanne@jo.com");
-        parentAccount = parentDtoFull.getAccount();
-        System.out.println(parentAccount.getId());
-        System.out.println("-----------------------");
-
-
-        accountService.saveAccount(parentDtoFull.getAccount());
-
-        childDto = new ChildDto();
-        childDto.setName("Wilson");
-        childDto.setGrade("cm2");
-        childDto = childService.saveChild(childDto);
-
+        julie = new ChildDto("julie","cp");
+        childService.saveChild(julie);
 
     }
 
     @org.junit.After
     public void tearDown() throws Exception {
-        // Cleaning
-        Optional<Parent> ParentTmp = parentRepository.findById(parentDtoFull.getId());
-        if (ParentTmp.isPresent()) {
-            service.deleteParent(parentAccount.getId());
+
+        List<Parent> par = parentRepository.findAll();
+        if(par.size()>=1){
+            for(Parent a:par){
+                service.deleteParent(a.getId());
+            }
         }
-        Optional<Account> accountTmp = accountRepository.findById(parentAccount.getId());
-        if (accountTmp.isPresent()) {
-            accountRepository.delete(parentAccount);
+        List<Child> chi = childRepository.findAll();
+        if(chi.size()>=1){
+            for(Child c: chi){
+                childRepository.deleteById(c.getId());
+            }
         }
-        Optional<Child> childTmp = childRepository.findById(childDto.getId());
-        if (childTmp.isPresent()) {
-            childService.deleteChildren(childTmp.get().getId());
+        List<Account> acc = accountRepository.findAll();
+        if(acc.size()>=1){
+            for(Account a: acc){
+                accountRepository.deleteById(a.getId());
+            }
         }
     }
 
     @Test
     public void saveParentWithIdAccount() {
-        ParentDtoFull p = service.saveParentWithIdAccount(parentDtoFull, parentAccount.getId());
-        assertTrue(p.getAccount().getId() == parentAccount.getId());
+        ParentDtoFull p = service.saveParentWithIdAccount(henri,accHenri.getId());
+        assertTrue(p.getAccount().getId() == accHenri.getId());
+        assertTrue(service.displayAllParents().size()>0);
     }
 
     @Test
     public void displayAllParents() {
-
-
-        service.displayAllParents();
+        service.saveParent(henri);
+        service.saveParent(david);
+        List<ParentDtoLight> p = service.displayAllParents();
+        System.out.println(p.size());
+        assertTrue(p.size()==2);
     }
 
     @Test
     public void saveParent() {
-
-
-        ParentDtoFull p = service.saveParent(parentDtoFull);
-
-        assertTrue(p.getId() > 0);
-
-        // Cleaning
-        service.deleteParent(p.getId());
-
-        // Should check account id deleted
+        ParentDtoFull ph = service.saveParent(henri);
+        ParentDtoFull pd = service.saveParent(david);
+        assertTrue(ph.getId()>0);
+        assertTrue(pd.getId()>0);
     }
 
     @Test
     public void saveAndRemoveParentWithChildId() {
+        ChildDto jsaved = childService.saveChild(julie);
+        ParentDtoFull pdh = service.saveParentWithChildId(henri,jsaved.getId());
+        assertTrue(pdh.getChildren().size()==1);
 
-
-        // Save parent
-        ParentDtoFull result = service.saveParentWithChildId(parentDtoFull, childDto.getId());
-        assertTrue(result.getId() > 0);
-        assertEquals(1, result.getChildren().size());
-        result = service.removeChildFromParent(result.getId(), childDto.getId());
-        assertEquals(0, result.getChildren().size());
+        ParentDtoFull psaved = service.saveParent(henri);
+        pdh = service.removeChildFromParent(pdh.getId(),jsaved.getId());
+        assertTrue(pdh.getChildren().size()==0);
 
     }
-
-
-
 }
 
 

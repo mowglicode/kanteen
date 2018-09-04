@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface IMealRepository extends JpaRepository<Meal, Long> {
 
     @Query(value = "SELECT * FROM meal WHERE child_id=?1",nativeQuery = true)
-    Optional<Meal> findMealByChildId(long idChild);
+    Optional<List<Meal>> findMealByChildId(long idChild);
 
     @Query( value="SELECT * FROM meal WHERE day=?1", nativeQuery= true)
     Optional<List<Meal>> findMealsByDay( String date);

@@ -25,6 +25,9 @@ public class Parent {
     @Column
     private List<Child> children;
 
+    public Parent() {
+    }
+
     public Parent(String name, List<Child> children) {
         this.name = name;
         this.children = children;

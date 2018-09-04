@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatButtonModule, MatCheckboxModule, MatTabsModule} from "@angular/material";
 import { DataComponent } from './data/data.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { DataComponent } from './data/data.component';
     MainTabsComponent,
     MealsComponent,
     HomeComponent,
-    DataComponent
+    DataComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

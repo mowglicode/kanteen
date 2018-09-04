@@ -8,10 +8,10 @@ export class MealsService {
 
   constructor(public http:HttpClient) { }
 
-  eatableDay = eatableDay [];
+  eatableDay : string[] =[];
 
 
-  getEeatableDay(){
+  getEatableDay(){
     this.http.get('http://localhost:8585/api/dates/eatableday')
       .subscribe((r:any[]) => {
         this.eatableDay =r

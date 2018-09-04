@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Menu, MenusService} from "./menus.service";
+import {Menu, MenusService} from './menus.service';
 
 @Component({
   selector: 'app-menus',

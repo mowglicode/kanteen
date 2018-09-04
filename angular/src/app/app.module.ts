@@ -10,6 +10,7 @@ import { MealsComponent } from './meals/meals.component';
 import { HomeComponent } from './home/home.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatButtonModule, MatCheckboxModule, MatTabsModule} from "@angular/material";
+import { DataComponent } from './data/data.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {MatButtonModule, MatCheckboxModule, MatTabsModule} from "@angular/materi
     MenusComponent,
     MainTabsComponent,
     MealsComponent,
-    HomeComponent
+    HomeComponent,
+    DataComponent
   ],
   imports: [
     BrowserModule,

@@ -1,20 +1,26 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+
+
+
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class MealsService {
 
-  constructor(public http:HttpClient) { }
+  constructor(public http: HttpClient) {
+  }
 
-  eatableDay = eatableDay [];
+  eatableDay : string[] = [];
 
 
-  getEeatableDay(){
+  getEatableDay() {
     this.http.get('http://localhost:8585/api/dates/eatableday')
-      .subscribe((r:any[]) => {
-        this.eatableDay =r
+      .subscribe((r: any[]) => {
+        this.eatableDay = r
         console.log(this.eatableDay);
       });
   }

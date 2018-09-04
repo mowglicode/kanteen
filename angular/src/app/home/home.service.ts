@@ -14,9 +14,10 @@ export type Information = {
 export class HomeService {
 
   informations: Information[] = [];
-  information : Information;
+  information: Information;
+  show = false;
 
-  constructor(public http : HttpClient) {
+  constructor(public http: HttpClient) {
 
   }
 
@@ -26,11 +27,15 @@ export class HomeService {
     return this.http.get(this.informationUrl);
   }
 
-  getAllInformations(){
+  getAllInformations() {
     this.http.get(this.informationUrl)
-      .subscribe((result:any[]) => {
+      .subscribe((result: any[]) => {
         this.informations = result
-        console.log(this.informations);
       });
   }
+
+  showDescription() {
+    !this.show ?  this.show = true : this.show = false;
+  }
 }
+

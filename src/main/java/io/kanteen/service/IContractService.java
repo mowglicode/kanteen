@@ -1,6 +1,7 @@
 package io.kanteen.service;
 
 import io.kanteen.dto.ContractDto;
+import io.kanteen.dto.ContractOptionDto;
 
 import java.util.List;
 

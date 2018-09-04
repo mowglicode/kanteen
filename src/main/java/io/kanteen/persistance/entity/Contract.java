@@ -26,12 +26,6 @@ public class Contract {
     @Column(nullable = false)
     private boolean withOption;
 
-    /*
-    @ElementCollection
-    @CollectionTable
-    private List<ContractOption> options = new ArrayList<>();
-    */
-
     public long getId() {
         return id;
     }

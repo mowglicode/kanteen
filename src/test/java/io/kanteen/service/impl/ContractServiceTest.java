@@ -89,4 +89,6 @@ public class ContractServiceTest {
         tmp = contractService.displayContracts();
         assertEquals(0, tmp.size());
     }
+
+
 }

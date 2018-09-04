@@ -12,7 +12,7 @@ public class ContractOption {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private long id;
 
-        @ManyToOne(cascade = {CascadeType.ALL})
+        @ManyToOne
         Contract contract;
 
         private String optionName;

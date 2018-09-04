@@ -7,6 +7,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { MainTabsComponent } from './main-tabs/main-tabs.component';
 import { MealsComponent } from './meals/meals.component';
+import { HomeComponent } from './home/home.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatButtonModule, MatCheckboxModule, MatTabsModule} from "@angular/material";
 
@@ -16,7 +17,8 @@ import {MatButtonModule, MatCheckboxModule, MatTabsModule} from "@angular/materi
     AppComponent,
     MenusComponent,
     MainTabsComponent,
-    MealsComponent
+    MealsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

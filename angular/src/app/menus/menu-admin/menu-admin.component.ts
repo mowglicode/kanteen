@@ -11,6 +11,7 @@ export class MenuAdminComponent implements OnInit {
   content: string;
   id: number;
   week: number
+  displayedColumns: string[] = ['menu', 'week'];
 
   constructor(public service: MenusService) {
     service.getAllMenus();
@@ -25,6 +26,9 @@ modifyContent(){
   onSubmit(){
     this.service.saveMenu(this.content, this.week);
     console.log(this.content, this.week);
+    this.content = null;
+    this.week = null;
+
   }
 
   onDelete(menu:Menu){

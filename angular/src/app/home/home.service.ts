@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Menu} from "../menus/menus.service";
+
 
 export type Information = {
   id:number
@@ -30,7 +30,7 @@ export class HomeService {
     this.http.get(this.informationUrl)
       .subscribe((result:any[]) => {
         this.informations = result
-        console.log(this.informations);
+
       });
   }
 }

@@ -3,6 +3,12 @@ import {HttpClient} from "@angular/common/http";
 
 
 
+export interface Child {
+  id:number;
+  name:string;
+  grade:string;
+}
+
 
 
 
@@ -15,14 +21,25 @@ export class MealsService {
   }
 
   eatableDay : string[] = [];
-
+  childrenByParent: string[]=[];
+  loggedParentId :number=1;
 
   getEatableDay() {
     this.http.get('http://localhost:8585/api/dates/eatableday')
       .subscribe((r: any[]) => {
-        this.eatableDay = r
+        this.eatableDay = r;
         console.log(this.eatableDay);
       });
+  }
+
+  getChildrenByParentId(id){
+    this.http.get('http://localhost:8585/api/children/parent/'+ id)
+      .subscribe((r:any[])=>{
+        this.childrenByParent=r;
+        console.log(this.childrenByParent);
+      })
+
+
   }
 
 }

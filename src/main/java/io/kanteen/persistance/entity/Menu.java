@@ -18,6 +18,18 @@ public class Menu {
     @Column(nullable = false)
     private int week;
 
+    public Menu(String content) {
+        this.content = content;
+    }
+
+    public Menu(int week) {
+        this.week = week;
+    }
+
+    public Menu() {
+
+    }
+
     public long getId() {
         return id;
     }

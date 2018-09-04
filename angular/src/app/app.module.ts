@@ -14,12 +14,10 @@ import {
   MatListModule,
   MatMenuModule,
   MatTabsModule,
-  MatToolbarModule
+  MatToolbarModule, MatCheckboxModule
 } from "@angular/material";
 import { MenuAdminComponent } from './menus/menu-admin/menu-admin.component';
 import { HomeComponent } from './home/home.component';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatButtonModule, MatCheckboxModule, MatTabsModule} from "@angular/material";
 import { AdminMealsDatesComponent } from './admin-meals-dates/admin-meals-dates.component';
 import { AdminMealsChildsComponent } from './admin-meals-childs/admin-meals-childs.component';
 import { AdminMealsComponent } from './admin-meals/admin-meals.component';

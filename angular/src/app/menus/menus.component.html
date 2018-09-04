@@ -11,6 +11,7 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <p>{{menu.content}}</p>
+    <button mat-flat-button (click)="onDelete(menu)"><mat-icon>delete</mat-icon></button>
   </mat-expansion-panel>
 </mat-accordion>
 <!--<form (ngSubmit)="onSubmit()">

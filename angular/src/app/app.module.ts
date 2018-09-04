@@ -38,7 +38,7 @@ import { MenuAdminComponent } from './menus/menu-admin/menu-admin.component';
     MatExpansionModule,
     MatToolbarModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

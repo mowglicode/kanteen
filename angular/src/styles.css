@@ -8,7 +8,9 @@ body{
 .container{
   margin-top: 1em;
 }
-
+h2{
+  padding-left: 8px;
+}
 /*mat-accordion{
   position: fixed;
   bottom: 0;

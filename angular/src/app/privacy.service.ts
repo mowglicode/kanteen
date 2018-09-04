@@ -23,6 +23,7 @@ export class PrivacyService {
       });
   }}
 
+
   function mapAnyToContract(contract:any):Contract{
     return{
       title:contract.title,

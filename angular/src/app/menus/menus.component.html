@@ -1,5 +1,15 @@
-<h1>Menu</h1>
+<h2 class="mat-h2">Menu</h2>
 
-<div>
-  {{ getMenuById() }}
-</div>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let menu of this.service.menus">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{menu.content}}
+      </mat-panel-title>
+      <mat-panel-description>
+       Cliquez pour voir le menu
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>{{menu.content}}</p>
+  </mat-expansion-panel>
+</mat-accordion>

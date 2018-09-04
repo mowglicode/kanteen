@@ -15,6 +15,9 @@ public class Menu {
     @Column
     private String content;
 
+    @Column(nullable = false)
+    private int week;
+
     public long getId() {
         return id;
     }
@@ -30,4 +33,8 @@ public class Menu {
     public void setContent(String content) {
         this.content = content;
     }
+
+    public int getWeek() { return week; }
+
+    public void setWeek(int week) { this.week = week; }
 }

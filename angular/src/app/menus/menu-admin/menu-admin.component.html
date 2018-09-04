@@ -1,16 +1,46 @@
-<h1>
-  Les Menus
-</h1>
+<table>
+  <thead>
+    <tr>
+    <th> Les menus de la semaine </th>
+      <th> semaine N° </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <mat-list role="list">
+      <mat-list-item class="menu" role="listitem" *ngFor="let menu of this.service.menus">{{menu.content}}
+      </mat-list-item>
+    </mat-list>
+      </td>
 
-<mat-list role="list">
-  <mat-list-item role="listitem" *ngFor="let menu of this.service.menus">{{menu.content}}
-    <button mat-stroked-button (click)="onDelete(menu)"> supprimer </button>
-  </mat-list-item>
-</mat-list>
+      <td>
+        <mat-list role="list">
+          <mat-list-item class="week" role="listitem" *ngFor="let menu of this.service.menus">{{menu.week}}
+            <button class="button" (click)="onDelete(menu)"> supprimer </button>
+          </mat-list-item>
+        </mat-list>
+      </td>
+    </tr>
+  </tbody>
 
 
-<form (submit)="onSubmit(content)">
-  <textarea [(ngModel)]="content" name="content">   </textarea>
-  <button > enregistrer </button>
+
+
+</table>
+
+<!--<form (submit)="modifyContent(content)">
+  <button class="button" (click)="modifyContent()"> modifier </button>
+        (submit)="modifyContent(content)"
+  <textarea [(ngModel)]="content"  name="content"></textarea>
+  <button class="button"> enregistrer </button>
+</form>-->
+
+
+<form (submit)="onSubmit()">
+  <textarea placeholder="Indiquez les repas du menu" [(ngModel)]="content" name="content"> </textarea>
+  <input type="number" placeholder="Indiquez le numéro de la semaine" [(ngModel)]="week" name="week">
+<br>
+  <button class="button"> enregistrer </button>
 </form>
 

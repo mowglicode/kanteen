@@ -4,15 +4,15 @@ import {HttpClient} from "@angular/common/http";
 @Injectable({
   providedIn: 'root'
 })
-export class TabsService {
+export class AdminMealsService {
 
   constructor(public http:HttpClient) { }
 
-  activeTab: string = 'accueil';
+activeTab: string = 'dates';
 
   updateActiveTab(tabName){
     this.activeTab = tabName;
-    console.log("active tab", this.activeTab);
+    console.log("actve tab", this.activeTab);
   }
 
 

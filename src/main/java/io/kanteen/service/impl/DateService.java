@@ -28,7 +28,7 @@ public class DateService implements IDateService {
             result.add(current);
         }
         //convert date to string
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat df = new SimpleDateFormat("EEE dd/MM");
         List<String> resultString = new ArrayList<>();
         for (Date d: result){
             String s = df.format(d);

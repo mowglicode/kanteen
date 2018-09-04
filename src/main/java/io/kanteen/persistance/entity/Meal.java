@@ -18,6 +18,14 @@ public class Meal {
     @Column(nullable = false)
     private String day;
 
+    public Meal() {
+    }
+
+    public Meal(Child child, String day) {
+        this.child = child;
+        this.day = day;
+    }
+
     public long getId() {
         return id;
     }

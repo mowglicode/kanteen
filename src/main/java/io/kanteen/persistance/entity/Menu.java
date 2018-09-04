@@ -15,6 +15,13 @@ public class Menu {
     @Column
     private String content;
 
+    public Menu() {
+    }
+
+    public Menu(String content) {
+        this.content = content;
+    }
+
     public long getId() {
         return id;
     }

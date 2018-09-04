@@ -11,4 +11,5 @@ public interface IAccountService {
     List<AccountDto> getAllAccounts();
     AccountDto getAccountById(long id);
     void deleteAccount(long id);
+    AccountDto getAccountByEmail(String email);
 }

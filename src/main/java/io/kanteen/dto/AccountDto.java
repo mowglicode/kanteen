@@ -5,6 +5,15 @@ public class AccountDto {
     private String email;
     private String phone;
     private Boolean isAdmin;
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Boolean getAdmin() {
         return isAdmin;

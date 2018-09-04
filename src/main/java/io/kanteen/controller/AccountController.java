@@ -39,4 +39,10 @@ public class AccountController {
     public void deleteAccount(long id){
         accountService.deleteAccount(id);
     }
+
+    @ApiOperation(value = "Get account by email")
+    @RequestMapping(value = "/{email}",method = RequestMethod.GET)
+    public AccountDto getAccountByEmail(@PathVariable String email){
+        return accountService.getAccountByEmail(email);
+    }
 }

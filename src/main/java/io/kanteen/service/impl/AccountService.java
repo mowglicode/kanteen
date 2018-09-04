@@ -65,4 +65,15 @@ public class AccountService implements IAccountService {
             throw new NotFoundException("Account not found, it can't be deleted");
         }
     }
+
+    @Override
+    public AccountDto getAccountByEmail(String email) {
+        Optional<Account> accountTmp = accountRepository.findByEmail(email);
+        if (accountTmp.isPresent()) {
+            return modelMapper.map(accountTmp.get(),AccountDto.class);
+        }else {
+            throw new NotFoundException("Email not found");
+        }
+
+    }
 }

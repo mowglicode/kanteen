@@ -9,6 +9,9 @@ import { MainTabsComponent } from './main-tabs/main-tabs.component';
 import { MealsComponent } from './meals/meals.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatButtonModule, MatCheckboxModule, MatTabsModule} from "@angular/material";
+import { AdminMealsDatesComponent } from './admin-meals-dates/admin-meals-dates.component';
+import { AdminMealsChildsComponent } from './admin-meals-childs/admin-meals-childs.component';
+import { AdminMealsComponent } from './admin-meals/admin-meals.component';
 
 
 @NgModule({
@@ -16,7 +19,10 @@ import {MatButtonModule, MatCheckboxModule, MatTabsModule} from "@angular/materi
     AppComponent,
     MenusComponent,
     MainTabsComponent,
-    MealsComponent
+    MealsComponent,
+    AdminMealsDatesComponent,
+    AdminMealsChildsComponent,
+    AdminMealsComponent
   ],
   imports: [
     BrowserModule,

@@ -27,7 +27,19 @@ public class Parent implements KanteenUser {
     @Column
     private List<Child> children;
 
+    public Parent() {
+    }
 
+    public Parent(String name, List<Child> children) {
+        this.name = name;
+        this.children = children;
+    }
+
+    public Parent(Account account, String name, List<Child> children) {
+        this.account = account;
+        this.name = name;
+        this.children = children;
+    }
 
     public long getId() {
         return id;

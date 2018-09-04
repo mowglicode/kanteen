@@ -25,6 +25,11 @@ public class Account {
         this.email = email;
     }
 
+    public Account(String email, String phone ) {
+        this.email = email;
+        this.phone = phone;
+    }
+
     public long getId() {
         return id;
     }

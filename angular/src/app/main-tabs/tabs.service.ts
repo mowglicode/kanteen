@@ -12,7 +12,7 @@ export class TabsService {
 
   updateActiveTab(tabName){
     this.activeTab = tabName;
-    console.log("actve tab", this.activeTab);
+    console.log("active tab", this.activeTab);
   }
 
 

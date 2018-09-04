@@ -7,14 +7,6 @@ public class ContractOptionDto {
     public ContractOptionDto() {
     }
 
-    public String getOptionName() {
-        return OptionName;
-    }
-
-    public void setOptionName(String optionName) {
-        OptionName = optionName;
-    }
-
     public long getId() {
         return id;
     }

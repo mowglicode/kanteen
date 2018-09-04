@@ -1,3 +1,22 @@
-<p>
-  meals works!
-</p>
+<mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+
+
+  <mat-tab *ngFor="let d of this.service.eatableDay" label="{{d}}" dynamicHeight="true">
+
+    <div class="checkchild">
+      <mat-checkbox color="primary"> Child 1</mat-checkbox>
+      <br>
+      <mat-checkbox color="primary"> Child 2</mat-checkbox>
+      <br>
+      <mat-checkbox color="primary"> Child 3</mat-checkbox>
+      <br>
+    </div>
+
+    <div class="checkchild">
+      <button>OK</button>
+    </div>
+
+  </mat-tab>
+
+
+</mat-tab-group>

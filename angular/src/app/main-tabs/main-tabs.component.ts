@@ -12,6 +12,7 @@ export class MainTabsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.service.updateActiveTab("home")
   }
 
   setHome() {

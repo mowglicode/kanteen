@@ -2,6 +2,8 @@ package io.kanteen.dto;
 
 import io.kanteen.persistance.entity.Child;
 
+import java.util.Objects;
+
 public class ChildDto {
     private long id;
     private String name;
@@ -48,4 +50,16 @@ public class ChildDto {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ChildDto childDto = (ChildDto) o;
+        return id == childDto.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

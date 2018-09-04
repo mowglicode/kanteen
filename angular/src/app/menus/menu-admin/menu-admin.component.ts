@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {Menu, MenusService} from './menus.service';
+import {Menu, MenusService} from "../menus.service";
 
 @Component({
-  selector: 'app-menus',
-  templateUrl: './menus.component.html',
-  styleUrls: ['./menus.component.css']
+  selector: 'app-menu-admin',
+  templateUrl: './menu-admin.component.html',
+  styleUrls: ['./menu-admin.component.css']
 })
-export class MenusComponent implements OnInit {
+export class MenuAdminComponent implements OnInit {
 
   content: string;
   id: number;
 
   constructor(public service: MenusService) {
     service.getAllMenus();
-    //service.getMenuById(id);
+
 
 
   }
@@ -30,9 +30,6 @@ export class MenusComponent implements OnInit {
     this.service.deleteMenu(menu);
   }
 
-  getMenuById(){
-  //  this.service.getMenuById(17);
-    return this.service.menu;
-  }
+
 
 }

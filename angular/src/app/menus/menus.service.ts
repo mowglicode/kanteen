@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient} from '@angular/common/http';
 
 
 export type Menu = {
@@ -53,6 +53,8 @@ export class MenusService {
     this.menus.splice(index, 1);
 
   }
+
+
 
 
 

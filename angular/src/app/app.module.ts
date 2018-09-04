@@ -8,13 +8,14 @@ import {FormsModule} from "@angular/forms";
 import { MainTabsComponent } from './main-tabs/main-tabs.component';
 import { MealsComponent } from './meals/meals.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+
 import {
-  MatButtonModule, MatCheckboxModule,
-  MatExpansionModule, MatFormFieldModule, MatIconModule,
+  MatButtonModule,
+  MatExpansionModule, MatIconModule,
   MatListModule,
-  MatMenuModule, MatTableDataSource, MatTableModule,
+  MatMenuModule,
   MatTabsModule,
-  MatToolbarModule
+  MatToolbarModule, MatCheckboxModule
 } from "@angular/material";
 import { MenuAdminComponent } from './menus/menu-admin/menu-admin.component';
 import { HomeComponent } from './home/home.component';
@@ -44,21 +45,15 @@ import { DataComponent } from './data/data.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatButtonModule,
     MatListModule,
     MatTabsModule,
     MatExpansionModule,
     MatToolbarModule,
     MatMenuModule,
     MatIconModule,
-    BrowserModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
+    MatButtonModule,
     MatCheckboxModule,
-    MatTabsModule,
-    FormsModule,
-    MatTableModule,
-    MatFormFieldModule
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

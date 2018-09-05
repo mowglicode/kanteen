@@ -8,7 +8,7 @@ import {map} from "rxjs/operators";
 
 export class LoginService {
 
-  token: string;
+  token: any;
 
   constructor(private http: HttpClient) {
   }
@@ -18,13 +18,14 @@ export class LoginService {
     params.append('username', username);
     params.append('password', password);
     params.append('grant_type', 'password');
-    params.append('client_id', 'crm');
+    params.append('client_id', 'formation');
     const headers = new HttpHeaders()
       .set('Content-type', 'application/x-www-form-urlencoded; charset=utf-8')
-      .set('Authorization', 'Basic ' + btoa('crm:crm-secret'));
-    return this.http.post<any>('http://10.31.1.35:8080/oauth/token', params.toString(), {responseType: 'json', headers})
+      .set('Authorization', 'Basic ' + btoa('formation:31415'));
+    return this.http.post<any>('http://localhost:8585/oauth/token', params.toString(), {responseType: 'json', headers})
       .pipe(map(token => {
         if (token) {
+          console.log(token);
           this.token = token.access_token;
         }
         return token;

@@ -12,6 +12,7 @@ export class MenusComponent implements OnInit {
   id: number;
 
   constructor(public service: MenusService) {
+    alert('pouet');
     service.getAllMenus();
     //service.getMenuById(id);
 

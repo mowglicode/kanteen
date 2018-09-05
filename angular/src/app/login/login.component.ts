@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     console.log(this.user.email);
     console.log(this.user.password);
     console.log("User et password sont stockés !");
-    this.token = this.service.login(this.user.email, this.user.password);
+    this.service.login(this.user.email, this.user.password).subscribe(d => { console.log(d); } );
 
     this.display(this.token);
   }

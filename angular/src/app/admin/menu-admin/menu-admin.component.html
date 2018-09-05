@@ -9,25 +9,25 @@
       <mat-panel-description>
         Cliquez pour voir le menu
       </mat-panel-description>
+      <button mat-flat-button color="" (click)="onDelete(menu)"><mat-icon>delete</mat-icon></button>
     </mat-expansion-panel-header>
     <p>{{menu.content}}</p>
-    <button mat-flat-button (click)="onDelete(menu)"><mat-icon>delete</mat-icon></button>
   </mat-expansion-panel>
 </mat-accordion>
 
 <br>
 
-<form (submit)="onSubmit()">
+<form (submit)="onSubmit()" >
 
   <div class="container">
-    <mat-form-field>
+    <mat-form-field >
     <input matInput class="week" type="number" placeholder="semaine n°" [(ngModel)]="week" name="week">
     </mat-form-field>
-    <br>
-    <mat-form-field>
-      <textarea  matInput placeholder="Indiquez le menu" [(ngModel)]="content" name="content"></textarea>
-    </mat-form-field>
 
+    <br>
+    <mat-form-field  >
+      <textarea matInput placeholder="Indiquez le menu" [(ngModel)]="content" name="content"></textarea>
+    </mat-form-field>
   </div>
 
 <br>

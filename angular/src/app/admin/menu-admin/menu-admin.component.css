@@ -1,11 +1,10 @@
 .container{
 margin-left: 1%;
+  width:100%
 }
 
-.menu{
-  width: 50%;
-  height: 50%;
-  padding: auto;
+.container_menu {
+ margin-left: 1%;
 
 
 }

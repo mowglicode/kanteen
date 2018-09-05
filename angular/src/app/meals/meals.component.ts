@@ -53,6 +53,7 @@ export class MealsComponent implements OnInit {
     tickedChild.ticked = event.checked;
     console.log(tickedChildList);
     console.log(tickedChild);
+
     let  mealsDayChild = this.service.getMealsByParentId(this.service.loggedParentId)
       .filter(function (meal){return meal.day;})
       .filter(function (meal) {return meal.child_id;})

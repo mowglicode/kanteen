@@ -8,26 +8,8 @@ import {FormsModule} from "@angular/forms";
 import { MainTabsComponent } from './main-tabs/main-tabs.component';
 import { MealsComponent } from './meals/meals.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {
-  MatButtonModule,
-  MatExpansionModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatListModule,
-  MatMenuModule,
-  MatTableDataSource,
-  MatTableModule,
-  MatTabsModule,
-  MatToolbarModule,
-  MatCheckboxModule
-} from "@angular/material";
-import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
-import { HomeComponent } from './home/home.component';
-import { AdminMealsDatesComponent } from './admin/admin-meals-dates/admin-meals-dates.component';
-import { AdminMealsChildsComponent } from './admin/admin-meals-childs/admin-meals-childs.component';
-import { AdminMealsComponent } from './admin/admin-meals/admin-meals.component';
-import { DataComponent } from './data/data.component';
-import { AdminMainTabsComponent } from './admin/admin-main-tabs/admin-main-tabs.component';
+import {MatButtonModule, MatCheckboxModule, MatTabsModule} from "@angular/material";
+import { PrivacyComponent } from './privacy/privacy.component';
 
 
 @NgModule({
@@ -36,37 +18,16 @@ import { AdminMainTabsComponent } from './admin/admin-main-tabs/admin-main-tabs.
     MenusComponent,
     MainTabsComponent,
     MealsComponent,
-    MenuAdminComponent,
-    MealsComponent,
-    AdminMealsDatesComponent,
-    AdminMealsChildsComponent,
-    AdminMealsComponent,
-    MealsComponent,
-    HomeComponent,
-    DataComponent,
-    AdminMainTabsComponent
+    PrivacyComponent
   ],
   imports: [
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatListModule,
-    MatTabsModule,
-    MatExpansionModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatIconModule,
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatTabsModule,
-    FormsModule,
-    MatTableModule,
-    MatFormFieldModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

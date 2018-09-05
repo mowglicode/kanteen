@@ -1,0 +1,12 @@
+
+<form (submit)="onSubmit()" name="contrat">
+  <label *ngFor="let c of service.privacy">
+    <input type="checkbox"/>{{c.title}}<br/>
+  </label>
+</form>
+
+<p>
+  <button >OK</button>
+</p>
+
+<div>{{this.body}}</div>

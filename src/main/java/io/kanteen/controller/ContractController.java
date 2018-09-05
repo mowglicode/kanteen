@@ -30,14 +30,14 @@ public class ContractController {
     }
 
     @ApiOperation(value = "Save Contract")
-    @RequestMapping(value = "admin/privacy/contracts", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/privacy/contracts", method = RequestMethod.POST)
     public ContractDto saveContract(@RequestBody ContractDto contractDto) {
         //System.out.println(contractDto.getOptions());
         return contractService.saveContract(contractDto);
     }
 
     @ApiOperation(value = "Delete contract by id")
-    @RequestMapping(value = "admin/privacy/contracts/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/admin/privacy/contracts/{id}", method = RequestMethod.DELETE)
     public void deleteContract(@PathVariable long id) {
         contractService.deleteContract(id);
     }

@@ -48,7 +48,8 @@ public class SetupService implements ISetupService {
         List<Child> doeChild = new ArrayList<>();
         doeChild.add(wilsonDoe);
         doeChild.add(eliseDoe);
-
+        accountOne.setPassword("toto");
+        accountTwo.setPassword("tata");
         accountRepository.save(accountOne);
         accountRepository.save(accountTwo);
 

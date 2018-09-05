@@ -8,7 +8,7 @@ export interface Child {
   grade: string;
 }
 
-// Like a Meal without a date
+//// Like a Meal without a date ======= CheckedChild ou tickedChild ???Like a Meal without a date
 export interface tickedChild {
   child: Child;
   ticked: boolean;
@@ -33,6 +33,7 @@ export class MealsService {
   eatableDay: string[] = [];
   childrenByParent: Child[] = [];
   loggedParentId: number = 1;
+  //list des tickedChild
   tickedChildList: tickedChild[] = [];
   mealsParent: Meal[] = [];
 
@@ -53,10 +54,9 @@ export class MealsService {
         this.childrenByParent = r;
         console.log(this.childrenByParent);
 
-        // Not the good api yet
+// Not the complete (good) api yet: need to check the meals present in the DB
         this.tickedChildList = this.childrenByParent.map(mapChildByChildPick)
       })
-
   }
 
   saveMeal(childId, activeDay) {

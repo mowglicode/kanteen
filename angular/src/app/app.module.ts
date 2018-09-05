@@ -68,6 +68,8 @@ import {LoginComponent} from "./login/login.component";
     MatTableModule,
     MatFormFieldModule,
     MatInputModule
+    MatInputModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

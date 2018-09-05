@@ -8,7 +8,7 @@
           <mat-checkbox color="primary" (change)="childSelection($event)" [value]="c.id">
             {{this.c.name}}
           </mat-checkbox>
-          checked:{{this.mealCheck}}
+
         </li>
       </ul>
     </div>
@@ -21,7 +21,7 @@
     <div id="myNav" class="overlay">
       <!-- Overlay content -->
       <div class="overlay-content">
-        <button (click)="postMeal()"> Valider</button>
+        <button (click)="postMeal()" (click)="closeNav()"> Valider</button>
         <button (click)="closeNav()"> Annuler</button>
       </div>
     </div>

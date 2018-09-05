@@ -41,21 +41,7 @@ public class MealController {
     @RequestMapping(value = "/{id_parent}",method = RequestMethod.GET)
     public List<MealDto> getMealsByParentId (@PathVariable(name="id_parent") long id){
         return mealService.getMealsByParentId(id);
-
-
     }
-
-//    @ApiOperation(value = "Save meal", notes = "The meal saved comes from a MealDto")
-//    @RequestMapping(method = RequestMethod.POST)
-//    public MealDto saveMeal(@RequestBody MealDto mealDto){
-//        return mealService.saveMeal(mealDto);
-//    }
-
-//    @ApiOperation(value = "Save multiple meals",notes = "The meals are saved according to a list of MealDto")
-//    @RequestMapping(value = "/list",method = RequestMethod.POST)
-//    public List<MealDto> saveMeals(@RequestBody List<MealDto> mealDtos){
-//        return mealService.saveMeals(mealDtos);
-//    }
 
     @ApiOperation(value = "Save meal without DTO",
             notes = "While child already exists, the meal can be create with the child ID and the date (yyyy-mm-dd format)")

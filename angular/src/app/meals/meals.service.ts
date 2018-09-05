@@ -9,18 +9,18 @@ export interface Child {
 }
 
 // Like a Meal without a date
-export interface ChildPick {
+export interface tickedChild {
   child: Child;
-  picked: boolean;
+  ticked: boolean;
 }
 
-/*
-export interface Meal{
-  id:number;
-  day:string;
-  child_id:number;
+
+export interface Meal {
+  id: number;
+  day: string;
+  child_id: number;
 }
-*/
+
 
 @Injectable({
   providedIn: 'root'
@@ -31,9 +31,12 @@ export class MealsService {
   }
 
   eatableDay: string[] = [];
-  childrenByParent: string[] = [];
+  childrenByParent: Child[] = [];
   loggedParentId: number = 1;
-  picks: ChildPick[] = [];
+  tickedChildList: tickedChild[] = [];
+  mealsParent: Meal[] = [];
+
+
   // Should have something with Meal and Date
 
   getEatableDay() {
@@ -51,7 +54,7 @@ export class MealsService {
         console.log(this.childrenByParent);
 
         // Not the good api yet
-        this.picks = this.childrenByParent.map(mapChildByChildPick)
+        this.tickedChildList = this.childrenByParent.map(mapChildByChildPick)
       })
 
   }
@@ -61,12 +64,22 @@ export class MealsService {
       .subscribe();
   }
 
+  getMealsByParentId(id) {
+    this.http.get('http://localhost:8585/api/meals/parent/' + id)
+      .subscribe((r: any[]) => {
+        this.mealsParent = r;
+        console.log(this.mealsParent);
+      })
+  return this.mealsParent;
+  }
+
+
 }
 
 
-function mapChildByChildPick(child): ChildPick {
+function mapChildByChildPick(child): tickedChild {
   return {
     child,
-    picked: false
+    ticked: false
   }
 }

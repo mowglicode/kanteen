@@ -11,27 +11,28 @@ import {Child, MealsService} from "./meals.service";
 })
 export class MealsComponent implements OnInit {
 
-  checked=false;
+  //checked=false;
 
   @Input() child:Child
-
-  constructor(public service:MealsService) {
-    this.service.getEatableDay();
-    this.service.getChildrenByParentId(service.loggedParentId);
-  }
-
-  /*
-  setMeal(){
-    this.service.postMeals()
-  }
-  */
-
-  ngOnInit() {
-  }
 
   activeDay:string="";
   childId:number=undefined;
   mealCheck:any= {}
+
+
+
+  constructor(public service:MealsService) {
+    this.service.getEatableDay();
+    this.service.getChildrenByParentId(this.service.loggedParentId);
+
+  }
+
+
+  ngOnInit() {
+  }
+
+
+
 
   dayTabSelection(event){
     console.log(event, event.tab.textLabel);
@@ -46,10 +47,11 @@ export class MealsComponent implements OnInit {
     console.log(this.mealCheck);
 
 
-    let picks = this.service.picks;
-    let childPick = picks.find(childPick => childPick.child.id === event.source.value );
-    childPick.picked = event.checked;
-    console.log(picks);
+    let tickedChildList = this.service.tickedChildList;
+    let tickedChild = tickedChildList.find(childPick => childPick.child.id === event.source.value );
+    tickedChild.ticked = event.checked;
+    console.log(tickedChildList);
+    console.log(tickedChild);
 
 
   }
@@ -65,10 +67,10 @@ export class MealsComponent implements OnInit {
   }
 
 
-//TODO retirer  le / de la date
-postMeal(){
+
+  postMeal(){
     this.service.saveMeal(this.childId, this.activeDay);
   console.log('xxx',this.activeDay);
-}
+  }
 
 }

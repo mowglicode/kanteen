@@ -17,6 +17,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -134,7 +135,6 @@ public class ParentService implements IParentService {
             Child child = tmp_child.get();
 
             //check if child belong to parent
-
             if (parent.getChildren().contains(child)) {
                 parent.getChildren().remove(child);
                 //parent = parentRepository.save(parent);
@@ -148,9 +148,23 @@ public class ParentService implements IParentService {
                 throw new NotFoundException("Child not found, it can't be removed from parent");
             }
             throw new NotFoundException("Parent not found, you can't remove child from it");
-
         }
+    }
 
+    @Override
+    public ParentDtoFull getParentByEmail(String email) {
+        Optional<Account> accountOpt = accountRepository.findByEmail(email);
+        if (accountOpt.isPresent()) {
+            Optional<Parent> parentOpt = parentRepository.findParentByAccountId(accountOpt.get().getId());
+            if (parentOpt.isPresent()) {
+                ParentDtoFull result = modelMapper.map(parentOpt.get(),ParentDtoFull.class);
+                return result;
+            } else {
+                throw new NotFoundException("Parent not found with this account (but this is weird)");
+            }
+        } else {
+            throw new NotFoundException("Account not found with this email");
+        }
 
     }
 }

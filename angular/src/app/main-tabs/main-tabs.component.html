@@ -1,36 +1,47 @@
-<header>
-  Ecole Privée Saint-Roch
-</header>
+ <mat-tab-group  mat-stretch-tabs>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon">home</mat-icon>
+        </ng-template>
 
-<app-privacy></app-privacy>
+      </mat-tab>
 
-<div class="container">
-  <div class="buttonenbas">
-    <button>
-      Accueil
-    </button>
-    <button (click)="setMeals()">
-      Retirer repas
-    </button>
-    <button (click)="setMenus()">
-      Menus
-    </button>
-    <button>
-      Confidentialité
-    </button>
-  </div>
-</div>
+      <mat-tab >
+        <ng-template mat-tab-label>
+          <mat-icon>local_dining</mat-icon>
+        </ng-template>
+        <app-meals></app-meals>
+      </mat-tab>
 
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>list</mat-icon>
+        </ng-template>
+        <app-menus></app-menus>
+      </mat-tab>
 
-<div>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>lock</mat-icon>
+        </ng-template>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae consectetur cumque dolorem ducimus, error facere fugiat impedit ipsa nemo, neque perspiciatis, qui quibusdam quo sapiente temporibus voluptas? Sint.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae consectetur cumque dolorem ducimus, error facere fugiat impedit ipsa nemo, neque perspiciatis, qui quibusdam quo sapiente temporibus voluptas? Sint.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae consectetur cumque dolorem ducimus, error facere fugiat impedit ipsa nemo, neque perspiciatis, qui quibusdam quo sapiente temporibus voluptas? Sint.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae consectetur cumque dolorem ducimus, error facere fugiat impedit ipsa nemo, neque perspiciatis, qui quibusdam quo sapiente temporibus voluptas? Sint.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae consectetur cumque dolorem ducimus, error facere fugiat impedit ipsa nemo, neque perspiciatis, qui quibusdam quo sapiente temporibus voluptas? Sint.
+        </p>
 
-  <div class="overflow">
-    <app-menus *ngIf="this.service.activeTab==='menus'"></app-menus>
-    <app-meals *ngIf="this.service.activeTab==='meals'"></app-meals>
-    <!--app-privacy *ngIf="this.service.activeTab==='privacy'"></app-privacy>
-    <app-home *ngIf="this.service.activeTab==='home'"></app-home-->
-  </div>
-
+      </mat-tab>
+    </mat-tab-group>
 
 
 

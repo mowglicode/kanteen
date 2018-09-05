@@ -1,0 +1,16 @@
+<h1>
+  Les Menus
+</h1>
+
+<mat-list role="list">
+  <mat-list-item role="listitem" *ngFor="let menu of this.service.menus">{{menu.content}}
+    <button mat-stroked-button (click)="onDelete(menu)"> supprimer </button>
+  </mat-list-item>
+</mat-list>
+
+
+<form (submit)="onSubmit(content)">
+  <textarea [(ngModel)]="content" name="content">   </textarea>
+  <button > enregistrer </button>
+</form>
+

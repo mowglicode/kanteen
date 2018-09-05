@@ -55,7 +55,8 @@ public class MealService implements IMealService {
     @Override
     public List<MealDto> getMealsByDay(String day) {
 
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+       // DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
         Optional<List<Meal>> tmp = mealRepository.findMealsByDay(day);
 
         List<MealDto> result = new ArrayList<>();

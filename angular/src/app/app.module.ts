@@ -8,13 +8,17 @@ import {FormsModule} from "@angular/forms";
 import { MainTabsComponent } from './main-tabs/main-tabs.component';
 import { MealsComponent } from './meals/meals.component';
 import {
-  MatCheckboxModule,
-  MatExpansionModule, MatFormFieldModule, MatIconModule,
   MatButtonModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatIconModule,
   MatListModule,
-  MatMenuModule, MatTableDataSource, MatTableModule,
+  MatMenuModule,
+  MatTableDataSource,
+  MatTableModule,
   MatTabsModule,
   MatToolbarModule,
+  MatCheckboxModule
 } from "@angular/material";
 import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
 import { HomeComponent } from './home/home.component';
@@ -22,11 +26,11 @@ import { HomeComponent } from './home/home.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 import { PrivacyComponent } from './privacy/privacy.component';
-import { AdminMealsDatesComponent } from './admin-meals-dates/admin-meals-dates.component';
-import { AdminMealsChildsComponent } from './admin-meals-childs/admin-meals-childs.component';
-import { AdminMealsComponent } from './admin-meals/admin-meals.component';
 import { DataComponent } from './data/data.component';
 import { AdminMainTabsComponent } from './admin/admin-main-tabs/admin-main-tabs.component';
+import {AdminMealsDatesComponent} from './admin/admin-meals-dates/admin-meals-dates.component';
+import {AdminMealsChildsComponent} from "./admin/admin-meals-childs/admin-meals-childs.component";
+import {AdminMealsComponent} from "./admin/admin-meals/admin-meals.component";
 
 
 @NgModule({

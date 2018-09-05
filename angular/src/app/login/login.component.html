@@ -1,10 +1,21 @@
-<form (submit)="onSubmit()" #myFOrm="ngForm">
+
+
+<form *ngIf="!isLogged()" (submit)="onSubmit()" #myFOrm="ngForm">
   <input type="string"  required
          name="email" [(ngModel)]="user.email">
-  <input type="string"
+  <input type="password"
          name ="password" [(ngModel)]="user.password">
 
   <button>OK</button>
-
-
 </form>
+
+<div *ngIf="isLogged()">
+
+  <mat-toolbar color="primary">
+    <span>École Saint-Roch</span>
+  </mat-toolbar>
+
+  <app-main-tabs *ngIf="!isAdmin()"></app-main-tabs>
+
+  <app-admin-main-tabs *ngIf="isAdmin()"></app-admin-main-tabs>
+</div>

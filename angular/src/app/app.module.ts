@@ -3,28 +3,32 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { MenusComponent } from './menus/menus.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { MainTabsComponent } from './main-tabs/main-tabs.component';
 import { MealsComponent } from './meals/meals.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
   MatButtonModule,
-  MatExpansionModule, MatIconModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatIconModule,
   MatListModule,
   MatMenuModule,
+  MatTableDataSource,
+  MatTableModule,
   MatTabsModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatCheckboxModule, MatInputModule
 } from "@angular/material";
-import { MenuAdminComponent } from './menus/menu-admin/menu-admin.component';
+import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
 import { HomeComponent } from './home/home.component';
-import { MatCheckboxModule} from "@angular/material";
-import { AdminMealsDatesComponent } from './admin-meals-dates/admin-meals-dates.component';
-import { AdminMealsChildsComponent } from './admin-meals-childs/admin-meals-childs.component';
-import { AdminMealsComponent } from './admin-meals/admin-meals.component';
+import { AdminMealsDatesComponent } from './admin/admin-meals-dates/admin-meals-dates.component';
+import { AdminMealsChildsComponent } from './admin/admin-meals-childs/admin-meals-childs.component';
+import { AdminMealsComponent } from './admin/admin-meals/admin-meals.component';
 import { DataComponent } from './data/data.component';
-import { LoginComponent } from './login/login.component';
-import {AuthInterceptorService} from "./auth.interceptor";
+import { AdminMainTabsComponent } from './admin/admin-main-tabs/admin-main-tabs.component';
+import {LoginComponent} from "./login/login.component";
 
 
 @NgModule({
@@ -41,6 +45,7 @@ import {AuthInterceptorService} from "./auth.interceptor";
     MealsComponent,
     HomeComponent,
     DataComponent,
+    AdminMainTabsComponent,
     LoginComponent
   ],
   imports: [
@@ -60,16 +65,11 @@ import {AuthInterceptorService} from "./auth.interceptor";
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatTabsModule,
-    FormsModule
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
-      multi: true
-    }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,31 +8,20 @@ import {map} from "rxjs/operators";
 
 export class LoginService {
 
-  token: any;
+ isAdmin : boolean = undefined;
+ isLogged : boolean = false;
 
   constructor(private http: HttpClient) {
   }
 
-  login(username: string, password: string) {
-    const params = new URLSearchParams();
-    params.append('username', username);
-    params.append('password', password);
-    params.append('grant_type', 'password');
-    params.append('client_id', 'formation');
-    const headers = new HttpHeaders()
-      .set('Content-type', 'application/x-www-form-urlencoded; charset=utf-8')
-      .set('Authorization', 'Basic ' + btoa('formation:31415'));
-    return this.http.post<any>('http://localhost:8585/oauth/token', params.toString(), {responseType: 'json', headers})
-      .pipe(map(token => {
-        if (token) {
-          console.log(token);
-          this.token = token.access_token;
-        }
-        return token;
-      }));
+  onSubmit(user:string, password:string){
+        this.http.get("http://localhost:8585/api/account/email/" + user).subscribe( (t: boolean) =>this.isAdmin = t);
+      if (this.isAdmin != undefined) {
+        this.isLogged = true;
+      }
   }
 
-  logout() {
-    this.token = null;
-  }
+
+
+
 }

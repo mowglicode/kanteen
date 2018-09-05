@@ -24,7 +24,11 @@ public class SetupService implements ISetupService {
     @Autowired
     private IMenuRepository menuRepository;
     @Autowired
+    private IInformationRepository infoRepository;
+
+    @Autowired
     private IAdminRepository adminRepository;
+
 
     Child wilsonDoe = new Child("Wilson Doe", "CM2");
     Child eliseDoe = new Child("Elise Doe", "CE1");
@@ -42,6 +46,10 @@ public class SetupService implements ISetupService {
     Account accountOne = new Account("johnDoe@kanteen.com", "06.23.23.23.23");
 
     Account accountTwo = new Account("janeDoe@kanteen.com", "06.24.24.24.24");
+
+    Information infoOne = new Information("Absence de Mme Oliviera","Mme Oliviera sera absente jusqu\\'au 17/09/2018");
+    Information infoTwo = new Information("Bâtiment B renové", "Le bâtiment B est rénové toute cette semaine. La peinture est fraîche !");
+    Information infoThree = new Information("Carnaval", "Le carnaval aura lieu le vendredi 8 mars 2019.");
 
     public void setUp() {
 
@@ -77,6 +85,10 @@ public class SetupService implements ISetupService {
 
         menuOne = menuRepository.save(menuOne);
         menuTwo = menuRepository.save(menuTwo);
+
+        infoOne = infoRepository.save(infoOne);
+        infoTwo = infoRepository.save(infoTwo);
+        infoThree = infoRepository.save(infoThree);
     }
 
     public void tearDown() {
@@ -84,5 +96,6 @@ public class SetupService implements ISetupService {
         childRepository.deleteAll();
         mealRepository.deleteAll();
         accountRepository.deleteAll();
+        infoRepository.deleteAll();
     }
 }

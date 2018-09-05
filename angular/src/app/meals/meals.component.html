@@ -1,14 +1,23 @@
-<mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+<mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4"
+              xmlns:list-style-type="http://www.w3.org/1999/xhtml">
 
 
-  <mat-tab label="First day"> Content 1 </mat-tab>
+  <mat-tab *ngFor="let d of this.service.eatableDay" label="{{d}}" dynamicHeight="true">
 
-  <mat-tab label="Second day"> Content 2 </mat-tab>
+    <div class="checkchild">
+      <ul style=" list-style-type:none">
+        <li *ngFor="let c of this.service.childrenByParent" class="listStyle">
+      <mat-checkbox color="primary" > {{this.c.name}}</mat-checkbox>
 
-  <mat-tab label="Third day"> Content 3 </mat-tab>
+        </li>
+      </ul>
+    </div>
 
-  <mat-tab label="For day"> Content 4 </mat-tab>
+    <div class="checkchild">
+      <button>OK</button>
+    </div>
 
+  </mat-tab>
 
 
 </mat-tab-group>

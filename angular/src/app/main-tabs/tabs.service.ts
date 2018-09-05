@@ -8,12 +8,10 @@ export class TabsService {
 
   constructor(public http:HttpClient) { }
 
-  activeTab: string = 'accueil';
+  activeTab: string = 'home';
 
-  updateActiveTab(tabName){
-    this.activeTab = tabName;
-    console.log("actve tab", this.activeTab);
-  }
+
+
 
 
 

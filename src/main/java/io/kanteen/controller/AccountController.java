@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/account")
+@RequestMapping("/api/accounts")
 public class AccountController {
 
     @Autowired
@@ -31,7 +31,6 @@ public class AccountController {
     @ApiOperation(value = "Save account")
     @RequestMapping(method = RequestMethod.POST)
     public AccountDto saveAccount(@RequestBody Account account){
-
         return accountService.saveAccount(account);
     }
 

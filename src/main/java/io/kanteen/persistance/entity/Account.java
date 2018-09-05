@@ -17,11 +17,17 @@ public class Account {
     @Column
     private String phone = "06.06.06.06.06";
 
+
     public Account() {
     }
 
     public Account(String email) {
         this.email = email;
+    }
+
+    public Account(String email, String phone ) {
+        this.email = email;
+        this.phone = phone;
     }
 
     public long getId() {

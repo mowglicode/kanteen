@@ -1,0 +1,9 @@
+<h2>Informations</h2>
+<div *ngFor="let information of this.service.informations" (click)="this.service.showDescription(information.id)">
+  <ul>
+    <li>{{information.entitled}}</li>
+  </ul>
+  <p *ngIf="this.service.show && this.service.idDiv == information.id">{{information.description}}</p>
+  <p *ngIf="this.service.show && this.service.idDiv == information.id">{{information.expiry}}</p>
+  <!--<button (click)="onDelete(menu)"> delete </button>-->
+</div>

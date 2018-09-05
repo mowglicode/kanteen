@@ -38,4 +38,11 @@ public class ChildController {
     public void deleteChild(@PathVariable long id){
         childService.deleteChildren(id);
     }
+
+    @ApiOperation( value = "Get children by parent id")
+    @RequestMapping (value = "/parent/{id_parent}", method = RequestMethod.GET)
+    public List<ChildDto> getChildrenByParentId(@PathVariable (name="id_parent") long parentId) {
+        return childService.getChildrenByParentId(parentId);
+    }
+
 }

@@ -1,6 +1,7 @@
 package io.kanteen.service.impl;
 
 import io.kanteen.dto.MenuDto;
+import io.kanteen.persistance.entity.Menu;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +33,8 @@ public class MenuServiceTest {
 
     @Test
     public void saveMenu() {
-        MenuDto menuDejeuner = new MenuDto();
+        Menu menuDejeuner = new Menu();
+        menuDejeuner.setWeek(3);
         menuDejeuner.setContent("puree");
          MenuDto dejeuner = service.saveMenu(menuDejeuner);
          assertTrue(dejeuner.getId()>0);
@@ -41,7 +43,7 @@ public class MenuServiceTest {
 
     @Test
     public void getMenuById() {
-        MenuDto menuViande = new MenuDto();
+        Menu menuViande = new Menu();
         menuViande.setContent("poulet");
 
        MenuDto poulet = service.saveMenu(menuViande);
@@ -53,18 +55,18 @@ public class MenuServiceTest {
     @Test
     public void getAllMenus() {
 
-        MenuDto lundi = new MenuDto();
+        Menu lundi = new Menu();
         lundi.setContent("sauceGombo");
 
-        MenuDto mardi = new MenuDto();
+        Menu mardi = new Menu();
         mardi.setContent("pouletYassa");
 
-        MenuDto mercredi = new MenuDto();
+        Menu mercredi = new Menu();
         mercredi.setContent("grillade");
 
-        lundi = service.saveMenu(lundi);
-        mardi = service.saveMenu(mardi);
-        mercredi = service.saveMenu(mercredi);
+        MenuDto lundiDto = service.saveMenu(lundi);
+        MenuDto mardiDto = service.saveMenu(mardi);
+        MenuDto mercrediDto = service.saveMenu(mercredi);
 
         List<MenuDto> menus = service.getAllMenus();
 
@@ -78,7 +80,7 @@ public class MenuServiceTest {
     @Test
     public void delete() {
 
-        MenuDto menuPatte = new MenuDto();
+        Menu menuPatte = new Menu();
         menuPatte.setContent("patte");
         MenuDto patte= service.saveMenu(menuPatte);
         service.delete(patte.getId());

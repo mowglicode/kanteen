@@ -23,14 +23,6 @@ export class MenusComponent implements OnInit {
   }
 
 
-  onSubmit(){
-    this.service.saveMenu(this.content, this.week);
-  }
-
-  onDelete(menu:Menu){
-    this.service.deleteMenu(menu);
-  }
-
   getMenuById(){
   //  this.service.getMenuById(17);
     return this.service.menu;

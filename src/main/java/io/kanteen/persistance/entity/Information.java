@@ -13,22 +13,21 @@ public class Information {
     private long id;
 
     @Column
-    private String entitled;
-
-    @Column
     private String description;
 
     @Column
     private String expiry;
 
+    @Column
+    boolean hasExpiration = true;
 
     public Information () {
 
     }
 
-    public Information (String entitled, String description) {
-        this.entitled = entitled;
+    public Information (String description, String expiry) {
         this.description = description;
+        this.expiry = expiry;
     }
 
     public long getId() {
@@ -39,13 +38,6 @@ public class Information {
         this.id = id;
     }
 
-    public String getEntitled() {
-        return entitled;
-    }
-
-    public void setEntitled(String entitled) {
-        this.entitled = entitled;
-    }
 
     public String getDescription() {
         return description;
@@ -61,5 +53,13 @@ public class Information {
 
     public void setExpiry(String expiry) {
         this.expiry = expiry;
+    }
+
+    public boolean isHasExpiration() {
+        return hasExpiration;
+    }
+
+    public void setHasExpiration(boolean hasExpiration) {
+        this.hasExpiration = hasExpiration;
     }
 }

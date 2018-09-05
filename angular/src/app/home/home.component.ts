@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
   expiry:string;
 
   constructor(public service: HomeService) {
-    this.service.getAllInformations();
   }
 
   ngOnInit() {

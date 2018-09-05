@@ -42,9 +42,9 @@ public class SetupService implements ISetupService {
 
     Account accountTwo = new Account("janeDoe@kanteen.com", "06.24.24.24.24");
 
-    Information infoOne = new Information("Absence de Mme Oliviera","Mme Oliviera sera absente jusqu\\'au 17/09/2018");
-    Information infoTwo = new Information("Bâtiment B renové", "Le bâtiment B est rénové toute cette semaine. La peinture est fraîche !");
-    Information infoThree = new Information("Carnaval", "Le carnaval aura lieu le vendredi 8 mars 2019.");
+    Information infoOne = new Information("Mme Oliviera sera absente jusqu\\'au 17/09/2018", "2018-09-04");
+    Information infoTwo = new Information( "Le bâtiment B sera rénové.", "2018-09-11");
+    Information infoThree = new Information("Le carnaval aura lieu le vendredi 8 mars 2019.", "2018-09-12");
 
     public void setUp(){
 

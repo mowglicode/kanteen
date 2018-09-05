@@ -30,4 +30,9 @@ export class MenusComponent implements OnInit {
     this.service.deleteMenu(menu);
   }
 
+  getMenuById(){
+  //  this.service.getMenuById(17);
+    return this.service.menu;
+  }
+
 }

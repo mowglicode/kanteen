@@ -1,0 +1,10 @@
+<form (submit)="onSubmit()" #myFOrm="ngForm">
+  <input type="string"  required
+         name="email" [(ngModel)]="user.email">
+  <input type="string"
+         name ="password" [(ngModel)]="user.password">
+
+  <button>OK</button>
+
+
+</form>

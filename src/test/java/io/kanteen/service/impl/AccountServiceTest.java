@@ -19,15 +19,63 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class AccountServiceTest {
 
-    private static boolean setupIsDone = false;
+
 
     @Autowired AccountService service;
 
     @org.junit.Before
     public void setUp() throws Exception {
-        if (setupIsDone) {
-            return;
-        }
+
+    }
+
+    @org.junit.After
+    public void tearDown() throws Exception {
+    }
+
+    @Test
+    public void saveAccount(){
+
+        Account luck = new Account();
+        luck.setEmail("lucky@luck.com");
+        luck.setPhone("06.12.34.56.78");
+
+        AccountDto luckDto = service.saveAccount(luck);
+
+        assertTrue(luck.getId() > 0);
+
+        service.deleteAccount(luck.getId());
+    }
+
+    @Test
+    public void deleteAccount (){
+        Account sam = new Account();
+        sam.setEmail("toto@mail.com");
+        sam.setPhone("06.12.34.56.78");
+
+        AccountDto samDto = service.saveAccount(sam);
+        service.deleteAccount(samDto.getId());
+
+        assertFalse(samDto.getEmail() == "sam@mail.com");
+
+    }
+
+    @Test
+    public void getAccountById(){
+
+        Account ana = new Account();
+        ana.setEmail("ana@mail.com");
+        ana.setPhone("06.12.34.56.79");
+
+        AccountDto anaDto = service.saveAccount(ana);
+        AccountDto anaGet = service.getAccountById(anaDto.getId());
+
+        assertEquals(anaDto.getId(), anaGet.getId());
+        service.deleteAccount(anaDto.getId());
+
+    }
+
+    @Test
+    public void getAllAccounts(){
 
         Account raymond = new Account();
         raymond.setEmail("raymond@brady.nfl");
@@ -44,56 +92,13 @@ public class AccountServiceTest {
         AccountDto raymondDto = service.saveAccount(raymond);
         AccountDto travisDto = service.saveAccount(travis);
         AccountDto kevinDto = service.saveAccount(kevin);
-        setupIsDone = true;
-    }
 
-    @org.junit.After
-    public void tearDown() throws Exception {
-    }
-
-    @Test
-    public void saveAccount(){
-
-        Account accountLuck= new Account();
-        accountLuck.setEmail("lucky@luck.com");
-        accountLuck.setPhone("06.12.34.56.78");
-
-        AccountDto luck = service.saveAccount(accountLuck);
-
-        assertTrue(luck.getId() > 0);
-
-        service.deleteAccount(luck.getId());
-    }
-
-    @Test
-    public void deleteAccount (){
-        Account sam = new Account();
-        sam.setEmail("toto@mail.com");
-        sam.setPhone("06.12.34.56.78");
-
-        AccountDto samDto = service.saveAccount(sam);
-        service.deleteAccount(sam.getId());
-
-        assertFalse(samDto.getEmail() == "sam@mail.com");
-
-    }
-
-    @Test
-    public void getAccountById(){
-        Account ana = new Account();
-        ana.setEmail("ana@mail.com");
-        ana.setPhone("06.12.34.56.79");
-
-       AccountDto anaDto = service.saveAccount(ana);
-         anaDto = service.getAccountById(anaDto.getId());
-        assertEquals(ana.getId(), anaDto.getId());
-        service.deleteAccount(ana.getId());
-
-    }
-
-    @Test
-    public void getAllAccounts(){
         List<AccountDto> accounts = service.getAllAccounts();
         assertEquals(3, accounts.size());
+
+        service.deleteAccount(raymond.getId());
+        service.deleteAccount(travis.getId());
+        service.deleteAccount(kevin.getId());
+
     }
 }

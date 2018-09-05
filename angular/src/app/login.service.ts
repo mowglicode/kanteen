@@ -8,7 +8,7 @@ import {map} from "rxjs/operators";
 
 export class LoginService {
 
-  token: any;
+  token: string;
 
   constructor(private http: HttpClient) {
   }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map} from "rxjs/operators";
 
@@ -8,20 +8,21 @@ import {map} from "rxjs/operators";
 
 export class LoginService {
 
- isAdmin : boolean = undefined;
- isLogged : boolean = false;
+  isAdmin: boolean = undefined;
+  isLogged: boolean = false;
 
   constructor(private http: HttpClient) {
   }
 
-  onSubmit(user:string, password:string){
-        this.http.get("http://localhost:8585/api/account/email/" + user).subscribe( (t: boolean) =>this.isAdmin = t);
-      if (this.isAdmin != undefined) {
-        this.isLogged = true;
-      }
+  checkLoginStatus(email: string, password: string) {
+    this.http.get("http://localhost:8585/api/accounts/isAdmin/" + email)
+      .subscribe((t: boolean) => {
+        this.isAdmin = t;
+        if (this.isAdmin !== undefined) {
+          this.isLogged = true;
+        }
+      });
+
   }
-
-
-
 
 }

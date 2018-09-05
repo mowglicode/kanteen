@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     console.log(this.user.email);
     console.log(this.user.password);
-    this.service.onSubmit(this.user.email, this.user.password);
+    this.service.checkLoginStatus(this.user.email, this.user.password);
   }
 
   isAdmin(){

@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/meal")
+@RequestMapping("/api/meals")
 public class MealController {
 
     @Autowired
@@ -37,7 +37,7 @@ public class MealController {
         return mealService.getMealsByDay(day);
     }
 
-    @ApiOperation(value = "Get meals by factured parent")
+    @ApiOperation(value = "Get meals by billed parent")
     @RequestMapping(value = "/{id_parent}",method = RequestMethod.GET)
     public List<MealDto> getMealsByParentId (@PathVariable(name="id_parent") long id){
         return mealService.getMealsByParentId(id);

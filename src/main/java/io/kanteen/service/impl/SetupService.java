@@ -25,6 +25,8 @@ public class SetupService implements ISetupService {
     private IMenuRepository menuRepository;
     @Autowired
     private IContractRepository contractRepository;
+    @Autowired
+    private IInformationRepository infoRepository;
 
     Child wilsonDoe = new Child("Wilson Doe", "CM2");
     Child eliseDoe = new Child("Elise Doe", "CE1");
@@ -46,6 +48,10 @@ public class SetupService implements ISetupService {
     Contract contractTwo = new Contract("Voyage Angleterre", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae consectetur cumque dolorem ducimus, error facere fugiat");
     Contract contractThree = new Contract("Repas de Noël", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae consectetur cumque dolorem ducimus, error facere fugiat");
     Contract contractFour = new Contract("Kermesse annuelle", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae consectetur cumque dolorem ducimus, error facere fugiat");
+
+    Information infoOne = new Information("Absence de Mme Oliviera","Mme Oliviera sera absente jusqu\\'au 17/09/2018");
+    Information infoTwo = new Information("Bâtiment B renové", "Le bâtiment B est rénové toute cette semaine. La peinture est fraîche !");
+    Information infoThree = new Information("Carnaval", "Le carnaval aura lieu le vendredi 8 mars 2019.");
 
     public void setUp(){
 
@@ -82,6 +88,10 @@ public class SetupService implements ISetupService {
         contractTwo = contractRepository.save(contractTwo);
         contractThree = contractRepository.save(contractThree);
         contractFour = contractRepository.save(contractFour);
+
+        infoOne = infoRepository.save(infoOne);
+        infoTwo = infoRepository.save(infoTwo);
+        infoThree = infoRepository.save(infoThree);
     }
 
     public void tearDown(){
@@ -90,5 +100,6 @@ public class SetupService implements ISetupService {
         mealRepository.deleteAll();
         accountRepository.deleteAll();
         contractRepository.deleteAll();
+        infoRepository.deleteAll();
     }
 }

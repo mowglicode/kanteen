@@ -8,16 +8,17 @@ import {FormsModule} from "@angular/forms";
 import { MainTabsComponent } from './main-tabs/main-tabs.component';
 import { MealsComponent } from './meals/meals.component';
 import {
-  MatButtonModule,
   MatCheckboxModule,
-  MatExpansionModule, MatIconModule,
+  MatExpansionModule, MatFormFieldModule, MatIconModule,
+  MatButtonModule,
   MatListModule,
-  MatMenuModule,
+  MatMenuModule, MatTableDataSource, MatTableModule,
   MatTabsModule,
-  MatToolbarModule
+  MatToolbarModule,
 } from "@angular/material";
-import { MenuAdminComponent } from './menus/menu-admin/menu-admin.component';
+import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
 import { HomeComponent } from './home/home.component';
+
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 import { PrivacyComponent } from './privacy/privacy.component';
@@ -25,6 +26,7 @@ import { AdminMealsDatesComponent } from './admin-meals-dates/admin-meals-dates.
 import { AdminMealsChildsComponent } from './admin-meals-childs/admin-meals-childs.component';
 import { AdminMealsComponent } from './admin-meals/admin-meals.component';
 import { DataComponent } from './data/data.component';
+import { AdminMainTabsComponent } from './admin/admin-main-tabs/admin-main-tabs.component';
 
 
 @NgModule({
@@ -42,7 +44,8 @@ import { DataComponent } from './data/data.component';
     AdminMealsComponent,
     MealsComponent,
     HomeComponent,
-    DataComponent
+    DataComponent,
+    AdminMainTabsComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,9 @@ import { DataComponent } from './data/data.component';
     MatButtonModule,
     MatCheckboxModule,
     MatTabsModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

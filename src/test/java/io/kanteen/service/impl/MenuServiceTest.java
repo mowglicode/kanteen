@@ -34,6 +34,7 @@ public class MenuServiceTest {
     @Test
     public void saveMenu() {
         Menu menuDejeuner = new Menu();
+        menuDejeuner.setWeek(3);
         menuDejeuner.setContent("puree");
          MenuDto dejeuner = service.saveMenu(menuDejeuner);
          assertTrue(dejeuner.getId()>0);

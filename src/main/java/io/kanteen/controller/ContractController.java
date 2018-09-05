@@ -1,6 +1,7 @@
 package io.kanteen.controller;
 
 import io.kanteen.dto.ContractDto;
+import io.kanteen.dto.ContractOptionDto;
 import io.kanteen.persistance.repository.IContractRepository;
 import io.kanteen.service.IContractService;
 import io.swagger.annotations.ApiOperation;
@@ -15,6 +16,7 @@ public class ContractController {
 
     @Autowired
     private IContractService contractService;
+
 
     @ApiOperation(value = "Get contracts")
     @RequestMapping(value = "/admin/privacy/contracts", method = RequestMethod.GET)

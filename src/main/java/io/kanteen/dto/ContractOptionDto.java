@@ -1,10 +1,23 @@
 package io.kanteen.dto;
 
 public class ContractOptionDto {
-    private long id;
-    private String OptionName;
+
+    long id;
+    private String optionName;
 
     public ContractOptionDto() {
+    }
+
+    public ContractOptionDto(String optionName) {
+        this.optionName = optionName;
+    }
+
+    public String getOptionName() {
+        return optionName;
+    }
+
+    public void setOptionName(String optionName) {
+        this.optionName = optionName;
     }
 
     public long getId() {

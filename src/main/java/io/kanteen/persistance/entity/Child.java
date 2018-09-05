@@ -27,7 +27,6 @@ public class Child {
     }
 
 
-
     public long getId() {
         return id;
     }

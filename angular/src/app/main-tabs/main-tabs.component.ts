@@ -12,23 +12,7 @@ export class MainTabsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.updateActiveTab("home")
-  }
-
-  setHome() {
-    this.service.updateActiveTab("home")
-  }
-
-  setMeals() {
-    this.service.updateActiveTab("meals")
-  }
-
-  setMenus() {
-    this.service.updateActiveTab("menus")
-  }
-
-  setPrivacy() {
-    this.service.updateActiveTab("privacy")
+    this.service.activeTab;
   }
 
 }

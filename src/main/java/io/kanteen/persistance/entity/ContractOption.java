@@ -8,39 +8,50 @@ import java.util.Objects;
 public class ContractOption {
 
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-        @ManyToOne(cascade = {CascadeType.ALL})
-        Contract contract;
+    @ManyToOne
+    Contract contract;
 
-        private String optionName;
+    private String optionName;
 
-        public long getId() {
-            return id;
-        }
+    public long getId() {
+        return id;
+    }
 
-        public void setId(long id) {
-            this.id = id;
-        }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-        public Contract getContract() {
-            return contract;
-        }
+    public ContractOption(String optionName) {
+        this.optionName = optionName;
+    }
 
-        public void setContract(Contract contract) {
-            this.contract = contract;
-        }
+    public Contract getContract() {
+        return contract;
+    }
 
-        public String getOptionName() {
-            return optionName;
-        }
+    public void setContract(Contract contract) {
+        this.contract = contract;
+    }
 
-        public void setOptionName(String optionName) {
-            this.optionName = optionName;
-        }
+    public String getOptionName() {
+        return optionName;
+    }
 
+    public void setOptionName(String optionName) {
+        this.optionName = optionName;
+    }
+
+    public ContractOption() {
+    }
+
+    public ContractOption(Contract contract, String optionName) {
+        this.contract = contract;
+        this.optionName = optionName;
+    }
 
     @Override
     public boolean equals(Object o) {

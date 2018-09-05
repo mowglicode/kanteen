@@ -1,11 +1,13 @@
 package io.kanteen.persistance.entity;
 
+import io.kanteen.persistance.KanteenUser;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table
-public class Parent {
+public class Parent implements KanteenUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -79,5 +81,11 @@ public class Parent {
 
     public void setChildren(List<Child> children) {
         this.children = children;
+    }
+
+
+    @Override
+    public boolean isAdmin() {
+        return false;
     }
 }

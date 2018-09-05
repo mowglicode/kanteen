@@ -31,7 +31,6 @@ public class AccountController {
     @ApiOperation(value = "Save account")
     @RequestMapping(method = RequestMethod.POST)
     public AccountDto saveAccount(@RequestBody Account account){
-
         return accountService.saveAccount(account);
     }
 
@@ -39,5 +38,11 @@ public class AccountController {
     @RequestMapping(value="/{id}",method = RequestMethod.DELETE)
     public void deleteAccount(long id){
         accountService.deleteAccount(id);
+    }
+
+    @ApiOperation(value = "Get account by email")
+    @RequestMapping(value = "/{email}",method = RequestMethod.GET)
+    public AccountDto getAccountByEmail(@PathVariable String email){
+        return accountService.getAccountByEmail(email);
     }
 }

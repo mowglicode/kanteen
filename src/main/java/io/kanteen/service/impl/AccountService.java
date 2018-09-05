@@ -29,10 +29,12 @@ public class AccountService implements IAccountService {
         return getAccountById(accountService.getId());
     }
 
-    // overloading
-    /*public Account saveAccount(Account account) {
-        return accountRepository.save(account);
-    }*/
+    @Override
+    public AccountDto saveAccount(AccountDto accountDto){
+        Account account = modelMapper.map(accountDto,Account.class);
+        accountRepository.save(account);
+        return getAccountById(account.getId());
+    }
 
     @Override
     public List<AccountDto> getAllAccounts() {
@@ -62,5 +64,16 @@ public class AccountService implements IAccountService {
         } else {
             throw new NotFoundException("Account not found, it can't be deleted");
         }
+    }
+
+    @Override
+    public AccountDto getAccountByEmail(String email) {
+        Optional<Account> accountTmp = accountRepository.findByEmail(email);
+        if (accountTmp.isPresent()) {
+            return modelMapper.map(accountTmp.get(),AccountDto.class);
+        }else {
+            throw new NotFoundException("Email not found");
+        }
+
     }
 }

@@ -6,15 +6,16 @@ import {HttpClient} from "@angular/common/http";
 })
 export class MealsService {
 
-  constructor(public http:HttpClient) { }
+  constructor(public http: HttpClient) {
+  }
 
-  eatableDay : string[] =[];
+  eatableDay : string[] = [];
 
 
-  getEatableDay(){
+  getEatableDay() {
     this.http.get('http://localhost:8585/api/dates/eatableday')
-      .subscribe((r:any[]) => {
-        this.eatableDay =r
+      .subscribe((r: any[]) => {
+        this.eatableDay = r
         console.log(this.eatableDay);
       });
   }

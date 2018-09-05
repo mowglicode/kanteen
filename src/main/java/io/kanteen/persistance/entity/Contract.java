@@ -1,8 +1,9 @@
 package io.kanteen.persistance.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table
@@ -26,9 +27,15 @@ public class Contract {
     @Column(nullable = false)
     private boolean withOption;
 
-    @ElementCollection
-    @CollectionTable
-    private List<ContractOption> options = new ArrayList<>();
+    public Contract() {
+    }
+
+    public Contract(String title, String description, boolean status, boolean withOption) {
+        this.title = title;
+        this.description = description;
+        this.status = status;
+        this.withOption = withOption;
+    }
 
     public Contract(String title, String description) {
         this.title = title;
@@ -78,11 +85,4 @@ public class Contract {
         this.withOption = withOption;
     }
 
-    public List<ContractOption> getOptions() {
-        return options;
-    }
-
-    public void setOptions(List<ContractOption> options) {
-        this.options = options;
-    }
 }

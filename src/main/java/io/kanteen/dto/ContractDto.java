@@ -2,6 +2,7 @@ package io.kanteen.dto;
 
 import io.kanteen.persistance.entity.ContractOption;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContractDto {
@@ -9,6 +10,9 @@ public class ContractDto {
     private long id;
     private String title;
     private String description;
+    private List<ContractOptionDto> options = new ArrayList<>();
+
+
 
     public ContractDto() {
 
@@ -17,6 +21,12 @@ public class ContractDto {
     public ContractDto(String title, String description) {
         this.title = title;
         this.description = description;
+    }
+
+    public ContractDto(String title, String description, List<ContractOptionDto> options) {
+        this.title = title;
+        this.description = description;
+        this.options = options;
     }
 
     public long getId() {
@@ -41,6 +51,18 @@ public class ContractDto {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<ContractOptionDto> getOptions() {
+        return options;
+    }
+
+    public void setOptions(List<ContractOptionDto> options) {
+        this.options = options;
+    }
+
+    public void addOption(ContractOptionDto option){
+        this.options.add(option);
     }
 
 }

@@ -8,7 +8,7 @@ export class MealsService {
 
   constructor(public http:HttpClient) { }
 
-  eatableDay = eatableDay [];
+  eatableDay : string[] = [];
 
 
   getEeatableDay(){

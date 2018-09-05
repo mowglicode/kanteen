@@ -34,6 +34,7 @@ export class MealsComponent implements OnInit {
 
 
 
+
   dayTabSelection(event){
     console.log(event, event.tab.textLabel);
     this.activeDay=event.tab.textLabel;
@@ -52,7 +53,9 @@ export class MealsComponent implements OnInit {
     tickedChild.ticked = event.checked;
     console.log(tickedChildList);
     console.log(tickedChild);
-
+    let  mealsDayChild = this.service.getMealsByParentId(this.service.loggedParentId)
+      .filter(function (meal){return meal.day;})
+      .filter(function (meal) {return meal.child_id;})
 
   }
 
@@ -72,5 +75,14 @@ export class MealsComponent implements OnInit {
     this.service.saveMeal(this.childId, this.activeDay);
   console.log('xxx',this.activeDay);
   }
+
+
+
+
+
+
+
+
+
 
 }

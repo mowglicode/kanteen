@@ -42,9 +42,6 @@ public class Contract {
         this.description = description;
     }
 
-    public Contract() {
-    }
-
     public long getId() {
         return id;
     }

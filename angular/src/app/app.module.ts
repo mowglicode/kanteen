@@ -14,7 +14,7 @@ import {
   MatListModule,
   MatMenuModule,
   MatTabsModule,
-  MatToolbarModule, MatCheckboxModule
+  MatToolbarModule, MatCheckboxModule,
 } from "@angular/material";
 import { MenuAdminComponent } from './menus/menu-admin/menu-admin.component';
 import { HomeComponent } from './home/home.component';
@@ -57,9 +57,10 @@ import { DataComponent } from './data/data.component';
     MatButtonModule,
     MatCheckboxModule,
     MatTabsModule,
-    FormsModule
+    FormsModule,
+
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

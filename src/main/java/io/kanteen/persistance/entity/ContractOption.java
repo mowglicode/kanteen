@@ -25,6 +25,10 @@ public class ContractOption {
         this.id = id;
     }
 
+    public ContractOption(String optionName) {
+        this.optionName = optionName;
+    }
+
     public Contract getContract() {
         return contract;
     }

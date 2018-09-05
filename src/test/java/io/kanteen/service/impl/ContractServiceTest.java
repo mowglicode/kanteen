@@ -2,7 +2,6 @@ package io.kanteen.service.impl;
 
 import io.kanteen.dto.ContractDto;
 import io.kanteen.dto.ContractOptionDto;
-import io.kanteen.persistance.entity.Contract;
 import io.kanteen.persistance.entity.ContractOption;
 import io.kanteen.persistance.repository.IContractOptionRepository;
 import io.kanteen.persistance.repository.IContractRepository;
@@ -10,7 +9,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;

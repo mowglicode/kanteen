@@ -51,7 +51,6 @@ public class ContractService implements IContractService {
             Contract contract = contractMaybe.get();
             List<ContractOption> options = contractOptionRepository.findByContract(contract);
 
-
             ContractDto dto = modelMapper.map(contract, ContractDto.class);
             for (ContractOption option : options) {
                 ContractOptionDto optionDto = modelMapper.map(option, ContractOptionDto.class);
@@ -66,8 +65,6 @@ public class ContractService implements IContractService {
 
     @Override
     public void deleteContract(long id) {
-
-
 
         Optional<Contract> tmp = contractRepository.findById(id);
         if (tmp.isPresent()) {
@@ -96,7 +93,6 @@ public class ContractService implements IContractService {
                 contractOptionRepository.save(option);
             }
         }
-
         return displayContractById(contract.getId());
     }
 

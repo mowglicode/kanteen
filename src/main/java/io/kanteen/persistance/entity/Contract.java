@@ -31,6 +31,13 @@ public class Contract {
 //    Collection<ContractOption> contractOptions;
 
 
+    public Contract(String title, String description, boolean status, boolean withOption) {
+        this.title = title;
+        this.description = description;
+        this.status = status;
+        this.withOption = withOption;
+    }
+
     public long getId() {
         return id;
     }

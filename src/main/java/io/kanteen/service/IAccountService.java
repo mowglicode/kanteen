@@ -12,4 +12,5 @@ public interface IAccountService {
     AccountDto getAccountById(long id);
     void deleteAccount(long id);
     AccountDto getAccountByEmail(String email);
+    boolean getIsAdminByEmail(String email);
 }

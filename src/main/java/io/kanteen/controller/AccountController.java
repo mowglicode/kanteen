@@ -45,4 +45,11 @@ public class AccountController {
     public AccountDto getAccountByEmail(@PathVariable String email){
         return accountService.getAccountByEmail(email);
     }
+
+
+    @ApiOperation(value = "Get isAdmin by email")
+    @RequestMapping(value = "/isAdmin/{email}",method = RequestMethod.GET)
+    public boolean getIsAdminByEmail(@PathVariable String email){
+        return accountService.getIsAdminByEmail(email);
+    }
 }

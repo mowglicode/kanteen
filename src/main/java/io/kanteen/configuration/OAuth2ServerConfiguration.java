@@ -81,6 +81,7 @@ public class OAuth2ServerConfiguration {
             tokenServices.setTokenStore(this.tokenStore);
             return tokenServices;
         }
+     
 
     }
 }

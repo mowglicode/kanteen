@@ -3,8 +3,6 @@ package io.kanteen.configuration;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.kanteen.dto.AccountDto;
-import io.kanteen.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,9 +18,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+
+import io.kanteen.dto.AccountDto;
+import io.kanteen.service.IAccountService;
 
 
-@Configuration // bean spring : comportement particulier
+@Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -61,6 +63,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         });
     }
 
+    @Bean
+	public static NoOpPasswordEncoder passwordEncoder() {
+		return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
+	}
+    
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -70,7 +77,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-                .antMatchers("/oauth/**")
+               
                 .antMatchers("/api/public/**"); //ignore les requetes /public/*
 
     }

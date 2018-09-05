@@ -33,14 +33,14 @@ public class AccountService implements IAccountService {
 
     @Override
     public AccountDto saveAccount(Account account) {
-        Account accountService = modelMapper.map(account,Account.class);
+        Account accountService = modelMapper.map(account, Account.class);
         accountRepository.save(account);
         return getAccountById(accountService.getId());
     }
 
     @Override
-    public AccountDto saveAccount(AccountDto accountDto){
-        Account account = modelMapper.map(accountDto,Account.class);
+    public AccountDto saveAccount(AccountDto accountDto) {
+        Account account = modelMapper.map(accountDto, Account.class);
         accountRepository.save(account);
         return getAccountById(account.getId());
     }
@@ -49,8 +49,8 @@ public class AccountService implements IAccountService {
     public List<AccountDto> getAllAccounts() {
         List<Account> accounts = accountRepository.findAll();
         List<AccountDto> result = new ArrayList<>();
-        for(Account a: accounts){
-            result.add(modelMapper.map(a,AccountDto.class));
+        for (Account a : accounts) {
+            result.add(modelMapper.map(a, AccountDto.class));
         }
         return result;
     }
@@ -59,7 +59,7 @@ public class AccountService implements IAccountService {
     public AccountDto getAccountById(long id) {
         Optional<Account> account = accountRepository.findById(id);
         if (account.isPresent()) {
-            return modelMapper.map(account.get(),AccountDto.class);
+            return modelMapper.map(account.get(), AccountDto.class);
         } else {
             throw new NotFoundException("Account not found");
         }
@@ -79,8 +79,8 @@ public class AccountService implements IAccountService {
     public AccountDto getAccountByEmail(String email) {
         Optional<Account> accountTmp = accountRepository.findByEmail(email);
         if (accountTmp.isPresent()) {
-            return modelMapper.map(accountTmp.get(),AccountDto.class);
-        }else {
+            return modelMapper.map(accountTmp.get(), AccountDto.class);
+        } else {
             throw new NotFoundException("Email not found");
         }
 
@@ -89,18 +89,22 @@ public class AccountService implements IAccountService {
     @Override
     public boolean getIsAdminByEmail(String email) {
         Optional<Account> accountOpt = accountRepository.findByEmail(email);
+
         if (accountOpt.isPresent()) {
-            Account account = modelMapper.map(accountOpt.get(),Account.class);
+            Account account = modelMapper.map(accountOpt.get(), Account.class);
+            //on a un account, on cherche alors s'il appartient à un parent ou a un admin
             Optional<Admin> adminOpt = adminRepository.findAdminByAccountId(account.getId());
-            //if the accound is linked to an admin
+            Optional<Parent> parentOpt = parentRepository.findParentByAccountId(account.getId());
             if (adminOpt.isPresent()) {
-                Admin admin = modelMapper.map(adminOpt.get(),Admin.class);
+                //if the accound is linked to an admin
+                Admin admin = modelMapper.map(adminOpt.get(), Admin.class);
                 return admin.isAdmin();
+            } else if (parentOpt.isPresent()){
                 //else the account is linked to a parent
-            } else {
-                Optional<Parent> parentOpt = parentRepository.findParentByAccountId(account.getId());
-                Parent parent = modelMapper.map(parentOpt.get(),Parent.class);
+                Parent parent = modelMapper.map(parentOpt.get(), Parent.class);
                 return parent.isAdmin();
+            } else {
+                throw new NotFoundException("Account found but not linked to parent or admin...");
             }
         } else {
             throw new NotFoundException("Account not found with that email");

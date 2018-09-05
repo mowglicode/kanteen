@@ -10,6 +10,7 @@ export class MenusComponent implements OnInit {
 
   content: string;
   id: number;
+  week:number;
 
   constructor(public service: MenusService) {
     service.getAllMenus();
@@ -23,7 +24,7 @@ export class MenusComponent implements OnInit {
 
 
   onSubmit(){
-    this.service.saveMenu(this.content);
+    this.service.saveMenu(this.content, this.week);
   }
 
   onDelete(menu:Menu){

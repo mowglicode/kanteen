@@ -4,8 +4,8 @@ import {HttpClient} from "@angular/common/http";
 export type Information = {
   id:number
   description:string
-  entitled:string
   expiry:string
+  hasExpiration:boolean
 }
 @Injectable({
   providedIn: 'root'

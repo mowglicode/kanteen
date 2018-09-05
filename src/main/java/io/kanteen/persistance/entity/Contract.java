@@ -1,8 +1,9 @@
 package io.kanteen.persistance.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table
@@ -25,6 +26,10 @@ public class Contract {
 
     @Column(nullable = false)
     private boolean withOption;
+
+//    @OneToMany(mappedBy = "contract")
+//    Collection<ContractOption> contractOptions;
+
 
     public long getId() {
         return id;
@@ -66,5 +71,11 @@ public class Contract {
         this.withOption = withOption;
     }
 
-
+//    public Collection<ContractOption> getContractOptions() {
+//        return contractOptions;
+//    }
+//
+//    public void setContractOptions(Collection<ContractOption> contractOptions) {
+//        this.contractOptions = contractOptions;
+//    }
 }

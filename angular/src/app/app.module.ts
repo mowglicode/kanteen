@@ -9,12 +9,17 @@ import { MainTabsComponent } from './main-tabs/main-tabs.component';
 import { MealsComponent } from './meals/meals.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
-  MatButtonModule, MatCheckboxModule,
-  MatExpansionModule, MatFormFieldModule, MatIconModule,
+  MatButtonModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatIconModule,
   MatListModule,
-  MatMenuModule, MatTableDataSource, MatTableModule,
+  MatMenuModule,
+  MatTableDataSource,
+  MatTableModule,
   MatTabsModule,
-  MatToolbarModule, MatCheckboxModule
+  MatToolbarModule,
+  MatCheckboxModule
 } from "@angular/material";
 import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
 import { HomeComponent } from './home/home.component';

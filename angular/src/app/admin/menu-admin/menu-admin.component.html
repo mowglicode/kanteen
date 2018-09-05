@@ -9,13 +9,30 @@
       <mat-panel-description>
         Cliquez pour voir le menu
       </mat-panel-description>
+
       <button mat-flat-button color="" (click)="onDelete(menu)"><mat-icon>delete</mat-icon></button>
     </mat-expansion-panel-header>
-    <p>{{menu.content}}</p>
+
+    <form (submit)="modify(menu.id)">
+      <textarea *ngIf="edit === true" [(ngModel)]="modifiedContent" name="modifiedContent"></textarea>
+      <br>
+      <input type="number" *ngIf="edit === true" [(ngModel)]="modifiedWeek" name="modifiedWeek">
+    <br>
+      <button *ngIf="edit === true" mat-flat-button color="primary">
+        <mat-icon>done_outline</mat-icon>
+      </button>
+      <p *ngIf="edit === false">{{menu.content}}</p>
+      <a mat-flat-button color="" (click)="onEdit(menu)">
+        <mat-icon matSuffix>mode_edit</mat-icon>
+      </a>
+    </form>
+
+
   </mat-expansion-panel>
 </mat-accordion>
 
 <br>
+
 
 <form (submit)="onSubmit()" >
 

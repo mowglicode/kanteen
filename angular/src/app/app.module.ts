@@ -24,6 +24,7 @@ import { AdminMealsDatesComponent } from './admin-meals-dates/admin-meals-dates.
 import { AdminMealsChildsComponent } from './admin-meals-childs/admin-meals-childs.component';
 import { AdminMealsComponent } from './admin-meals/admin-meals.component';
 import { DataComponent } from './data/data.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { DataComponent } from './data/data.component';
     AdminMealsComponent,
     MealsComponent,
     HomeComponent,
-    DataComponent
+    DataComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -23,6 +23,8 @@ public class SetupService implements ISetupService {
     private IMealRepository mealRepository;
     @Autowired
     private IMenuRepository menuRepository;
+    @Autowired
+    private IContractRepository contractRepository;
 
     Child wilsonDoe = new Child("Wilson Doe", "CM2");
     Child eliseDoe = new Child("Elise Doe", "CE1");
@@ -39,6 +41,11 @@ public class SetupService implements ISetupService {
     Account accountOne = new Account("johnDoe@kanteen.com", "06.23.23.23.23");
 
     Account accountTwo = new Account("janeDoe@kanteen.com", "06.24.24.24.24");
+
+    Contract contractOne = new Contract("Conditions d'utilisation", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae consectetur cumque dolorem ducimus, error facere fugiat");
+    Contract contractTwo = new Contract("Voyage Angleterre", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae consectetur cumque dolorem ducimus, error facere fugiat");
+    Contract contractThree = new Contract("Repas de Noël", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae consectetur cumque dolorem ducimus, error facere fugiat");
+    Contract contractFour = new Contract("Kermesse annuelle", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae consectetur cumque dolorem ducimus, error facere fugiat");
 
     public void setUp(){
 
@@ -70,6 +77,11 @@ public class SetupService implements ISetupService {
 
         menuOne = menuRepository.save(menuOne);
         menuTwo = menuRepository.save(menuTwo);
+
+        contractOne = contractRepository.save(contractOne);
+        contractTwo = contractRepository.save(contractTwo);
+        contractThree = contractRepository.save(contractThree);
+        contractFour = contractRepository.save(contractFour);
     }
 
     public void tearDown(){
@@ -77,5 +89,6 @@ public class SetupService implements ISetupService {
         childRepository.deleteAll();
         mealRepository.deleteAll();
         accountRepository.deleteAll();
+        contractRepository.deleteAll();
     }
 }

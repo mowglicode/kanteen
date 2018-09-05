@@ -30,6 +30,14 @@ public class Contract {
     @CollectionTable
     private List<ContractOption> options = new ArrayList<>();
 
+    public Contract(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
+    public Contract() {
+    }
+
     public long getId() {
         return id;
     }

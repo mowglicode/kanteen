@@ -1,12 +1,30 @@
 
-<form (submit)="onSubmit()" name="contrat">
-  <label *ngFor="let c of service.privacy">
-    <input type="checkbox"/>{{c.title}}<br/>
-  </label>
-</form>
+<!--<form (submit)="onSubmit()" name="contrat">-->
+  <!--<label *ngFor="let c of service.privacy">-->
+    <!--<input type="checkbox" title="gostoso"/>{{c.title}}<br/>-->
+  <!--</label>-->
+<!--</form>-->
 
-<p>
-  <button >OK</button>
-</p>
+<!--<p>-->
+  <!--<button >OK</button>-->
+<!--</p>-->
 
-<div>{{this.body}}</div>
+<!--<div>{{this.body}}</div>-->
+
+
+<!--<h2 class="mat-h2">Menu</h2>-->
+
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel *ngFor="let c of service.privacy">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{c.title}}
+      </mat-panel-title>
+      <mat-panel-description>
+        Cliquez pour voir le contenu
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>{{c.description}}</p>
+    <button mat-flat-button (click)="onSubmit()">Valider</button>
+  </mat-expansion-panel>
+</mat-accordion>

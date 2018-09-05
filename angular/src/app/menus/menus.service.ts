@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 export type Menu = {
   id?:number
   content: string;
+  week:number;
 }
 
 @Injectable({
@@ -32,9 +33,10 @@ export class MenusService {
       });
   }
 
-  saveMenu(content:string){
+  saveMenu(content:string, week:number){
     let body:Menu = {
-      content: content
+      content: content,
+      week: week,
     }
     this.http.post('http://localhost:8585/api/menus', body)
       .subscribe((r:any) => {

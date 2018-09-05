@@ -110,13 +110,9 @@ public class ContractServiceTest {
         Optional<ContractOption> entity =contractOptionRepository.findById(option1.getId());
         assertTrue(entity.isPresent());
 
-
-
         contractService.deleteContract(c1.getId());
         contractService.deleteContract(c2.getId());
         contractService.deleteContract(c3.getId());
-
-
 
         tmp = contractService.displayContracts();
         assertEquals(0, tmp.size());

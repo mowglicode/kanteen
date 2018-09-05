@@ -27,9 +27,8 @@ public class Contract {
     @Column(nullable = false)
     private boolean withOption;
 
-//    @OneToMany(mappedBy = "contract")
-//    Collection<ContractOption> contractOptions;
-
+    public Contract() {
+    }
 
     public Contract(String title, String description, boolean status, boolean withOption) {
         this.title = title;
@@ -78,11 +77,4 @@ public class Contract {
         this.withOption = withOption;
     }
 
-//    public Collection<ContractOption> getContractOptions() {
-//        return contractOptions;
-//    }
-//
-//    public void setContractOptions(Collection<ContractOption> contractOptions) {
-//        this.contractOptions = contractOptions;
-//    }
 }

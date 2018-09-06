@@ -52,12 +52,7 @@ export class MealsComponent implements OnInit {
     return `${this.getLabelDay(date.getDay())} ${date.getDate()}-${date.getMonth() + 1}  `;
   }
 
-  dayTabSelection(event) {
-    console.log(event, event.tab.textLabel);
-    this.activeDay = event.tab.textLabel;
-    console.log(this.activeDay);
 
-  }
 
   childSelection(event) {
     console.log(event, event.source.value, event.checked);

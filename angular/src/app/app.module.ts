@@ -9,12 +9,17 @@ import { MainTabsComponent } from './main-tabs/main-tabs.component';
 import { MealsComponent } from './meals/meals.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
-  MatButtonModule, MatCheckboxModule,
-  MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule,
+  MatButtonModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatIconModule,
   MatListModule,
-  MatMenuModule, MatTableDataSource, MatTableModule,
+  MatMenuModule,
+  MatTableDataSource,
+  MatTableModule,
   MatTabsModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatCheckboxModule, MatInputModule
 } from "@angular/material";
 import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
 import { HomeComponent } from './home/home.component';
@@ -23,6 +28,7 @@ import { AdminMealsChildsComponent } from './admin/admin-meals-childs/admin-meal
 import { AdminMealsComponent } from './admin/admin-meals/admin-meals.component';
 import { DataComponent } from './data/data.component';
 import { AdminMainTabsComponent } from './admin/admin-main-tabs/admin-main-tabs.component';
+import {LoginComponent} from "./login/login.component";
 
 
 @NgModule({
@@ -39,7 +45,8 @@ import { AdminMainTabsComponent } from './admin/admin-main-tabs/admin-main-tabs.
     MealsComponent,
     HomeComponent,
     DataComponent,
-    AdminMainTabsComponent
+    AdminMainTabsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -56,12 +63,15 @@ import { AdminMainTabsComponent } from './admin/admin-main-tabs/admin-main-tabs.
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatButtonModule,
     MatCheckboxModule,
     MatTabsModule,
     FormsModule,
     MatTableModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatFormFieldModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

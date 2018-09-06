@@ -59,4 +59,21 @@ public class AdminService implements IAdminService {
             throw new NotFoundException("Admin not found, it can't be deleted");
         }
     }
+
+    @Override
+    public AdminDto getAdminByEmail(String email) {
+        Optional<Account> accountOpt = accountRepository.findByEmail(email);
+        if (accountOpt.isPresent()) {
+            Optional<Admin> parentOpt = adminRepository.findAdminByAccountId(accountOpt.get().getId());
+            if (parentOpt.isPresent()) {
+                AdminDto result = modelMapper.map(parentOpt.get(),AdminDto.class);
+                return result;
+            } else {
+                throw new NotFoundException("Parent not found with this account (but this is weird)");
+            }
+        } else {
+            throw new NotFoundException("Account not found with this email");
+        }
+
+    }
 }

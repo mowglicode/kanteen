@@ -8,8 +8,8 @@ import {map} from "rxjs/operators";
 
 export class LoginService {
 
-  isAdmin: boolean = false;
-  isLogged: boolean = true;
+  isAdmin: boolean = undefined;
+  isLogged: boolean = false;
 
   constructor(private http: HttpClient) {
   }

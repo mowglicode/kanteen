@@ -17,13 +17,16 @@
 
   <!--</form>-->
 <!--</div>-->
+
+<app-privacy></app-privacy>
+
 <h1>Nouveau contrat</h1>
 <form>
 
   <div class="container">
     <mat-form-field>
       <label for="titre">Titre:</label>
-      <input matInput class="week" type="text" placeholder="titre" [(ngModel)]="title" name="titre" id="titre">
+      <input matInput class="week" type="text" [(ngModel)]="title" name="titre" id="titre">
     </mat-form-field>
     <br>
     <mat-form-field>
@@ -34,6 +37,6 @@
   </div>
 
   <br>
-  <button class="button"> enregistrer </button>
+  <button class="button"> Valider </button>
 </form>
 

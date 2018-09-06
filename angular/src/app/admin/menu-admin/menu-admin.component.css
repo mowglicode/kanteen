@@ -2,18 +2,36 @@
 margin-left: 1%;
 }
 
-.menu{
-  width: 50%;
-  height: 50%;
-  padding: auto;
+.delete_button{
+  margin-right: 6%;
+}
 
+.container_menu {
+ margin-left: 1%;
 
 }
 
 .week{
-
 }
 .button{
   border-radius: 4px;
+  margin-left: 1%;
 }
 
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.textarea-menu {
+  width: 600px;
+}
+
+.edit-button{
+  margin-left: 2%;
+}

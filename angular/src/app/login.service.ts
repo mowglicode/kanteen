@@ -11,6 +11,7 @@ export class LoginService {
   isAdmin: boolean = undefined;
   isLogged: boolean = false;
 
+
   constructor(private http: HttpClient) {
   }
 
@@ -22,7 +23,6 @@ export class LoginService {
           this.isLogged = true;
         }
       });
-
   }
 
 }

@@ -26,7 +26,6 @@ import { HomeComponent } from './home/home.component';
 import { AdminMealsDatesComponent } from './admin/admin-meals-dates/admin-meals-dates.component';
 import { AdminMealsChildsComponent } from './admin/admin-meals-childs/admin-meals-childs.component';
 import { AdminMealsComponent } from './admin/admin-meals/admin-meals.component';
-import { DataComponent } from './data/data.component';
 import { AdminMainTabsComponent } from './admin/admin-main-tabs/admin-main-tabs.component';
 import {LoginComponent} from "./login/login.component";
 
@@ -44,7 +43,6 @@ import {LoginComponent} from "./login/login.component";
     AdminMealsComponent,
     MealsComponent,
     HomeComponent,
-    DataComponent,
     AdminMainTabsComponent,
     LoginComponent
   ],

@@ -4,6 +4,12 @@ import {HttpClient} from "@angular/common/http";
 export interface Contract {
   title:string,
   description:string,
+  options: Options[]
+  withOption: boolean;
+}
+
+export interface Options {
+  optionName:string
 }
 
 @Injectable({
@@ -13,21 +19,30 @@ export class PrivacyService {
 
   privacy: Contract[] = [];
 
-  constructor(public http:HttpClient) { }
+  constructor(public http: HttpClient) {
+  }
 
-  fetchContract(){
+  fetchContract() {
     this.http.get<any[]>('http://localhost:8585/api/admin/privacy/contracts')
       .subscribe((r: any[]) => {
         this.privacy = r.map(contract => mapAnyToContract(contract));
         console.log(this.privacy);
       });
-  }}
-
-
-  function mapAnyToContract(contract:any):Contract{
-    return{
-      title:contract.title,
-      description:contract.description
   }
 
 }
+
+
+  function mapAnyToContract(contract: any): Contract {
+    return {
+      title: contract.title,
+      description: contract.description,
+      options: contract.options,
+      withOption: contract.withOption
+    }
+  }
+
+
+
+
+

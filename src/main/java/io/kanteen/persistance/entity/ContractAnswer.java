@@ -19,7 +19,7 @@ public class ContractAnswer {
 
     // Nullable :
     @ManyToOne
-    @JoinColumn(nullable = true)
+//    @JoinColumn(nullable = true)
     private ContractOption option = null;
 
     public long getId() {

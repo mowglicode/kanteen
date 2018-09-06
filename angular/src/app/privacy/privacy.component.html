@@ -25,6 +25,17 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <p>{{c.description}}</p>
+    <mat-form-field *ngIf="this.c.withOption">
+      <mat-select placeholder="Sélectionner un choix">
+        <mat-option *ngFor="let o of c.options" [value]="o.optionName">
+          {{o.optionName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <button mat-flat-button (click)="onSubmit()">Valider</button>
   </mat-expansion-panel>
+
 </mat-accordion>
+
+
+

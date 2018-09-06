@@ -9,17 +9,14 @@ import { MainTabsComponent } from './main-tabs/main-tabs.component';
 import { MealsComponent } from './meals/meals.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
-  MatButtonModule,
-  MatExpansionModule,
-  MatFormFieldModule,
-  MatIconModule,
+  MatButtonModule, MatCheckboxModule,
+  MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatInputModule,
   MatListModule,
   MatMenuModule,
   MatTableDataSource,
   MatTableModule,
   MatTabsModule,
   MatToolbarModule,
-  MatCheckboxModule, MatInputModule
 } from "@angular/material";
 import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
 import { HomeComponent } from './home/home.component';
@@ -70,7 +67,7 @@ import {LoginComponent} from "./login/login.component";
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    MatFormFieldModule,
+    MatGridListModule,
 
   ],
   providers: [],

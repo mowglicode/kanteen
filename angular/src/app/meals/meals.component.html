@@ -1,6 +1,6 @@
 <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4"
                (selectedTabChange)="dayTabSelection($event)">
-  <mat-tab *ngFor="let d of this.service.eatableDay" [label]="d" dynamicHeight="true">
+  <mat-tab *ngFor="let d of this.service.eatableDay" [label]="format(d)" dynamicHeight="true">
 
     <div class="checkchild">
       <ul style=" list-style-type:none">

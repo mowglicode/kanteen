@@ -13,7 +13,7 @@ export class MenusComponent implements OnInit {
   week:number;
 
   constructor(public service: MenusService) {
-    alert('pouet');
+    // alert('pouet');
     service.getAllMenus();
     //service.getMenuById(id);
 

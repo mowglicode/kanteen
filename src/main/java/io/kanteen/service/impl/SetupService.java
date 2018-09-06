@@ -37,9 +37,9 @@ public class SetupService implements ISetupService {
     Parent janeDoe;
     Admin director;
 
-    Meal mealOne = new Meal(wilsonDoe, "20190315");
-    Meal mealTwo = new Meal(wilsonDoe, "20190316");
-    Meal mealThree = new Meal(wilsonDoe, "20190317");
+    Meal mealOne = new Meal(wilsonDoe, "2019-03-15");
+    Meal mealTwo = new Meal(wilsonDoe, "2019-03-16");
+    Meal mealThree = new Meal(wilsonDoe, "2019-03-17");
     Menu menuOne = new Menu("Lasagnes, Yaourt");
     Menu menuTwo = new Menu("Pizza, Frites");
     Account directorAccount = new Account("director@kanteen.com", "0123456789");
@@ -77,8 +77,8 @@ public class SetupService implements ISetupService {
         mealTwo = mealRepository.save(mealTwo);
         mealThree = mealRepository.save(mealThree);
 
-        Meal mealFour = new Meal(eliseDoe, "20190315");
-        Meal mealFive = new Meal(eliseDoe, "20190316");
+        Meal mealFour = new Meal(eliseDoe, "2019-03-15");
+        Meal mealFive = new Meal(eliseDoe, "2019-03-16");
         mealFour = mealRepository.save(mealFour);
         mealFive = mealRepository.save(mealFive);
 

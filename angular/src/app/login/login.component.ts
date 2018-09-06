@@ -25,12 +25,12 @@ export class LoginComponent implements OnInit {
   }
 
   isAdmin(){
-    console.log("Admin :" + this.service.isAdmin);
+    // console.log("Admin :" + this.service.isAdmin);
     return this.service.isAdmin;
   }
 
   isLogged(){
-    console.log("Loggué"+this.service.isLogged);
+    // console.log("Loggué"+this.service.isLogged);
     return this.service.isLogged;
   }
 

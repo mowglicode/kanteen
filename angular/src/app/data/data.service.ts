@@ -10,7 +10,7 @@ export class DataService {
   constructor(public http: HttpClient) { }
 
   createDatabase(){
-    console.log("Je suis passé par là")
+    console.log("Database created - do not create it again")
     this.http.get("http://localhost:8585/api/dbcreate").subscribe();
   }
 }

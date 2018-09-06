@@ -33,7 +33,7 @@ public class ContractService implements IContractService {
         List<ContractDto> contracts = new ArrayList<>();
 
         for (Contract c : tmp) {
-            contracts.add(modelMapper.map(c, ContractDto.class));
+            contracts.add(this.displayContractById(c.getId()));
         }
         return contracts;
     }

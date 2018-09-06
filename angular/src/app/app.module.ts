@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { MenusComponent } from './menus/menus.component';
 import {HttpClientModule} from "@angular/common/http";
@@ -9,10 +8,10 @@ import { MainTabsComponent } from './main-tabs/main-tabs.component';
 import { MealsComponent } from './meals/meals.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
-  MatButtonModule, MatCheckboxModule,
+  MatButtonModule, MatCheckboxModule, MatDialogModule,
   MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatInputModule,
   MatListModule,
-  MatMenuModule, MatTableDataSource, MatTableModule,
+  MatMenuModule, MatSnackBarModule, MatTableDataSource, MatTableModule,
   MatTabsModule,
   MatToolbarModule,
 } from "@angular/material";
@@ -24,6 +23,7 @@ import { AdminMealsComponent } from './admin/admin-meals/admin-meals.component';
 import { DataComponent } from './data/data.component';
 import { AdminMainTabsComponent } from './admin/admin-main-tabs/admin-main-tabs.component';
 import {LoginComponent} from "./login/login.component";
+import {AdminHomeComponent} from "./admin/admin-home/admin-home.component";
 
 
 @NgModule({
@@ -33,24 +33,17 @@ import {LoginComponent} from "./login/login.component";
     MainTabsComponent,
     MealsComponent,
     MenuAdminComponent,
-    MealsComponent,
     AdminMealsDatesComponent,
     AdminMealsChildsComponent,
     AdminMealsComponent,
-    MealsComponent,
     HomeComponent,
     DataComponent,
     AdminMainTabsComponent,
-    LoginComponent
+    LoginComponent,
+    AdminHomeComponent,
   ],
   imports: [
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
     MatListModule,
-    MatTabsModule,
     MatExpansionModule,
     MatToolbarModule,
     MatMenuModule,
@@ -58,7 +51,6 @@ import {LoginComponent} from "./login/login.component";
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatButtonModule,
     MatCheckboxModule,
     MatButtonModule,
     MatTabsModule,
@@ -67,6 +59,8 @@ import {LoginComponent} from "./login/login.component";
     MatFormFieldModule,
     MatInputModule,
     MatGridListModule,
+    MatDialogModule,
+    MatSnackBarModule,
 
   ],
   providers: [],

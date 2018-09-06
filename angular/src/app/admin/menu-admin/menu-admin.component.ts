@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MenusService, Menu} from "../../menus/menus.service";
+import {MatDialog, MatDialogRef} from "@angular/material";
 
 
 @Component({
@@ -16,7 +17,7 @@ export class MenuAdminComponent implements OnInit {
   modifiedContent:string;
   modifiedWeek:number;
 
-  constructor(public service: MenusService) {
+  constructor(public service: MenusService, public dialog:MatDialog) {
     service.getAllMenus();
   }
 
@@ -47,4 +48,7 @@ export class MenuAdminComponent implements OnInit {
   modify(id:number) {
     this.service.editMenu(id, this.modifiedContent, this.modifiedWeek)
   }
+
+
+
 }

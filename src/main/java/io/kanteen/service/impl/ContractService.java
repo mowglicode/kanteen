@@ -12,7 +12,6 @@ import io.kanteen.service.IContractService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -22,10 +21,8 @@ public class ContractService implements IContractService {
 
     @Autowired
     private IContractRepository contractRepository;
-
     @Autowired
     private IContractOptionRepository contractOptionRepository;
-
     @Autowired
     private ModelMapper modelMapper;
 
@@ -36,7 +33,7 @@ public class ContractService implements IContractService {
         List<ContractDto> contracts = new ArrayList<>();
 
         for (Contract c : tmp) {
-            contracts.add(modelMapper.map(c, ContractDto.class));
+            contracts.add(this.displayContractById(c.getId()));
         }
         return contracts;
     }

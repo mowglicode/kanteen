@@ -1,11 +1,12 @@
 <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4"
-               (selectedTabChange)="dayTabSelection($event)">
+  (selectedTabChange)="tabSelection($event)"  >
+>
   <mat-tab *ngFor="let d of this.service.eatableDay" [label]="format(d)" dynamicHeight="true">
 
     <div class="checkchild">
       <ul style=" list-style-type:none">
         <li *ngFor="let c of this.service.childrenByParent" class="listStyle">
-          <mat-checkbox color="primary" (change)="childSelection($event)" [value]="c.id" [name]="c.name">
+          <mat-checkbox color="primary" (change)="childSelection($event)" [value]="c.id" [name]="d" >
             {{this.c.name}}
           </mat-checkbox>
 
@@ -21,7 +22,7 @@
     <div id="myNav" class="overlay">
       <!-- Overlay content -->
       <div class="overlay-content">      <!--*ngIf="this.service.tickedChild.ticked"-->
-        <div class="overlayText" > {{this.service.getRetiredChildrenNames()}} ne mangera pas à la cantine le {{format(d)}}</div>
+        <div class="overlayText" > {{this.service.getRetiredChildrenNames()}} ne mangera/ront pas à la cantine le {{format(d)}}</div>
         <button (click)="postMeal()" (click)="closeNav()" class="overlayButton"> Valider</button>
         <button (click)="closeNav()"class="overlayButton"> Annuler</button>
       </div>

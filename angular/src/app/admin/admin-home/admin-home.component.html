@@ -10,16 +10,18 @@
     </ul>
   </div>
 </div>
-<div>
+
+<div class="formAddInformation">
   <form>
-    <label>Entrez des informations</label>
-    <input type="text" name="Description" required="required" value="Description"><br>
+    <label>Entrez des informations :</label><br>
+    <textarea class="inputDescription" name="Description" required="required" value="Description" id="Description"></textarea><br>
     <div>
-      <input type="radio" name="hasExpiration"><label>Expiration indéterminée</label><br>
-      <input type="radio" name="hasExpiration" value="Date d'expiration"><label>Date d'expiration</label><br>
-    </div>
-    <input type="date" name="Expiry"><br>
+      <input class="hasNotExpiration" type="checkbox" name="hasNotExpiration"><label>Expiration indéterminée</label><br><br>
+      <div class="hasExpiration">
+        <label>Date d'expiration :</label><br>
+        <input type="date" name="Expiry"><br>
+      </div>
+    </div><br><br>
     <input type="button" value="Ajouter">
   </form>
-
 </div>

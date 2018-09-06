@@ -24,7 +24,7 @@
     <div id="myNav" class="overlay">
       <!-- Overlay content -->
       <div class="overlay-content">      <!--*ngIf="this.service.tickedChild.ticked"-->
-        <div class="overlayText" > {{this.service.getRetiredChildrenNames()}} ne mangera/ront pas à la cantine le {{format(d)}}</div>
+        <div class="overlayText" > {{this.getRetiredChildrenNames()}} ne mangera/ront pas à la cantine le {{format(d)}}</div>
         <button (click)="postMeal()" (click)="closeNav()" class="overlayButton"> Valider</button>
         <button (click)="closeNav()"class="overlayButton"> Annuler</button>
       </div>

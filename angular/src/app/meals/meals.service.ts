@@ -53,7 +53,7 @@ export class MealsService {
     childrenByParent: Child[] = [];
     loggedParentId: number = 1;
     //list des tickedChild
-    tickedChildList: TickedChild[] = [];
+
 
     ticker: TicksByDay[] = [];
     mealsParent: Meal[] = [];
@@ -130,8 +130,9 @@ export class MealsService {
     }
 
 
-    getRetiredChildrenNames() {
-        return this.tickedChildList.filter(tickedChild => tickedChild.ticked)
+    getRetiredChildrenNames(tickedChildList: TickedChild[]) {
+
+        return tickedChildList.filter(tickedChild => tickedChild.ticked)
             .map(c => c.child.name)
     }
 

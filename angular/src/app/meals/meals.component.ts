@@ -20,6 +20,7 @@ export class MealsComponent implements OnInit {
     // mealCheck= object = map  key value de type any
     mealCheck: any = {}
 
+    tickedChildList: TickedChild[] = [];
 
     constructor(public service: MealsService) {
         /**
@@ -31,6 +32,7 @@ export class MealsComponent implements OnInit {
         this.service.getChildrenByParent(this.service.loggedParentId)
             .then(() => this.service.getMealsByParentId(this.service.loggedParentId))
             .then(() => this.service.getEatableDay())
+            .then( () => this.service.activeDay = this.service.eatableDay[0])
             .then(() => this.service.createTicker())
 
     }
@@ -64,20 +66,21 @@ export class MealsComponent implements OnInit {
     tabSelection(event) {
 
         console.log(event, "tab index=", event.index);
+        this.service.activeDay = this.service.eatableDay[event.index];
 
-        console.log("#Activeday#####" + this.service.activeDay);
+        console.log("Activeday >" , this.service.activeDay);
 
-        let tickedChildList = this.service.tickedChildList;
-        /* tickedChildList. map( function (tickedChild){
-           tickedChild.day=this.activeDay;
-           return tickedChild}, bind(this));
-         */
+
+        this.tickedChildList = this.service.childrenByParent
+            .map(child => ({child, ticked:false}));
+
+
     }
 
     isRetired(child:Child, day:string){
 
         let res =  this.service.isRetired(child.id, day);
-        console.log(child.name, day, res);
+        // console.log(child.name, day, res);
         return res;
     }
 
@@ -97,16 +100,14 @@ export class MealsComponent implements OnInit {
         //deuxieme version pour gérer aussi de checker les checkbox qui correspondent déjà à un meal de la dataBase
 
         //childPickList= liste des tickedChild
-        let tickedChildList = this.service.tickedChildList;
 
         // recupère le tickedChild (type TickedChild) qui a le child qui a l'id égale au child id de la checkbox qui est checked
-        let tickedChild = tickedChildList.find(tickedChild => tickedChild.child.id === event.source.value);
+        let tickedChild = this.tickedChildList.find(tickedChild => tickedChild.child.id === event.source.value);
 
         // attribue la valeur true ou false en fonction de si la checkbox est checked au booleen picked du ChildPick childPick
         tickedChild.ticked = event.checked;
 
 
-        console.log(tickedChildList);
         console.log("tickedChild=", tickedChild);
         console.log("childname=", tickedChild.child.name);//???? toujours le dernier clicke, checked ou non!!!
         console.log("tiked?=", tickedChild.ticked);
@@ -116,6 +117,10 @@ export class MealsComponent implements OnInit {
            .filter(function (meal){return meal.day;})
            .filter(function (meal) {return meal.child_id;})
      */
+    }
+
+    getRetiredChildrenNames(){
+        return this.service.getRetiredChildrenNames(this.tickedChildList);
     }
 
     /* Open when someone clicks on the span element */
@@ -130,8 +135,8 @@ export class MealsComponent implements OnInit {
 
 
     postMeal() {
+        console.log('Active day: ', this.service.activeDay);
         this.service.saveMeal(this.childId, this.service.activeDay);
-        console.log('xxx', this.service.activeDay);
     }
 
 }

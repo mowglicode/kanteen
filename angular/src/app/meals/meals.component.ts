@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Child, MealsService, tickedChild} from "./meals.service";
+import {Child, MealsService, TickedChild} from "./meals.service";
 
 
 
@@ -25,7 +25,7 @@ export class MealsComponent implements OnInit {
   constructor(public service:MealsService) {
     this.service.getEatableDay();
     this.service.getChildrenByParentId(this.service.loggedParentId);
-
+    this.service.getMealsByParentId(this.service.loggedParentId);
   }
 
 

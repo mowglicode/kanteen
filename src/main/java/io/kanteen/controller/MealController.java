@@ -38,7 +38,7 @@ public class MealController {
     }
 
     @ApiOperation(value = "Get meals by billed parent")
-    @RequestMapping(value = "/{id_parent}",method = RequestMethod.GET)
+    @RequestMapping(value = "/parent/{id_parent}",method = RequestMethod.GET)
     public List<MealDto> getMealsByParentId (@PathVariable(name="id_parent") long id){
         return mealService.getMealsByParentId(id);
     }

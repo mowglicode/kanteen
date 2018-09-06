@@ -134,7 +134,7 @@ public class MealService implements IMealService {
         List<MealDto> result = new ArrayList<>();
         if (tmp.isPresent()) {
             for (Meal m : tmp.get()) {
-                result.add(modelMapper.map(tmp.get(), MealDto.class));
+                result.add(modelMapper.map(m, MealDto.class));
             }
             return result;
         } else {

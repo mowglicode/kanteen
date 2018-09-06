@@ -21,7 +21,7 @@
     <div id="myNav" class="overlay">
       <!-- Overlay content -->
       <div class="overlay-content">      <!--*ngIf="this.service.tickedChild.ticked"-->
-        <p class="overlayText" > Votre enfant ne mangera pas à la cantine le {{d}}</p>
+        <div class="overlayText" > {{this.service.getRetiredChildrenNames()}} ne mangera pas à la cantine le {{d}}</div>
         <button (click)="postMeal()" (click)="closeNav()" class="overlayButton"> Valider</button>
         <button (click)="closeNav()"class="overlayButton"> Annuler</button>
       </div>
@@ -30,6 +30,4 @@
 
   </mat-tab>
 
-
-  {{mealsDayChild}}
 </mat-tab-group>

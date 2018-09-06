@@ -9,7 +9,7 @@ export interface Child {
 }
 
 //// Like a Meal without a date ======= CheckedChild ou tickedChild ???Like a Meal without a date
-export interface tickedChild {
+export interface TickedChild {
   child: Child;
   ticked: boolean;
 }
@@ -34,7 +34,7 @@ export class MealsService {
   childrenByParent: Child[] = [];
   loggedParentId: number = 1;
   //list des tickedChild
-  tickedChildList: tickedChild[] = [];
+  tickedChildList: TickedChild[] = [];
   mealsParent: Meal[] = [];
 
 
@@ -44,7 +44,7 @@ export class MealsService {
     this.http.get('http://localhost:8585/api/dates/eatableday')
       .subscribe((r: any[]) => {
         this.eatableDay = r;
-        console.log(this.eatableDay);
+        console.log('Eateable day', this.eatableDay);
       });
   }
 
@@ -52,7 +52,7 @@ export class MealsService {
     this.http.get('http://localhost:8585/api/children/parent/' + id)
       .subscribe((r: any[]) => {
         this.childrenByParent = r;
-        console.log(this.childrenByParent);
+        console.log('Childrenbyparent', this.childrenByParent);
 
 // Not the complete (good) api yet: need to check the meals present in the DB
         this.tickedChildList = this.childrenByParent.map(mapChildByChildPick)
@@ -68,18 +68,23 @@ export class MealsService {
     this.http.get('http://localhost:8585/api/meals/parent/' + id)
       .subscribe((r: any[]) => {
         this.mealsParent = r;
-        console.log(this.mealsParent);
+        console.log('mealsparent', this.mealsParent);
       })
   return this.mealsParent;
   }
 
+
+  getRetiredChildrenNames(){
+    return this.tickedChildList.filter(tickedChild => tickedChild.ticked )
+      .map(c => c.child.name)
+  }
 
 
 
 }
 
 
-function mapChildByChildPick(child): tickedChild {
+function mapChildByChildPick(child): TickedChild {
   return {
     child,
     ticked: false

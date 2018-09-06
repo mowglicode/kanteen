@@ -5,7 +5,7 @@
     <div class="checkchild">
       <ul style=" list-style-type:none">
         <li *ngFor="let c of this.service.childrenByParent" class="listStyle">
-          <mat-checkbox color="primary" (change)="childSelection($event)" [value]="c.id">
+          <mat-checkbox color="primary" (change)="childSelection($event)" [value]="c.id" [name]="c.name">
             {{this.c.name}}
           </mat-checkbox>
 
@@ -20,9 +20,10 @@
 <!--overlay-->
     <div id="myNav" class="overlay">
       <!-- Overlay content -->
-      <div class="overlay-content">
-        <button (click)="postMeal()" (click)="closeNav()"> Valider</button>
-        <button (click)="closeNav()"> Annuler</button>
+      <div class="overlay-content">      <!--*ngIf="this.service.tickedChild.ticked"-->
+        <p class="overlayText" > Votre enfant ne mangera pas à la cantine le {{d}}</p>
+        <button (click)="postMeal()" (click)="closeNav()" class="overlayButton"> Valider</button>
+        <button (click)="closeNav()"class="overlayButton"> Annuler</button>
       </div>
     </div>
 

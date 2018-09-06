@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {logging} from "selenium-webdriver";
+import {forEach} from "../../../node_modules/@angular/router/src/utils/collection";
+
 import {LoginService} from "../login.service";
 
 export interface Parent {
@@ -44,6 +45,7 @@ export class MealsService {
   constructor(public http: HttpClient, public loginService: LoginService) {
   }
 
+  activeDay: string;
   mailLogged: string = this.loginService.mailLogged;
   parentLogged:Parent = undefined;
   eatableDay: string[] = [];
@@ -65,12 +67,26 @@ export class MealsService {
       });
   }
 
-  getChildrenByParentId(id) {
+  getTickedChildListByParent(id) {
     this.http.get('http://localhost:8585/api/children/parent/' + id)
       .subscribe((r: any[]) => {
         this.childrenByParent = r;
         console.log('Childrenbyparent', this.childrenByParent);
         this.tickedChildList = this.childrenByParent.map(mapChildByChildPick)
+          .map(childTick => {
+
+
+          })
+          .map(function (tickedChild) {
+
+
+            if (this.isRetired(tickedChild.child.id, tickedChild.day)) {
+              tickedChild.ticked = true
+            }
+            console.log("mapped", tickedChild);
+            return tickedChild;
+          }.bind(this));
+
 
       })
   }
@@ -87,10 +103,8 @@ export class MealsService {
 
 // Not the complete (good) api yet: need to check the meals present in the DB
   // for each case, is it retired or not -> isRetired()
-  DbmealsIsOk() {
 
 
-  }
 
 
   saveMeal(childId, activeDay) {
@@ -125,6 +139,7 @@ export class MealsService {
 
 
 }
+
 function mapParent(parent:any):Parent{
   return {
     id:parent.id,
@@ -134,10 +149,9 @@ function mapParent(parent:any):Parent{
     school:parent.school
   }
 }
-function mapChildByChildPick(child, day): TickedChild {
+function mapChildByChildPick(child, day) {
   return {
     child,
-    ticked: false,
-    day,
+    ticked: false
   }
 }

@@ -14,7 +14,10 @@ export class PrivacyComponent implements OnInit {
 
   constructor(public service:PrivacyService, public http:HttpClient) {
     this.service.fetchContract();
+
   }
+
+
 
   ngOnInit() {
   }

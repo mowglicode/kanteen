@@ -18,7 +18,7 @@ import {
   MatTableModule,
   MatTabsModule,
   MatToolbarModule,
-  MatCheckboxModule
+  MatCheckboxModule, MatSelectModule
 } from "@angular/material";
 import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
 import { HomeComponent } from './home/home.component';
@@ -73,7 +73,8 @@ import { PrivacyAdminComponent } from './admin/privacy-admin/privacy-admin.compo
     MatTabsModule,
     FormsModule,
     MatTableModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

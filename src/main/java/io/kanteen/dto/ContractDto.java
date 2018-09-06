@@ -11,6 +11,7 @@ public class ContractDto {
     private String title;
     private String description;
     private List<ContractOptionDto> options = new ArrayList<>();
+    private boolean withOption;
 
 
 
@@ -27,6 +28,14 @@ public class ContractDto {
         this.title = title;
         this.description = description;
         this.options = options;
+    }
+
+    public ContractDto(long id, String title, String description, List<ContractOptionDto> options, boolean withOption) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.options = options;
+        this.withOption = withOption;
     }
 
     public long getId() {
@@ -65,4 +74,11 @@ public class ContractDto {
         this.options.add(option);
     }
 
+    public boolean isWithOption() {
+        return withOption;
+    }
+
+    public void setWithOption(boolean withOption) {
+        this.withOption = withOption;
+    }
 }

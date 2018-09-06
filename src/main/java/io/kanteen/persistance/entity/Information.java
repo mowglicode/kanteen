@@ -19,8 +19,7 @@ public class Information {
     private String expiry;
 
     @Column
-    private boolean hasExpiry;
-
+    boolean hasExpiration = true;
 
     public Information () {
 
@@ -53,5 +52,13 @@ public class Information {
 
     public void setExpiry(String expiry) {
         this.expiry = expiry;
+    }
+
+    public boolean isHasExpiration() {
+        return hasExpiration;
+    }
+
+    public void setHasExpiration(boolean hasExpiration) {
+        this.hasExpiration = hasExpiration;
     }
 }

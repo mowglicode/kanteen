@@ -140,7 +140,6 @@ public class SetupService implements ISetupService {
         infoOne = infoRepository.save(infoOne);
         infoTwo = infoRepository.save(infoTwo);
         infoThree = infoRepository.save(infoThree);
-
         infoFour = infoRepository.save(infoFour);
     }
 

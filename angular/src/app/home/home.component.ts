@@ -12,9 +12,9 @@ export class HomeComponent implements OnInit {
   id:number;
   description:string;
   expiry:string;
+  hasExpiration:boolean;
 
   constructor(public service: HomeService) {
-    this.service.getAllInformations();
   }
 
   ngOnInit() {

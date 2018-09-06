@@ -6,14 +6,16 @@ public class InformationDto {
     private long id;
     private String description;
     private String expiry;
+    boolean hasExpiration = true;
 
     public InformationDto() {
     }
 
-    public InformationDto(long id, String entitled, String description, String expiry) {
+    public InformationDto(long id, String description, String expiry, boolean hasExpiration) {
         this.id = id;
         this.description = description;
         this.expiry = expiry;
+        this.hasExpiration = hasExpiration;
     }
 
     public long getId() {
@@ -38,5 +40,13 @@ public class InformationDto {
 
     public void setExpiry(String expiry) {
         this.expiry = expiry;
+    }
+
+    public boolean isHasExpiration() {
+        return hasExpiration;
+    }
+
+    public void setHasExpiration(boolean hasExpiration) {
+        this.hasExpiration = hasExpiration;
     }
 }

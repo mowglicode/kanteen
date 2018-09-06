@@ -38,16 +38,17 @@
 
   <div class="container">
     <mat-form-field >
-    <input matInput class="week" type="number" placeholder="semaine n°" [(ngModel)]="week" name="week">
+    <input matInput class="week" type="number" placeholder="semaine n°" [(ngModel)]="week" name="week" required>
     </mat-form-field>
 
     <br>
     <mat-form-field  >
-      <textarea matInput placeholder="Indiquez le menu" [(ngModel)]="content" name="content"></textarea>
+      <textarea matInput placeholder="Indiquez le menu" [(ngModel)]="content" name="content" required></textarea>
     </mat-form-field>
   </div>
 
 <br>
   <button class="button"> enregistrer </button>
 </form>
+<br>
 

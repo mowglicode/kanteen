@@ -1,6 +1,8 @@
 package io.kanteen.persistance.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table
@@ -16,15 +18,15 @@ public class Menu {
     private String content;
 
     @Column(nullable = false)
+    @NotNull
+    @Size(min = 1)
     private int week;
 
     public Menu(String content) {
         this.content = content;
     }
 
-    public Menu(int week) {
-        this.week = week;
-    }
+
 
     public Menu() {
 

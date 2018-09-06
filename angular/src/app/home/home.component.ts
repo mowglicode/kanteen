@@ -10,11 +10,10 @@ export class HomeComponent implements OnInit {
 
   id:number;
   description:string;
-  entitled:string;
   expiry:string;
+  hasExpiration:boolean;
 
   constructor(public service: HomeService) {
-    this.service.getAllInformations();
   }
 
   ngOnInit() {

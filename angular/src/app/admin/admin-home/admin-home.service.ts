@@ -10,30 +10,15 @@ export type Information = {
 @Injectable({
   providedIn: 'root'
 })
-export class HomeService {
+export class AdminHomeService {
 
   informations: Information[] = [];
   notExpiredInformations: Information[] = [];
   information: Information;
-  show = false;
-  idDiv = -1;
+
 
 
   constructor(public http: HttpClient) {
-
-    // console.log('1978-11-01', this.hasExpired('1978-11-01'));
-    // console.log('2018-08-06', this.hasExpired('2018-08-06'));
-    // console.log('2018-09-04', this.hasExpired('2018-09-04'));
-    // console.log('2018-08-05', this.hasExpired('2018-08-05'));
-    // console.log('2008-09-04', this.hasExpired('2008-09-04'));
-    // console.log('2018-09-09', this.hasExpired('2018-09-09'));
-    // console.log('2018-09-04', this.hasExpired('2018-09-04'));
-    // console.log('2019-09-05', this.hasExpired('2019-09-05'));
-    // console.log('2018-07-04', this.hasExpired('2018-07-04'));
-    // console.log('2018-07-05', this.hasExpired('2018-07-05'));
-    // console.log('2018-08-04', this.hasExpired('2018-08-04'));
-    // console.log('2018-10-04', this.hasExpired('2018-10-04'));
-    // console.log('2018-10-10', this.hasExpired('2018-10-10'));
   }
 
   informationUrl = 'http://localhost:8585/api/informations';
@@ -63,15 +48,6 @@ export class HomeService {
       });
   }
 
-  showDescription(id) {
-    !this.show ?  this.show = true : this.show = false;
-    this.idDiv = id;
-  }
-
-  showIfExpiry() {
-
-    // console.log(this.information.expiry - this.datePipe.transform(this.today, 'yyyyMMdd'));
-  }
 
   treatInformations() {
     this.informations.forEach(info => {

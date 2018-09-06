@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Child, MealsService, TickedChild} from "./meals.service";
+import {forEach} from "../../../node_modules/@angular/router/src/utils/collection";
+import {bind} from "../../../node_modules/@angular/core/src/render3/instructions";
 
 
 @Component({
@@ -13,7 +15,7 @@ export class MealsComponent implements OnInit {
 
   @Input() child: Child
 
-  activeDay: string = "";
+
   childId: number = undefined;
   // mealCheck= object = map  key value de type any
   mealCheck: any = {}
@@ -21,7 +23,7 @@ export class MealsComponent implements OnInit {
 
   constructor(public service: MealsService) {
     this.service.getEatableDay();
-    this.service.getChildrenByParentId(this.service.loggedParentId);
+    this.service.getTickedChildListByParent(this.service.loggedParentId);
     this.service.getMealsByParentId(this.service.loggedParentId);
   }
 
@@ -52,13 +54,23 @@ export class MealsComponent implements OnInit {
     return `${this.getLabelDay(date.getDay())} ${date.getDate()}-${date.getMonth() + 1}  `;
   }
 
+  tabSelection(event){
 
+    console.log(event,"tab index=", event.index);
+    this.service.activeDay=this.service.eatableDay[event.index];
+    console.log("#Activeday#####"+this.service.activeDay);
+
+    let tickedChildList= this.service.tickedChildList;
+   /* tickedChildList. map( function (tickedChild){
+      tickedChild.day=this.activeDay;
+      return tickedChild}, bind(this));
+    */
+  }
 
   childSelection(event) {
     console.log(event, event.source.value, event.checked);
-    console.log("#day?"+ event.source.name);
-    this.activeDay=event.source.name;
-    console.log("#Activeday?"+this.activeDay);
+   // this.activeDay=event.source.name;
+   // console.log("#Activeday?"+this.activeDay);
 
     // childId prend la valeur de "value"(c.id) de l'event click une checkbox
     this.childId = event.source.value;
@@ -78,12 +90,13 @@ export class MealsComponent implements OnInit {
 
     // attribue la valeur true ou false en fonction de si la checkbox est checked au booleen picked du ChildPick childPick
     tickedChild.ticked = event.checked;
+    tickedChild.day= this.service.activeDay;
 
 
     console.log(tickedChildList);
-    console.log(tickedChild);
-    console.log(tickedChild.child.name);//???? toujours le dernier clicke, checked ou non!!!
-    console.log(tickedChild.ticked);
+    console.log("tickedChild=",tickedChild);
+    console.log("childname=",tickedChild.child.name);//???? toujours le dernier clicke, checked ou non!!!
+    console.log("tiked?=",tickedChild.ticked);
 
     //called when check a checkbox
     /* let  mealsDayChild = this.service.getMealsByParentId(this.service.loggedParentId)
@@ -104,8 +117,8 @@ export class MealsComponent implements OnInit {
 
 
   postMeal() {
-    this.service.saveMeal(this.childId, this.activeDay);
-    console.log('xxx', this.activeDay);
+    this.service.saveMeal(this.childId, this.service.activeDay);
+    console.log('xxx', this.service.activeDay);
   }
 
 }

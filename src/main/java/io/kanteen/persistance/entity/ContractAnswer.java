@@ -14,6 +14,10 @@ public class ContractAnswer {
     @ManyToOne
     Contract contract;
 
+    @ManyToOne
+    Parent parent;
+
+
     // Without action, it's not accepted
     private boolean accepted = false;
 

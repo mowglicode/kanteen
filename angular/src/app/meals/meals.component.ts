@@ -54,7 +54,8 @@ export class MealsComponent implements OnInit {
 
   dayTabSelection(event) {
     console.log(event, event.tab.textLabel);
-    //this.activeDay = event.tab.textLabel;
+    this.activeDay = event.tab.textLabel;
+    console.log(this.activeDay);
 
   }
 

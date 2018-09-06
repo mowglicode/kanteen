@@ -91,6 +91,10 @@ public class MealService implements IMealService {
 
     @Override
     public MealDto saveMealNoDto(long idChild, String day) {
+//        String s = "2011-07-08 03:48:45";
+//        DateFormat sdf = new SimpleDateFormat("EEE dd-MM-aa");
+//        Date d = sdf.parse(day);
+
         Optional<Child> tmp = childRepository.findById(idChild);
         if (tmp.isPresent()) {
             Child child = modelMapper.map(tmp.get(), Child.class);

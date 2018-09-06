@@ -51,9 +51,6 @@ public class SetupService implements ISetupService {
     Meal mealOne = new Meal(wilsonDoe, "20190315");
     Meal mealTwo = new Meal(wilsonDoe, "20190316");
     Meal mealThree = new Meal(wilsonDoe, "20190317");
-    Meal mealOne = new Meal(wilsonDoe, "20190315");
-    Meal mealTwo = new Meal(wilsonDoe, "20190316");
-    Meal mealThree = new Meal(wilsonDoe, "20190317");
     Menu menuOne = new Menu("Lasagnes, Yaourt");
     Menu menuTwo = new Menu("Pizza, Frites");
 
@@ -80,8 +77,7 @@ public class SetupService implements ISetupService {
     Information infoThree = new Information("Carnaval", "Le carnaval aura lieu le vendredi 8 mars 2019.");
 
     public void setUp() {
-    //Set up to start the ghost database
-    public void setUp() {
+        //Set up to start the ghost database
 
         wilsonDoe = childRepository.save(wilsonDoe);
         eliseDoe = childRepository.save(eliseDoe);
@@ -115,7 +111,7 @@ public class SetupService implements ISetupService {
 
         johnDoe = new Parent(accountOne, "John Doe", doeChild);
         janeDoe = new Parent(accountTwo, "Jane Doe", doeChild);
-        director = new Admin(directorAccount,"Jeanne");
+        director = new Admin(directorAccount, "Jeanne");
         adminRepository.save(director);
         johnDoe = new Parent(accountOne, "John Doe", doeChild);
         janeDoe = new Parent(accountTwo, "Jane Doe", doeChild);

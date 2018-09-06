@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Menu, MenusService} from "../menus.service";
+import {MenusService, Menu} from "../../menus/menus.service";
+
 
 @Component({
   selector: 'app-menu-admin',
@@ -10,20 +11,25 @@ export class MenuAdminComponent implements OnInit {
 
   content: string;
   id: number;
+  week: number
+  displayedColumns: string[] = ['menu', 'week'];
 
   constructor(public service: MenusService) {
     service.getAllMenus();
-
-
-
   }
 
   ngOnInit() {
   }
 
+modifyContent(){
 
+}
   onSubmit(){
-    this.service.saveMenu(this.content);
+    this.service.saveMenu(this.content, this.week);
+    console.log(this.content, this.week);
+    this.content = null;
+    this.week = null;
+
   }
 
   onDelete(menu:Menu){

@@ -7,9 +7,16 @@ import {LoginService} from "../login.service";
 export interface Parent {
   id: number;
   name: string;
-  account?: string;
+  account?: Account;
   children: Array<Child>;
   school?: string;
+}
+
+export interface Account {
+  id: number;
+  email: string;
+  phone?: string;
+  password?: string;
 }
 
 export interface Child {
@@ -42,7 +49,7 @@ export class MealsService {
 
   activeDay: string;
   mailLogged: string = this.loginService.mailLogged;
-  parentLogged:Parent = undefined;
+  parentLogged: Parent = undefined;
   eatableDay: string[] = [];
   childrenByParent: Child[] = [];
   loggedParentId: number = 1;
@@ -86,21 +93,17 @@ export class MealsService {
       })
   }
 
-  getParentByEmail(email: string):Parent {
-    this.http.get('http://localhost:8585/api/parents/email' + email)
+  getParentByEmail(email: string) {
+    this.http.get('http://localhost:8585/api/parents/email/' + email)
       .subscribe((r: any) => {
-        console.log("parent logged :"+r.name);
-        this.parentLogged=r;
+        this.loggedParentId = r.id;
       })
-    return
-  }
 
+  }
 
 
 // Not the complete (good) api yet: need to check the meals present in the DB
   // for each case, is it retired or not -> isRetired()
-
-
 
 
   saveMeal(childId, activeDay) {
@@ -136,6 +139,19 @@ export class MealsService {
 
 }
 
+function mapParents(parent: any): Parent {
+  return {
+    id: parent.id,
+    account: parent.account,
+    name: parent.name,
+    children: parent.children,
+    school: parent.school
+  }
+}
+
+function mapchildren(child: any): Child {
+  return
+}
 
 function mapChildByChildPick(child, day) {
   return {

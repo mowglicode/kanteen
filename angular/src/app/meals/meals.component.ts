@@ -20,7 +20,6 @@ export class MealsComponent implements OnInit {
   // mealCheck= object = map  key value de type any
   mealCheck: any = {}
 
-  idParentLogged:number = this.service.getParentByEmail(this.service.mailLogged).id;
 
   constructor(public service: MealsService) {
     this.service.getEatableDay();
@@ -31,6 +30,11 @@ export class MealsComponent implements OnInit {
   ngOnInit() {
   }
 
+  fetchParentId(){
+    console.log("mail logged :"+this.service.mailLogged);
+    this.service.getParentByEmail(this.service.mailLogged);
+    console.log("parent ID logged :"+this.service.loggedParentId);
+  }
   getLabelDay(i:number):string{
     var d = new Date();
     var weekday = new Array(7);

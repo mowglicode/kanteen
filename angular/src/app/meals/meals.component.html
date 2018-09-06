@@ -5,7 +5,7 @@
     <div class="checkchild">
       <ul style=" list-style-type:none">
         <li *ngFor="let c of this.service.childrenByParent" class="listStyle">
-          <mat-checkbox color="primary" (change)="childSelection($event)" [value]="c.id" [name]="c.name">
+          <mat-checkbox color="primary" (change)="childSelection($event)" [value]="c.id" [name]="d">
             {{this.c.name}}
           </mat-checkbox>
 

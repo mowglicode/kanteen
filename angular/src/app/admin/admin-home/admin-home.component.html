@@ -1,20 +1,25 @@
 <h2 class="mat-h2">Informations</h2>
-<div *ngFor="let information of this.service.notExpiredInformations">
-  <ul>
-    <li>{{information.description}} <button><mat-icon class="example-tab-icon">clear</mat-icon></button></li>
-  </ul>
+<div>
+  <div *ngFor="let information of this.service.notExpiredInformations" class="divListInformations">
+    <ul>
+      <li>{{information.description}}
+        <button class="listButtonInformations">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </li>
+    </ul>
+  </div>
 </div>
-
 <div>
   <form>
-      <label>Entrez des informations</label>
-      <input type="text" name="Description" required="required" value="Description"><br>
-      <div>
-        <input type="radio" name="hasExpiration"><label>Expiration indéterminée</label><br>
-        <input type="radio" name="hasExpiration" value="Date d'expiration"><label>Date d'expiration</label><br>
-      </div>
-      <input type="date" name="Expiry"><br>
-      <input type="button" value="Ajouter">
+    <label>Entrez des informations</label>
+    <input type="text" name="Description" required="required" value="Description"><br>
+    <div>
+      <input type="radio" name="hasExpiration"><label>Expiration indéterminée</label><br>
+      <input type="radio" name="hasExpiration" value="Date d'expiration"><label>Date d'expiration</label><br>
+    </div>
+    <input type="date" name="Expiry"><br>
+    <input type="button" value="Ajouter">
   </form>
 
 </div>

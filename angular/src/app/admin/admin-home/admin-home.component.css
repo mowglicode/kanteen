@@ -1,0 +1,14 @@
+.listButtonInformations {
+  color: white;
+  background: dodgerblue;
+  float: right;
+  margin-right: 15px;
+}
+.divListInformations {
+  border: #4ca1ff 3px solid;
+  display: grid;
+  border-bottom: none;
+}
+.divListInformations:last-of-type {
+  border-bottom: #4ca1ff 3px solid;
+}

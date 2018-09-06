@@ -12,6 +12,7 @@ export interface Options {
   optionName:string
 }
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,7 +27,7 @@ export class PrivacyService {
     this.http.get<any[]>('http://localhost:8585/api/admin/privacy/contracts')
       .subscribe((r: any[]) => {
         this.privacy = r.map(contract => mapAnyToContract(contract));
-        console.log(this.privacy);
+        console.log('contracts', this.privacy);
       });
   }
 
@@ -41,6 +42,7 @@ export class PrivacyService {
       withOption: contract.withOption
     }
   }
+
 
 
 

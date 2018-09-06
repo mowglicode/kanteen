@@ -1,36 +1,36 @@
-<h2 class="menus-h2">Menus</h2>
+<!--<h2 class="menus-h2">Menus</h2>-->
 
-<mat-accordion>
-  <mat-expansion-panel *ngFor="let menu of this.service.menus" >
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Semaine n°: {{menu.week}}
-      </mat-panel-title>
-      <mat-panel-description>
-        Cliquez pour voir le menu
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <p>{{menu.content}}</p>
-    <button mat-flat-button (click)="onDelete(menu)"><mat-icon>delete</mat-icon></button>
-  </mat-expansion-panel>
-</mat-accordion>
+<!--<mat-accordion>-->
+  <!--<mat-expansion-panel *ngFor="let menu of this.service.menus" >-->
+    <!--<mat-expansion-panel-header>-->
+      <!--<mat-panel-title>-->
+        <!--Semaine n°: {{menu.week}}-->
+      <!--</mat-panel-title>-->
+      <!--<mat-panel-description>-->
+        <!--Cliquez pour voir le menu-->
+      <!--</mat-panel-description>-->
+    <!--</mat-expansion-panel-header>-->
+    <!--<p>{{menu.content}}</p>-->
+    <!--<button mat-flat-button (click)="onDelete(menu)"><mat-icon>delete</mat-icon></button>-->
+  <!--</mat-expansion-panel>-->
+<!--</mat-accordion>-->
 
-<br>
+<!--<br>-->
 
-<form (submit)="onSubmit()">
+<!--<form (submit)="onSubmit()">-->
 
-  <div class="container">
-    <mat-form-field>
-    <input matInput class="week" type="number" placeholder="semaine n°" [(ngModel)]="week" name="week">
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <textarea  matInput placeholder="Indiquez le menu" [(ngModel)]="content" name="content"></textarea>
-    </mat-form-field>
+  <!--<div class="container">-->
+    <!--<mat-form-field>-->
+    <!--<input matInput class="week" type="number" placeholder="semaine n°" [(ngModel)]="week" name="week">-->
+    <!--</mat-form-field>-->
+    <!--<br>-->
+    <!--<mat-form-field>-->
+      <!--<textarea  matInput placeholder="Indiquez le menu" [(ngModel)]="content" name="content"></textarea>-->
+    <!--</mat-form-field>-->
 
-  </div>
+  <!--</div>-->
 
-<br>
-  <button class="button"> enregistrer </button>
-</form>
+<!--<br>-->
+  <!--<button class="button"> enregistrer </button>-->
+<!--</form>-->
 

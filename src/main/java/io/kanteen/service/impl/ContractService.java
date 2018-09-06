@@ -12,7 +12,6 @@ import io.kanteen.service.IContractService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -22,10 +21,8 @@ public class ContractService implements IContractService {
 
     @Autowired
     private IContractRepository contractRepository;
-
     @Autowired
     private IContractOptionRepository contractOptionRepository;
-
     @Autowired
     private ModelMapper modelMapper;
 

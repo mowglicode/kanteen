@@ -1,7 +1,7 @@
 <h2 class="menus-h2">Menus</h2>
 
 <mat-accordion>
-  <mat-expansion-panel *ngFor="let menu of this.service.menus" hideToggle>
+  <mat-expansion-panel *ngFor="let menu of this.service.menus" >
     <mat-expansion-panel-header>
       <mat-panel-title>
          Semaine : {{menu.week}}
@@ -9,8 +9,7 @@
       <mat-panel-description>
         Cliquez pour voir le menu
       </mat-panel-description>
-
-      <a (click)="onDelete(menu)"><mat-icon>delete</mat-icon></a>
+      <a class="delete_button" (click)="onDelete(menu)"><mat-icon>delete</mat-icon></a>
     </mat-expansion-panel-header>
     <p *ngIf="edit === false">{{menu.content}}</p>
 

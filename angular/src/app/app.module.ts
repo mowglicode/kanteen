@@ -38,7 +38,7 @@ import { DataComponent } from './data/data.component';
     AdminMealsComponent,
     MealsComponent,
     HomeComponent,
-    DataComponent
+    DataComponent,
   ],
   imports: [
     BrowserModule,

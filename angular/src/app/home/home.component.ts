@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Information, HomeService} from "./home.service";
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,7 +11,6 @@ export class HomeComponent implements OnInit {
 
   id:number;
   description:string;
-  entitled:string;
   expiry:string;
 
   constructor(public service: HomeService) {

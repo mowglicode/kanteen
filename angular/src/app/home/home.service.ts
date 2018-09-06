@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
-
 export type Information = {
   id:number
   description:string
-  entitled:string
   expiry:string
 }
 @Injectable({
@@ -31,7 +29,6 @@ export class HomeService {
     this.http.get(this.informationUrl)
       .subscribe((result: any[]) => {
         this.informations = result
-
       });
   }
 

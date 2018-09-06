@@ -24,6 +24,7 @@ import { AdminMealsComponent } from './admin/admin-meals/admin-meals.component';
 import { DataComponent } from './data/data.component';
 import { AdminMainTabsComponent } from './admin/admin-main-tabs/admin-main-tabs.component';
 import {LoginComponent} from "./login/login.component";
+import {AdminHomeComponent} from "./admin/admin-home/admin-home.component";
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {LoginComponent} from "./login/login.component";
     HomeComponent,
     DataComponent,
     AdminMainTabsComponent,
-    LoginComponent
+    LoginComponent,
+    AdminHomeComponent
   ],
   imports: [
     BrowserModule,

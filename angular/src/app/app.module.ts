@@ -31,6 +31,7 @@ import { AdminMainTabsComponent } from './admin/admin-main-tabs/admin-main-tabs.
 import {AdminMealsDatesComponent} from './admin/admin-meals-dates/admin-meals-dates.component';
 import {AdminMealsChildsComponent} from "./admin/admin-meals-childs/admin-meals-childs.component";
 import {AdminMealsComponent} from "./admin/admin-meals/admin-meals.component";
+import { PrivacyAdminComponent } from './admin/privacy-admin/privacy-admin.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import {AdminMealsComponent} from "./admin/admin-meals/admin-meals.component";
     MealsComponent,
     HomeComponent,
     DataComponent,
-    AdminMainTabsComponent
+    AdminMainTabsComponent,
+    PrivacyAdminComponent
   ],
   imports: [
     BrowserModule,

@@ -6,11 +6,16 @@ import {LoginService} from "../login.service";
 export interface Parent {
   id: number;
   name: string;
-  account?: string;
+  account: Account;
   children: Array<Child>;
   school?: string;
 }
-
+export interface Account {
+  id: number;
+  email?:string;
+  password?:string;
+  phone?:string;
+}
 export interface Child {
   id: number;
   name: string;
@@ -71,7 +76,7 @@ export class MealsService {
   }
 
   getParentByEmail(email: string):Parent {
-    this.http.get('http://localhost:8585/api/parents/email' + email)
+    this.http.get('http://localhost:8585/api/parents/email/' + email)
       .subscribe((r: any) => {
         console.log("parent logged :"+r.name);
         this.parentLogged=r;

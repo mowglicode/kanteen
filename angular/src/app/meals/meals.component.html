@@ -1,7 +1,7 @@
 <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
   <mat-tab *ngFor="let d of this.service.eatableDay" [label]="format(d)" dynamicHeight="true">
 
-    <div class="checkchild">
+    <div class="checkchild" >
       <ul style=" list-style-type:none">
         <li *ngFor="let c of this.service.childrenByParent" class="listStyle">
           <mat-checkbox color="primary" (change)="childSelection($event)" [value]="c.id" [name]="d">
@@ -11,7 +11,7 @@
         </li>
       </ul>
     </div>
-
+    <span>{{this.fetchParentId()}}</span>
     <div class="checkchild">
       <button mat-raised-button (click)="openNav()">OK</button>
     </div>

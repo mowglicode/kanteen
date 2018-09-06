@@ -18,7 +18,7 @@ export class MealsComponent implements OnInit {
   // mealCheck= object = map  key value de type any
   mealCheck: any = {}
 
-  idParentLogged:number = this.service.getParentByEmail(this.service.mailLogged).id;
+  idParentLogged:number;
 
   constructor(public service: MealsService) {
     this.service.getEatableDay();
@@ -43,6 +43,10 @@ export class MealsComponent implements OnInit {
     return weekday[i];
   }
 
+  fetchParentId(){
+    this.idParentLogged=this.service.getParentByEmail(this.service.mailLogged).id;
+    console.log("parent logged :"+this.idParentLogged);
+  }
   format(day: string):string {
     let date = new Date();
     date.setFullYear(parseInt(day.slice(0, 4)));

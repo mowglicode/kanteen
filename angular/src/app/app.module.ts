@@ -10,7 +10,7 @@ import { MealsComponent } from './meals/meals.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
   MatButtonModule, MatCheckboxModule,
-  MatExpansionModule, MatFormFieldModule, MatIconModule,
+  MatExpansionModule, MatFormFieldModule, MatIconModule, MatInputModule,
   MatListModule,
   MatMenuModule, MatTableDataSource, MatTableModule,
   MatTabsModule,
@@ -60,7 +60,8 @@ import { AdminMainTabsComponent } from './admin/admin-main-tabs/admin-main-tabs.
     MatTabsModule,
     FormsModule,
     MatTableModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

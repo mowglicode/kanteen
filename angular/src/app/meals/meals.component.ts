@@ -55,10 +55,9 @@ export class MealsComponent implements OnInit {
 
 
   childSelection(event) {
-    console.log(event, event.source.value, event.checked);
-    console.log("#day?"+ event.source.name);
+
     this.activeDay=event.source.name;
-    console.log("#Activeday?"+this.activeDay);
+
 
     // childId prend la valeur de "value"(c.id) de l'event click une checkbox
     this.childId = event.source.value;
@@ -85,11 +84,7 @@ export class MealsComponent implements OnInit {
     console.log(tickedChild.child.name);//???? toujours le dernier clicke, checked ou non!!!
     console.log(tickedChild.ticked);
 
-    //called when check a checkbox
-    /* let  mealsDayChild = this.service.getMealsByParentId(this.service.loggedParentId)
-       .filter(function (meal){return meal.day;})
-       .filter(function (meal) {return meal.child_id;})
- */
+
   }
 
   /* Open when someone clicks on the span element */

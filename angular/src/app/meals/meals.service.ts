@@ -55,19 +55,14 @@ export class MealsService {
         console.log('Childrenbyparent', this.childrenByParent);
         this.tickedChildList = this.childrenByParent.map(mapChildByChildPick)
 
+
       })
-  }
-
-
-
-
-// Not the complete (good) api yet: need to check the meals present in the DB
-  // for each case, is it retired or not -> isRetired()
-  DbmealsIsOk(){
-
-
 
   }
+
+
+
+
 
 
 

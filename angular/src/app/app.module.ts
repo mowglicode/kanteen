@@ -9,33 +9,20 @@ import { MainTabsComponent } from './main-tabs/main-tabs.component';
 import { MealsComponent } from './meals/meals.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
-  MatButtonModule,
-  MatExpansionModule,
-  MatFormFieldModule,
-  MatIconModule,
+  MatButtonModule, MatCheckboxModule,
+  MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatInputModule,
   MatListModule,
-  MatMenuModule,
-  MatTableDataSource,
-  MatTableModule,
+  MatMenuModule, MatTableDataSource, MatTableModule,
   MatTabsModule,
-  MatCheckboxModule,
-  MatToolbarModule,
-  MatInputModule,
-  MatSelectModule
-}
-from "@angular/material";
+  MatToolbarModule
+} from "@angular/material";
 import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
 import { HomeComponent } from './home/home.component';
-
-import { PrivacyComponent } from './privacy/privacy.component';
+import { AdminMealsDatesComponent } from './admin/admin-meals-dates/admin-meals-dates.component';
+import { AdminMealsChildsComponent } from './admin/admin-meals-childs/admin-meals-childs.component';
+import { AdminMealsComponent } from './admin/admin-meals/admin-meals.component';
 import { DataComponent } from './data/data.component';
 import { AdminMainTabsComponent } from './admin/admin-main-tabs/admin-main-tabs.component';
-import {LoginComponent} from "./login/login.component";
-import {AdminHomeComponent} from "./admin/admin-home/admin-home.component";
-import {AdminMealsDatesComponent} from './admin/admin-meals-dates/admin-meals-dates.component';
-import {AdminMealsChildsComponent} from "./admin/admin-meals-childs/admin-meals-childs.component";
-import {AdminMealsComponent} from "./admin/admin-meals/admin-meals.component";
-import { PrivacyAdminComponent } from './admin/privacy-admin/privacy-admin.component';
 
 
 @NgModule({
@@ -43,8 +30,6 @@ import { PrivacyAdminComponent } from './admin/privacy-admin/privacy-admin.compo
     AppComponent,
     MenusComponent,
     MainTabsComponent,
-    MealsComponent,
-    PrivacyComponent,
     MealsComponent,
     MenuAdminComponent,
     MealsComponent,
@@ -54,12 +39,7 @@ import { PrivacyAdminComponent } from './admin/privacy-admin/privacy-admin.compo
     MealsComponent,
     HomeComponent,
     DataComponent,
-    AdminMainTabsComponent,
-    AdminHomeComponent,
-    LoginComponent,
-    DataComponent,
-    AdminMainTabsComponent,
-    PrivacyAdminComponent
+    AdminMainTabsComponent
   ],
   imports: [
     BrowserModule,
@@ -76,14 +56,14 @@ import { PrivacyAdminComponent } from './admin/privacy-admin/privacy-admin.compo
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatButtonModule,
     MatCheckboxModule,
+    MatButtonModule,
     MatTabsModule,
     FormsModule,
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

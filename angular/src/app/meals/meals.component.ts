@@ -49,17 +49,16 @@ export class MealsComponent implements OnInit {
     date.setUTCMonth(parseInt(day.slice(5, 7)) - 1); // Month starts at 0 !
     date.setUTCDate(parseInt(day.slice(8, 11))); // day of the month, starts at 1
     // console.log(date);
-    return `${this.getLabelDay(date.getDay())} ${date.getDate()}/${date.getMonth() + 1}  `;
+    return `${this.getLabelDay(date.getDay())} ${date.getDate()}-${date.getMonth() + 1}  `;
   }
 
-  dayTabSelection(event) {
-    console.log(event, event.tab.textLabel);
-    this.activeDay = event.tab.textLabel;
-    console.log(this.activeDay);
-  }
+
 
   childSelection(event) {
     console.log(event, event.source.value, event.checked);
+    console.log("#day?"+ event.source.name);
+    this.activeDay=event.source.name;
+    console.log("#Activeday?"+this.activeDay);
 
     // childId prend la valeur de "value"(c.id) de l'event click une checkbox
     this.childId = event.source.value;

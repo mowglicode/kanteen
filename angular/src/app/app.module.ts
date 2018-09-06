@@ -8,7 +8,6 @@ import {FormsModule} from "@angular/forms";
 import { MainTabsComponent } from './main-tabs/main-tabs.component';
 import { MealsComponent } from './meals/meals.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-
 import {
   MatButtonModule,
   MatExpansionModule,
@@ -19,10 +18,12 @@ import {
   MatTableDataSource,
   MatTableModule,
   MatTabsModule,
+  MatCheckboxModule,
   MatToolbarModule,
-  MatCheckboxModule, MatInputModule,
+  MatInputModule,
   MatSelectModule
-} from "@angular/material";
+}
+from "@angular/material";
 import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
 import { HomeComponent } from './home/home.component';
 
@@ -82,7 +83,6 @@ import { PrivacyAdminComponent } from './admin/privacy-admin/privacy-admin.compo
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    MatFormFieldModule,
     MatSelectModule
   ],
   providers: [],

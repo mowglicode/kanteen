@@ -25,8 +25,8 @@ public class ContractAnswerController {
 
     @ApiOperation(value = "Get answer by contract_id")
     @RequestMapping(value = "/admin/privacy/contracts/answers/{id}", method = RequestMethod.GET)
-    public ContractAnswerDto getContractAnswerById(@PathVariable long id){
-        return contractAnswerService.displayContractAnswerDtoById(id);
+    public List<ContractAnswerDto> getContractAnswerById(@PathVariable long id){
+        return contractAnswerService.displayContractAnswerDtoByContractId(id);
     }
 
     @ApiOperation(value = "Save Answers")

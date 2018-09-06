@@ -12,15 +12,15 @@ export interface Child {
 export interface TickedChild {
   child: Child;
   ticked: boolean;
+  day: string;
 }
 
 
 export interface Meal {
   id: number;
   day: string;
-  child_id: number;
+  child: Child;
 }
-
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +36,7 @@ export class MealsService {
   //list des tickedChild
   tickedChildList: TickedChild[] = [];
   mealsParent: Meal[] = [];
-
+  ticked: boolean = false;
 
   // Should have something with Meal and Date
 
@@ -53,11 +53,23 @@ export class MealsService {
       .subscribe((r: any[]) => {
         this.childrenByParent = r;
         console.log('Childrenbyparent', this.childrenByParent);
-
-// Not the complete (good) api yet: need to check the meals present in the DB
         this.tickedChildList = this.childrenByParent.map(mapChildByChildPick)
+
       })
   }
+
+
+
+
+// Not the complete (good) api yet: need to check the meals present in the DB
+  // for each case, is it retired or not -> isRetired()
+  DbmealsIsOk(){
+
+
+
+  }
+
+
 
   saveMeal(childId, activeDay) {
     this.http.post(`http://localhost:8585/api/meals/${childId}/${activeDay}`, null)
@@ -79,14 +91,24 @@ export class MealsService {
       .map(c => c.child.name)
   }
 
+  isRetired(childId:number, day:string){
+    this.mealsParent.forEach(function (meal)  {
+      if (meal.child.id === childId && meal.day === day){
+        return true;
+      }else{
+        return false;
+      }
+    })
+  }
 
 
 }
 
 
-function mapChildByChildPick(child): TickedChild {
+function mapChildByChildPick(child, day): TickedChild {
   return {
     child,
-    ticked: false
+    ticked: false,
+    day,
   }
 }

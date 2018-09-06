@@ -44,9 +44,10 @@ export class MealsComponent implements OnInit {
   }
 
   fetchParentId(){
-    this.idParentLogged=this.service.getParentByEmail(this.service.mailLogged).id;
-    console.log("parent logged :"+this.idParentLogged);
+    this.service.getParentByEmail(this.service.mailLogged);
+    // console.log("parent logged :"+this.idParentLogged);
   }
+  
   format(day: string):string {
     let date = new Date();
     date.setFullYear(parseInt(day.slice(0, 4)));

@@ -75,13 +75,12 @@ export class MealsService {
       })
   }
 
-  getParentByEmail(email: string):Parent {
+  getParentByEmail(email: string) {
     this.http.get('http://localhost:8585/api/parents/email/' + email)
       .subscribe((r: any) => {
-        console.log("parent logged :"+r.name);
         this.parentLogged=r;
       })
-    return
+
   }
 
 
@@ -126,7 +125,15 @@ export class MealsService {
 
 
 }
-
+function mapParent(parent:any):Parent{
+  return {
+    id:parent.id,
+    name:parent.name,
+    children:parent.child,
+    account:parent.account,
+    school:parent.school
+  }
+}
 function mapChildByChildPick(child, day): TickedChild {
   return {
     child,

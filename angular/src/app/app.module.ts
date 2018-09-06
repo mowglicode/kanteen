@@ -39,7 +39,8 @@ import { AdminMainTabsComponent } from './admin/admin-main-tabs/admin-main-tabs.
     MealsComponent,
     HomeComponent,
     DataComponent,
-    AdminMainTabsComponent
+    AdminMainTabsComponent,
+    MenuAdminComponent
   ],
   imports: [
     BrowserModule,

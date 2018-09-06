@@ -1,6 +1,15 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {logging} from "selenium-webdriver";
+import {LoginService} from "../login.service";
 
+export interface Parent {
+  id: number;
+  name: string;
+  account?: string;
+  children: Array<Child>;
+  school?: string;
+}
 
 export interface Child {
   id: number;
@@ -27,9 +36,11 @@ export interface Meal {
 })
 export class MealsService {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public loginService: LoginService) {
   }
 
+  mailLogged: string = this.loginService.mailLogged;
+  parentLogged:Parent = undefined;
   eatableDay: string[] = [];
   childrenByParent: Child[] = [];
   loggedParentId: number = 1;
@@ -37,6 +48,7 @@ export class MealsService {
   tickedChildList: TickedChild[] = [];
   mealsParent: Meal[] = [];
   ticked: boolean = false;
+
 
   // Should have something with Meal and Date
 
@@ -58,17 +70,23 @@ export class MealsService {
       })
   }
 
+  getParentByEmail(email: string):Parent {
+    this.http.get('http://localhost:8585/api/parents/email' + email)
+      .subscribe((r: any) => {
+        console.log("parent logged :"+r.name);
+        this.parentLogged=r;
+      })
+    return
+  }
 
 
 
 // Not the complete (good) api yet: need to check the meals present in the DB
   // for each case, is it retired or not -> isRetired()
-  DbmealsIsOk(){
-
+  DbmealsIsOk() {
 
 
   }
-
 
 
   saveMeal(childId, activeDay) {
@@ -82,20 +100,20 @@ export class MealsService {
         this.mealsParent = r;
         console.log('mealsparent', this.mealsParent);
       })
-  return this.mealsParent;
+    return this.mealsParent;
   }
 
 
-  getRetiredChildrenNames(){
-    return this.tickedChildList.filter(tickedChild => tickedChild.ticked )
+  getRetiredChildrenNames() {
+    return this.tickedChildList.filter(tickedChild => tickedChild.ticked)
       .map(c => c.child.name)
   }
 
-  isRetired(childId:number, day:string){
-    this.mealsParent.forEach(function (meal)  {
-      if (meal.child.id === childId && meal.day === day){
+  isRetired(childId: number, day: string) {
+    this.mealsParent.forEach(function (meal) {
+      if (meal.child.id === childId && meal.day === day) {
         return true;
-      }else{
+      } else {
         return false;
       }
     })
@@ -103,7 +121,6 @@ export class MealsService {
 
 
 }
-
 
 function mapChildByChildPick(child, day): TickedChild {
   return {

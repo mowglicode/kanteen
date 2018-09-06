@@ -74,6 +74,13 @@ export class MealsComponent implements OnInit {
          */
     }
 
+    isRetired(child:Child, day:string){
+
+        let res =  this.service.isRetired(child.id, day);
+        console.log(child.name, day, res);
+        return res;
+    }
+
     childSelection(event) {
         console.log(event, event.source.value, event.checked);
         // this.activeDay=event.source.name;

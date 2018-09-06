@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {forEach} from "../../../node_modules/@angular/router/src/utils/collection";
 
 import {LoginService} from "../login.service";
-import {tick} from "@angular/core/testing";
 
 export interface Parent {
     id: number;
@@ -100,31 +98,7 @@ export class MealsService {
             .then(r =>this.childrenByParent = r)
     }
 
-    getTickedChildListByParent(id) {
-        return this.http.get('http://localhost:8585/api/children/parent/' + id)
-            .toPromise()
-            .then((r: any[]) => {
-                this.childrenByParent = r;
 
-
-                this.tickedChildList = this.childrenByParent.map(mapChildByChildPick)
-                    .map(childTick => {
-
-
-                    })
-                    .map(function (tickedChild) {
-
-
-                        if (this.isRetired(tickedChild.child.id, tickedChild.day)) {
-                            tickedChild.ticked = true
-                        }
-                        console.log("mapped", tickedChild);
-                        return tickedChild;
-                    }.bind(this));
-
-
-            })
-    }
 
     getParentByEmail(email: string) {
         return this.http.get('http://localhost:8585/api/parents/email' + email)
@@ -162,7 +136,7 @@ export class MealsService {
     }
 
     isRetired(childId: number, day: string) {
-        this.mealsParent.forEach(function (meal) {
+        return this.mealsParent.some(function (meal) {
             if (meal.child.id === childId && meal.day === day) {
                 return true;
             } else {

@@ -26,18 +26,23 @@ public class SetupService implements ISetupService {
     @Autowired
     private IInformationRepository infoRepository;
 
+    @Autowired
+    private IAdminRepository adminRepository;
+
+
     Child wilsonDoe = new Child("Wilson Doe", "CM2");
     Child eliseDoe = new Child("Elise Doe", "CE1");
 
     Parent johnDoe;
     Parent janeDoe;
+    Admin director;
 
-    Meal mealOne = new Meal(wilsonDoe,"20190315");
-    Meal mealTwo = new Meal(wilsonDoe,"20190316");
-    Meal mealThree = new Meal(wilsonDoe,"20190317");
+    Meal mealOne = new Meal(wilsonDoe, "20190315");
+    Meal mealTwo = new Meal(wilsonDoe, "20190316");
+    Meal mealThree = new Meal(wilsonDoe, "20190317");
     Menu menuOne = new Menu("Lasagnes, Yaourt");
     Menu menuTwo = new Menu("Pizza, Frites");
-
+    Account directorAccount = new Account("director@kanteen.com", "0123456789");
     Account accountOne = new Account("johnDoe@kanteen.com", "06.23.23.23.23");
 
     Account accountTwo = new Account("janeDoe@kanteen.com", "06.24.24.24.24");
@@ -46,7 +51,7 @@ public class SetupService implements ISetupService {
     Information infoTwo = new Information( "Le bâtiment B sera rénové.", "2018-09-11");
     Information infoThree = new Information("Le carnaval aura lieu le vendredi 8 mars 2019.", "2018-09-12");
 
-    public void setUp(){
+    public void setUp() {
 
         wilsonDoe = childRepository.save(wilsonDoe);
         eliseDoe = childRepository.save(eliseDoe);
@@ -55,15 +60,19 @@ public class SetupService implements ISetupService {
         doeChild.add(wilsonDoe);
         doeChild.add(eliseDoe);
 
+        accountOne.setPassword("toto");
+        accountTwo.setPassword("tata");
         accountRepository.save(accountOne);
         accountRepository.save(accountTwo);
 
-        johnDoe = new Parent(accountOne,"John Doe", doeChild);
-        janeDoe = new Parent( accountTwo,"Jane Doe", doeChild);
+        accountRepository.save(directorAccount);
 
+        johnDoe = new Parent(accountOne, "John Doe", doeChild);
+        janeDoe = new Parent(accountTwo, "Jane Doe", doeChild);
+        director = new Admin(directorAccount,"Jeanne");
+        adminRepository.save(director);
         johnDoe = parentRepository.save(johnDoe);
         janeDoe = parentRepository.save(janeDoe);
-
         mealOne = mealRepository.save(mealOne);
         mealTwo = mealRepository.save(mealTwo);
         mealThree = mealRepository.save(mealThree);
@@ -82,7 +91,7 @@ public class SetupService implements ISetupService {
         infoThree = infoRepository.save(infoThree);
     }
 
-    public void tearDown(){
+    public void tearDown() {
         parentRepository.deleteAll();
         childRepository.deleteAll();
         mealRepository.deleteAll();

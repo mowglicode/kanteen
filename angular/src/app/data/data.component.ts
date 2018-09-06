@@ -8,6 +8,8 @@ import {DataService} from '../data.service';
 })
 export class DataComponent implements OnInit {
 
+  disabled: boolean = false;
+
   constructor(public service:DataService) { }
 
   ngOnInit() {
@@ -15,6 +17,11 @@ export class DataComponent implements OnInit {
 
   createDatabase(){
     this.service.createDatabase();
+    this.disablingButtonCreateDB()
+  }
+
+  disablingButtonCreateDB(){
+    this.disabled = true;
   }
 
 }

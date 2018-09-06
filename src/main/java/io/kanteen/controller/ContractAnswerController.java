@@ -32,6 +32,8 @@ public class ContractAnswerController {
     @ApiOperation(value = "Save Answers")
     @RequestMapping(value = "/admin/privacy/contracts/answers", method = RequestMethod.POST)
     public ContractAnswerDto saveContractAnswer(@RequestBody ContractAnswerDto contractAnswerDto){
+        System.out.println("POSTED a contract DTO");
+        System.out.println(contractAnswerDto);
         return  contractAnswerService.saveContractAnswer(contractAnswerDto);
     }
 

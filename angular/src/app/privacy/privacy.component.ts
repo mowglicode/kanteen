@@ -23,6 +23,7 @@ export class PrivacyComponent implements OnInit {
   }
 
   onSubmit(){
-    this.http.post('http://localhost:8080/api/admin/privacy/contracts', this.body);
+    this.http.post('http://localhost:8080/api/admin/privacy/contracts', this.body)
+        .subscribe()
   }
 }

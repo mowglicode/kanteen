@@ -51,6 +51,7 @@ public class ContractService implements IContractService {
             for (ContractOption option : options) {
                 ContractOptionDto optionDto = modelMapper.map(option, ContractOptionDto.class);
                 dto.addOption(optionDto);
+                System.out.println(optionDto);
             }
             return dto;
 
@@ -87,6 +88,7 @@ public class ContractService implements IContractService {
                 ContractOption option = modelMapper.map(optionDto, ContractOption.class);
                 option.setContract(contract);
                 contractOptionRepository.save(option);
+                optionDto.setId(option.getId());
             }
         }
         return displayContractById(contract.getId());

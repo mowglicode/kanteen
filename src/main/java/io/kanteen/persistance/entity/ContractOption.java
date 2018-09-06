@@ -15,6 +15,7 @@ public class ContractOption {
     @ManyToOne
     Contract contract;
 
+    // refactor to just name
     private String optionName;
 
 

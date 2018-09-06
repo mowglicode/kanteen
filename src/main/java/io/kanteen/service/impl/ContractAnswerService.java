@@ -5,8 +5,12 @@ import io.kanteen.dto.ContractDto;
 import io.kanteen.exception.NotFoundException;
 import io.kanteen.persistance.entity.Contract;
 import io.kanteen.persistance.entity.ContractAnswer;
+import io.kanteen.persistance.entity.ContractOption;
+import io.kanteen.persistance.entity.Parent;
 import io.kanteen.persistance.repository.IContractAnswerRepository;
+import io.kanteen.persistance.repository.IContractOptionRepository;
 import io.kanteen.persistance.repository.IContractRepository;
+import io.kanteen.persistance.repository.IParentRepository;
 import io.kanteen.service.IContractAnswerService;
 import org.mockito.stubbing.Answer;
 import org.modelmapper.ModelMapper;
@@ -25,6 +29,12 @@ public class ContractAnswerService implements IContractAnswerService {
 
     @Autowired
     private IContractRepository contractRepository;
+
+    @Autowired
+    private IContractOptionRepository contractOptionRepository;
+
+    @Autowired
+    private IParentRepository parentRepository;
 
 
     @Autowired
@@ -81,9 +91,21 @@ public class ContractAnswerService implements IContractAnswerService {
     }
 
     @Override
-    public ContractAnswerDto saveContractAnswer(ContractAnswerDto contractAnswerDto) {
+    public ContractAnswerDto saveContractAnswer(ContractAnswerDto dto) {
 
-        ContractAnswer contractAnswer = modelMapper.map(contractAnswerDto, ContractAnswer.class);
+        ContractAnswer contractAnswer = modelMapper.map(dto, ContractAnswer.class);
+        System.out.println("parentid : " + dto.getParent().getAccount().getId());
+        // very bad !!!
+        Parent parent = parentRepository.findParentByAccountId(dto.getParent().getAccount().getId()).get();
+        Contract contract = contractRepository.findById(dto.getContract().getId()).get();
+        System.out.println("option : "+dto.getOption().getId());
+
+        ContractOption option = contractOptionRepository.findById(dto.getOption().getId()).get();
+
+        contractAnswer.setOption(option);
+        contractAnswer.setContract(contract);
+        contractAnswer.setParent(parent);
+
         contractAnswer = contractAnswerRepository.save(contractAnswer);
         return modelMapper.map(contractAnswer, ContractAnswerDto.class);
     }

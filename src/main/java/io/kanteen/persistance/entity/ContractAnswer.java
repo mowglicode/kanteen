@@ -57,4 +57,12 @@ public class ContractAnswer {
     public void setOption(ContractOption option) {
         this.option = option;
     }
+
+    public Parent getParent() {
+        return parent;
+    }
+
+    public void setParent(Parent parent) {
+        this.parent = parent;
+    }
 }

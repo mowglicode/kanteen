@@ -56,11 +56,10 @@ export class MenusService {
       week:week
     }
 
-
     this.http.post('http://localhost:8585/api/menus', body)
       .subscribe((r:any) => {
-        //this.menus.push(r)
-        //console.log(this.menus);
+        this.getAllMenus()
+        console.log(this.menus);
       });
   }
 

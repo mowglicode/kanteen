@@ -37,6 +37,11 @@ public class Contract {
         this.withOption = withOption;
     }
 
+    public Contract(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
     public long getId() {
         return id;
     }

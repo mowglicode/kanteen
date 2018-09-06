@@ -17,6 +17,8 @@ public class ContractOption {
 
     private String optionName;
 
+
+
     public long getId() {
         return id;
     }
@@ -52,6 +54,8 @@ public class ContractOption {
         this.contract = contract;
         this.optionName = optionName;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

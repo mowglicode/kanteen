@@ -20,13 +20,13 @@ export class MealsComponent implements OnInit {
   // mealCheck= object = map  key value de type any
   mealCheck: any = {}
 
+  idParentLogged:number = this.service.getParentByEmail(this.service.mailLogged).id;
 
   constructor(public service: MealsService) {
     this.service.getEatableDay();
     this.service.getTickedChildListByParent(this.service.loggedParentId);
     this.service.getMealsByParentId(this.service.loggedParentId);
   }
-
 
   ngOnInit() {
   }

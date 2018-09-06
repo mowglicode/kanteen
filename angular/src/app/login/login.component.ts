@@ -9,7 +9,7 @@ import {LoginService} from "../login.service";
 export class LoginComponent implements OnInit {
 
   user ={
-    email: "o@g.com",
+    email: "janeDoe@kanteen.com",
     password:"zzz",
   }
 
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    this.service.checkLoginStatus(this.user.email, this.user.password);
+    this.service.checkLoginStatus(this.user.email);
   }
 
   isAdmin(){

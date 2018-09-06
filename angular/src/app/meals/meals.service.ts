@@ -2,6 +2,15 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {forEach} from "../../../node_modules/@angular/router/src/utils/collection";
 
+import {LoginService} from "../login.service";
+
+export interface Parent {
+  id: number;
+  name: string;
+  account?: string;
+  children: Array<Child>;
+  school?: string;
+}
 
 export interface Child {
   id: number;
@@ -28,10 +37,12 @@ export interface Meal {
 })
 export class MealsService {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public loginService: LoginService) {
   }
 
   activeDay: string;
+  mailLogged: string = this.loginService.mailLogged;
+  parentLogged:Parent = undefined;
   eatableDay: string[] = [];
   childrenByParent: Child[] = [];
   loggedParentId: number = 1;
@@ -39,6 +50,7 @@ export class MealsService {
   tickedChildList: TickedChild[] = [];
   mealsParent: Meal[] = [];
   ticked: boolean = false;
+
 
   // Should have something with Meal and Date
 
@@ -74,16 +86,21 @@ export class MealsService {
       })
   }
 
-
+  getParentByEmail(email: string):Parent {
+    this.http.get('http://localhost:8585/api/parents/email' + email)
+      .subscribe((r: any) => {
+        console.log("parent logged :"+r.name);
+        this.parentLogged=r;
+      })
+    return
+  }
 
 
 
 // Not the complete (good) api yet: need to check the meals present in the DB
   // for each case, is it retired or not -> isRetired()
-  DbmealsIsOk() {
 
 
-  }
 
 
   saveMeal(childId, activeDay) {

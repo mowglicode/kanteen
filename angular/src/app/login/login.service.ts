@@ -14,7 +14,7 @@ export class LoginService {
   constructor(private http: HttpClient) {
   }
 
-  checkLoginStatus(email: string, password: string) {
+  checkLoginStatus(email: string) {
     this.http.get("http://localhost:8585/api/accounts/isAdmin/" + email)
       .subscribe((t: boolean) => {
         this.isAdmin = t;

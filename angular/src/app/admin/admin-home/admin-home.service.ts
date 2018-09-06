@@ -10,20 +10,20 @@ export type Information = {
 @Injectable({
   providedIn: 'root'
 })
-export class HomeService {
+export class AdminHomeService {
 
   informations: Information[] = [];
   notExpiredInformations: Information[] = [];
   information: Information;
-  show = false;
-  idDiv = -1;
+
 
 
   constructor(public http: HttpClient) {
-
   }
 
   informationUrl = 'http://localhost:8585/api/informations';
+
+  informationUrlToDelete = 'http://localhost:8585/api/informations/';
 
   getInformation() {
     return this.http.get(this.informationUrl);
@@ -47,6 +47,7 @@ export class HomeService {
         this.treatInformations();
       });
   }
+
 
   treatInformations() {
     this.informations.forEach(info => {

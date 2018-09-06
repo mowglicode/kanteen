@@ -55,7 +55,8 @@ public class MealService implements IMealService {
     @Override
     public List<MealDto> getMealsByDay(String day) {
 
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+       // DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
         Optional<List<Meal>> tmp = mealRepository.findMealsByDay(day);
 
         List<MealDto> result = new ArrayList<>();
@@ -90,6 +91,10 @@ public class MealService implements IMealService {
 
     @Override
     public MealDto saveMealNoDto(long idChild, String day) {
+//        String s = "2011-07-08 03:48:45";
+//        DateFormat sdf = new SimpleDateFormat("EEE dd-MM-aa");
+//        Date d = sdf.parse(day);
+
         Optional<Child> tmp = childRepository.findById(idChild);
         if (tmp.isPresent()) {
             Child child = modelMapper.map(tmp.get(), Child.class);
@@ -133,7 +138,7 @@ public class MealService implements IMealService {
         List<MealDto> result = new ArrayList<>();
         if (tmp.isPresent()) {
             for (Meal m : tmp.get()) {
-                result.add(modelMapper.map(tmp.get(), MealDto.class));
+                result.add(modelMapper.map(m, MealDto.class));
             }
             return result;
         } else {

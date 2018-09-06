@@ -12,9 +12,7 @@ import {
   MatButtonModule, MatCheckboxModule,
   MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatInputModule,
   MatListModule,
-  MatMenuModule,
-  MatTableDataSource,
-  MatTableModule,
+  MatMenuModule, MatTableDataSource, MatTableModule,
   MatTabsModule,
   MatToolbarModule,
 } from "@angular/material";
@@ -62,6 +60,7 @@ import {LoginComponent} from "./login/login.component";
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatButtonModule,
     MatTabsModule,
     FormsModule,
     MatTableModule,

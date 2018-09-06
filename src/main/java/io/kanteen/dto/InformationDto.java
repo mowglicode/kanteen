@@ -4,18 +4,18 @@ package io.kanteen.dto;
 public class InformationDto {
 
     private long id;
-    private String entitled;
     private String description;
     private String expiry;
+    boolean hasExpiration = true;
 
     public InformationDto() {
     }
 
-    public InformationDto(long id, String entitled, String description, String expiry) {
+    public InformationDto(long id, String description, String expiry, boolean hasExpiration) {
         this.id = id;
-        this.entitled = entitled;
         this.description = description;
         this.expiry = expiry;
+        this.hasExpiration = hasExpiration;
     }
 
     public long getId() {
@@ -24,14 +24,6 @@ public class InformationDto {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getEntitled() {
-        return entitled;
-    }
-
-    public void setEntitled(String entitled) {
-        this.entitled = entitled;
     }
 
     public String getDescription() {
@@ -48,5 +40,13 @@ public class InformationDto {
 
     public void setExpiry(String expiry) {
         this.expiry = expiry;
+    }
+
+    public boolean isHasExpiration() {
+        return hasExpiration;
+    }
+
+    public void setHasExpiration(boolean hasExpiration) {
+        this.hasExpiration = hasExpiration;
     }
 }

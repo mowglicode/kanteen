@@ -18,6 +18,7 @@ public class Information {
     @Column
     private String expiry;
 
+    @Column
     private boolean hasExpiry;
 
 

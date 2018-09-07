@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AdminMealsService} from "../admin-meals/admin-meals.service";
 
 @Component({
   selector: 'app-admin-meals-childs',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminMealsChildsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service: AdminMealsService) {
+
+
+  }
 
   ngOnInit() {
   }

@@ -16,6 +16,7 @@ public class SetupController {
     @Autowired
     public ISetupService service;
 
+
     @RequestMapping(method = RequestMethod.GET)
     public void setUp() {
         service.setUp();

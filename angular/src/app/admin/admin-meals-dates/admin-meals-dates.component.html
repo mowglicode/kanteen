@@ -1,3 +1,24 @@
-<p>
-  admin-meals-dates works!
+<p class="list">
+  Liste des repas annulés PAR JOUR
 </p>
+
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th> Jour</th>
+      <th> Repas annulés</th>
+    </tr>
+    </thead>
+
+    <tbody>  <!--TODO change date format to day name+date-->
+    <tr *ngFor="let d of this.service.nextDays"  > {{d}}  </tr>
+    <tr *ngFor="let n of this.service.numberMealsByDay"> {{n}}  repas annulés  </tr>
+    </tbody>
+
+    <li *ngFor=""></li>
+
+  </table>
+
+
+</div>

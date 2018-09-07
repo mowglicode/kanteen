@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {MenusComponent} from './menus/menus.component';
@@ -26,7 +26,6 @@ import {
 import {MenuAdminComponent} from './admin/menu-admin/menu-admin.component';
 import {HomeComponent} from './home/home.component';
 import {PrivacyComponent} from './privacy/privacy.component';
-import {DataComponent} from './data/data.component';
 import {AdminMainTabsComponent} from './admin/admin-main-tabs/admin-main-tabs.component';
 import {LoginComponent} from "./login/login.component";
 import {AdminHomeComponent} from "./admin/admin-home/admin-home.component";
@@ -44,21 +43,20 @@ import {PrivacyAdminComponent} from './admin/privacy-admin/privacy-admin.compone
     AdminMealsComponent,
     AdminMealsDatesComponent,
     AppComponent,
-    DataComponent,
     HomeComponent,
     LoginComponent,
     MainTabsComponent,
     MenusComponent,
     MealsComponent,
     MenuAdminComponent,
-    PrivacyAdminComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    PrivacyAdminComponent
   ],
   imports: [
-    BrowserAnimationsModule,
     BrowserModule,
-    FormsModule,
     HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatExpansionModule,
@@ -66,6 +64,12 @@ import {PrivacyAdminComponent} from './admin/privacy-admin/privacy-admin.compone
     MatInputModule,
     MatListModule,
     MatMenuModule,
+    MatIconModule,
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
     MatTabsModule,
     MatSelectModule,
     MatTableModule,
@@ -75,7 +79,6 @@ import {PrivacyAdminComponent} from './admin/privacy-admin/privacy-admin.compone
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
 })
-export class AppModule {
-}
+export class AppModule { }

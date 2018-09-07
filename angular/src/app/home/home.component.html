@@ -1,10 +1,9 @@
-<h2>List of informations</h2>
-<div *ngFor="let information of this.service.informations" >
-  <ul>
-    <li> {{information.id}}</li>
-    <li>{{information.description}}</li>
-    <li>{{information.entitled}}</li>
-    <li> {{information.expiry}}</li>
-  </ul>
-  <!--<button (click)="onDelete(menu)"> delete </button>-->
+<h2 class="mat-h2">Informations</h2>
+<div>
+  <div *ngFor="let information of this.service.notExpiredInformations" class="divListInformations">
+    <ul>
+      <li>{{information.description}}
+      </li>
+    </ul>
+  </div>
 </div>

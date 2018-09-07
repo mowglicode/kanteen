@@ -4,7 +4,7 @@
   <mat-expansion-panel *ngFor="let menu of this.service.menus" >
     <mat-expansion-panel-header>
       <mat-panel-title>
-         Semaine : {{menu.week}}
+        Semaine n°: {{menu.week}}
       </mat-panel-title>
       <mat-panel-description>
         Cliquez pour voir le menu
@@ -16,7 +16,7 @@
     <form (submit)="modify(menu.id)">
       <div *ngIf="edit === true">
         <mat-form-field>
-          <input matInput type="number" [(ngModel)]="modifiedWeek" name="modifiedWeek" placeholder="N° de semaine">
+          <input matInput type="number" [(ngModel)]="modifiedWeek" name="modifiedWeek" placeholder="N° de semaine" >
         </mat-form-field>
         <br>
         <mat-form-field class="textarea-menu">
@@ -25,9 +25,11 @@
       </div>
 
     <br>
-      <button *ngIf="edit === true" mat-flat-button color="primary">
-        <mat-icon>done_outline</mat-icon>
+      <a >
+      <button  *ngIf="edit === true" mat-stroked-button >
+        <mat-icon class="valid_button" matSuffix>done_outline</mat-icon> Valider
       </button>
+      </a>
 
       <a mat-stroked-button  (click)="onEdit(menu)" class="edit-button">
         <mat-icon matSuffix>mode_edit</mat-icon> Modifier
@@ -40,6 +42,7 @@
 
 <br>
 
+<h2>Ajouter un menu </h2>
 
 <form (submit)="onSubmit()" >
 
@@ -47,11 +50,11 @@
     <mat-form-field >
     <input matInput class="week" type="number" placeholder="Semaine n°" [(ngModel)]="week" name="week" required>
     </mat-form-field>
-
     <br>
     <mat-form-field class="textarea-menu">
       <textarea matInput matTextareaAutosize [matAutosizeMinRows]="6" placeholder="Indiquez le menu" [(ngModel)]="content" name="content" required></textarea>
     </mat-form-field>
+
   </div>
 
 <br>

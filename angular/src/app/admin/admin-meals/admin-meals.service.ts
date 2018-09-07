@@ -12,7 +12,6 @@ activeTab: string = 'dates';
 
   updateActiveTab(tabName){
     this.activeTab = tabName;
-    console.log("actve tab", this.activeTab);
   }
 
 

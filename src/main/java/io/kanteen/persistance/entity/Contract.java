@@ -1,26 +1,46 @@
 package io.kanteen.persistance.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table
 public class Contract {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
     private long id;
 
     @Column(nullable = false)
-    private String contract;
+    private String title;
 
-    @Column
+    @Column(nullable = false)
+    private String description;
+
+    // ? what is it ?
+    @Column(nullable = false)
     private boolean status;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @Column
-    private List<Parent> parents;
+    @Column(nullable = false)
+    private boolean withOption;
+
+    public Contract() {
+    }
+
+    public Contract(String title, String description, boolean status, boolean withOption) {
+        this.title = title;
+        this.description = description;
+        this.status = status;
+        this.withOption = withOption;
+    }
+
+    public Contract(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
 
     public long getId() {
         return id;
@@ -30,12 +50,20 @@ public class Contract {
         this.id = id;
     }
 
-    public String getContract() {
-        return contract;
+    public String getTitle() {
+        return title;
     }
 
-    public void setContract(String contract) {
-        this.contract = contract;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public boolean isStatus() {
@@ -46,11 +74,12 @@ public class Contract {
         this.status = status;
     }
 
-    public List<Parent> getParents() {
-        return parents;
+    public boolean isWithOption() {
+        return withOption;
     }
 
-    public void setParents(List<Parent> parents) {
-        this.parents = parents;
+    public void setWithOption(boolean withOption) {
+        this.withOption = withOption;
     }
+
 }

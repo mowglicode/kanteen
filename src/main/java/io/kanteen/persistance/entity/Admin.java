@@ -22,6 +22,13 @@ public class Admin implements KanteenUser {
     public long getId() {
         return id;
     }
+    public Admin(){
+
+    }
+    public Admin(Account account, String name) {
+        this.account = account;
+        this.name = name;
+    }
 
     public void setId(long id) {
         this.id = id;

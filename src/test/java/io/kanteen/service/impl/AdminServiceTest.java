@@ -31,15 +31,19 @@ public class AdminServiceTest {
 
     @Autowired
     AdminService adminService;
+
     @Autowired
     AccountService accountService;
+
     @Autowired
     IParentRepository parentRepository;
+
     @Autowired
     IParentService parentService;
 
     @Autowired
     IAdminRepository adminRepository;
+
     @Autowired
     IAccountRepository accountRepository;
 

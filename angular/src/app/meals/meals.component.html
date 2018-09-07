@@ -6,14 +6,16 @@
     <div class="checkchild">
       <ul style=" list-style-type:none">
         <li *ngFor="let c of this.service.childrenByParent" class="listStyle">
-          <mat-checkbox color="primary" (change)="childSelection($event)" [value]="c.id" [name]="d" >
+          <mat-checkbox color="primary" (change)="childSelection($event)"
+                        [checked]="isRetired(c,d)"
+                        [value]="c.id" [name]="d" >
             {{this.c.name}}
           </mat-checkbox>
 
         </li>
       </ul>
     </div>
-
+    <div (click)="fetchParentId()" style="display: none">Who is the parent ?</div>
     <div class="checkchild">
       <button mat-raised-button (click)="openNav()">OK</button>
     </div>
@@ -22,7 +24,7 @@
     <div id="myNav" class="overlay">
       <!-- Overlay content -->
       <div class="overlay-content">      <!--*ngIf="this.service.tickedChild.ticked"-->
-        <div class="overlayText" > {{this.service.getRetiredChildrenNames()}} ne mangera/ront pas à la cantine le {{format(d)}}</div>
+        <div class="overlayText" > {{this.getRetiredChildrenNames()}} ne mangera/ront pas à la cantine le {{format(d)}}</div>
         <button (click)="postMeal()" (click)="closeNav()" class="overlayButton"> Valider</button>
         <button (click)="closeNav()"class="overlayButton"> Annuler</button>
       </div>

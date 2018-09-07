@@ -8,12 +8,14 @@ export type Menu = {
   week:number;
 }
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class MenusService {
   menus: Menu[] = [];
   menu : Menu ;
+
 
 
   constructor(public http:HttpClient) {}
@@ -38,9 +40,25 @@ export class MenusService {
       content: content,
       week: week,
     }
+
+
     this.http.post('http://localhost:8585/api/menus', body)
       .subscribe((r:any) => {
         this.menus.push(r)
+        console.log(this.menus);
+      });
+  }
+
+  editMenu(id:number, content:string, week:number){
+    let body:Menu = {
+      content: content,
+      id: id,
+      week:week
+    }
+
+    this.http.post('http://localhost:8585/api/menus', body)
+      .subscribe((r:any) => {
+        this.getAllMenus()
         console.log(this.menus);
       });
   }
@@ -53,10 +71,5 @@ export class MenusService {
     this.menus.splice(index, 1);
 
   }
-
-
-
-
-
 
 }

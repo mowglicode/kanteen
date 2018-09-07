@@ -68,6 +68,8 @@ public class SetupService implements ISetupService {
         mealFive = mealRepository.save(mealFive);
 
 
+        menuOne.setWeek(1);
+        menuTwo.setWeek(2);
         menuOne = menuRepository.save(menuOne);
         menuTwo = menuRepository.save(menuTwo);
     }

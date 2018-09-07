@@ -32,7 +32,7 @@ public class MealController {
 
 
     @ApiOperation(value = "Get meals by day")
-    @RequestMapping(value = "/{day}", method =RequestMethod.GET)
+    @RequestMapping(value = "/day/{day}", method =RequestMethod.GET)
     public List<MealDto> getMealsByDay(@PathVariable(name="day") String day){
         return mealService.getMealsByDay(day);
     }

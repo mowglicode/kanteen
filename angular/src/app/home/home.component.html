@@ -1,6 +1,9 @@
 <h2 class="mat-h2">Informations</h2>
-<div *ngFor="let information of this.service.notExpiredInformations">
-  <ul>
-    <li>{{information.description}}</li>
-  </ul>
+<div>
+  <div *ngFor="let information of this.service.notExpiredInformations" class="divListInformations">
+    <ul>
+      <li>{{information.description}}
+      </li>
+    </ul>
+  </div>
 </div>

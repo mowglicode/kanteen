@@ -49,14 +49,14 @@ import {PrivacyAdminComponent} from './admin/privacy-admin/privacy-admin.compone
     MenusComponent,
     MealsComponent,
     MenuAdminComponent,
-    PrivacyAdminComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    PrivacyAdminComponent
   ],
   imports: [
-    BrowserAnimationsModule,
     BrowserModule,
-    FormsModule,
     HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatExpansionModule,
@@ -64,6 +64,12 @@ import {PrivacyAdminComponent} from './admin/privacy-admin/privacy-admin.compone
     MatInputModule,
     MatListModule,
     MatMenuModule,
+    MatIconModule,
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
     MatTabsModule,
     MatSelectModule,
     MatTableModule,
@@ -75,5 +81,4 @@ import {PrivacyAdminComponent} from './admin/privacy-admin/privacy-admin.compone
   bootstrap: [AppComponent],
 
 })
-export class AppModule {
-}
+export class AppModule { }

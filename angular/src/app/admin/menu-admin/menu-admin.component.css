@@ -2,13 +2,18 @@
 margin-left: 1%;
 }
 
+.menu_panel{
+  font-size: small;
+}
 .delete_button{
   margin-right: 6%;
+}
+.valid_button{
+  color: green;
 }
 
 .container_menu {
  margin-left: 1%;
-
 }
 
 .week{

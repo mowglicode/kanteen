@@ -10,7 +10,6 @@ export class LoginService {
   isAdmin: boolean = undefined;
   isLogged: boolean = false;
   mailLogged : string = undefined;
-
   constructor(private http: HttpClient) {
   }
 

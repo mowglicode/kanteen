@@ -1,11 +1,13 @@
+<h2> Recapitulatif des repas annulés</h2>
+
 
 <div class="container">
   <div>
     <button (click)="setDates()">
-      Dates
+      par jour
     </button>
     <button (click)="setChildren()">
-      Recap
+      par parent
     </button>
   </div>
 </div>
@@ -13,9 +15,7 @@
 <div>
 
 <div>
-  <p>
-    admin-meals works!
-  </p>
+
   <app-admin-meals-dates *ngIf="this.service.activeTab==='dates'"></app-admin-meals-dates>
   <app-admin-meals-childs *ngIf="this.service.activeTab==='children'"></app-admin-meals-childs>
 

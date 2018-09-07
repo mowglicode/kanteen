@@ -1,29 +1,34 @@
-<!--<div class="container">-->
-  <!--<h1>Nouveau contrat</h1>-->
-  <!--<form>-->
-    <!--<div class="form-group">-->
-      <!--<label for="titre">Titre</label>-->
-      <!--<input type="text" class="form-control" id="titre" required>-->
-    <!--</div>-->
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel *ngFor="let c of service.privacy">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{c.title}}
+      </mat-panel-title>
+      <mat-panel-description>
+        Cliquez pour voir le contenu
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>{{c.description}}</p>
+    <mat-form-field *ngIf="this.c.withOption">
+      <mat-select placeholder="Sélectionner un choix">
+        <mat-option *ngFor="let o of c.options" [value]="o.optionName">
+          {{o.optionName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-flat-button class="accept">Accepter</button>
+    <button mat-flat-button >Refuser</button>
+  </mat-expansion-panel>
 
-    <!--<div class="form-group">-->
-      <!--<label for="alterEgo">Description</label>-->
-      <!--<textarea type="text" class="form-control" id="alterEgo"></textarea>-->
-    <!--</div>-->
+</mat-accordion>
 
-    <!---->
-
-    <!--<button type="submit" class="btn btn-success">Créer</button>-->
-
-  <!--</form>-->
-<!--</div>-->
 <h1>Nouveau contrat</h1>
 <form>
 
   <div class="container">
     <mat-form-field>
       <label for="titre">Titre:</label>
-      <input matInput class="week" type="text" placeholder="titre" [(ngModel)]="title" name="titre" id="titre">
+      <input matInput class="week" type="text" [(ngModel)]="title" name="titre" id="titre">
     </mat-form-field>
     <br>
     <mat-form-field>
@@ -34,6 +39,6 @@
   </div>
 
   <br>
-  <button class="button"> enregistrer </button>
+  <button class="button" (click)="onSubmit()"> Valider </button>
 </form>
 

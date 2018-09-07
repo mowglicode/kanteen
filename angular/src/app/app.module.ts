@@ -74,9 +74,7 @@ import { PrivacyAdminComponent } from './admin/privacy-admin/privacy-admin.compo
     FormsModule,
     MatTableModule,
     MatFormFieldModule,
-    MatSelectModule
-  ],
-  providers: [],
+    MatSelectModule0
   bootstrap: [AppComponent]
 })
 export class AppModule { }

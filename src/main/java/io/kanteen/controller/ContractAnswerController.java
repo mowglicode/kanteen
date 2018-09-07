@@ -4,6 +4,7 @@ package io.kanteen.controller;
 import io.kanteen.dto.ContractAnswerDto;
 import io.kanteen.persistance.entity.ContractAnswer;
 import io.kanteen.service.IContractAnswerService;
+import io.kanteen.service.IContractService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,8 @@ public class ContractAnswerController {
 
     @Autowired
     private IContractAnswerService contractAnswerService;
+
+    @Autowired IContractService contractService;
 
     @ApiOperation(value = "Get all answer")
     @RequestMapping(value = "/admin/privacy/contracts/answers", method = RequestMethod.GET)

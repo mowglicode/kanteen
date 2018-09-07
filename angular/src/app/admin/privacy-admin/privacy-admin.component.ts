@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PrivacyAdminService} from "../privacy-admin.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-privacy-admin',
@@ -7,12 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivacyAdminComponent implements OnInit {
 
-  title:string;
-  description:string
+  title : string ;
+  description:string;
 
-  constructor() { }
+  constructor(public service:PrivacyAdminService, public http:HttpClient) {
+    this.service.fetchContract();
+  }
 
   ngOnInit() {
   }
-
+  onSubmit(){
+    this.service.saveContract(this.title,this.description);
+  }
 }

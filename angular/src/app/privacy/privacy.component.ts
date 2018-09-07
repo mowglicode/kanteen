@@ -17,8 +17,6 @@ export class PrivacyComponent implements OnInit {
 
   }
 
-
-
   ngOnInit() {
   }
 

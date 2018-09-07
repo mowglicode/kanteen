@@ -49,9 +49,9 @@ public class SetupService implements ISetupService {
     Admin director;
 
     //Meals for ghost database
-    Meal mealOne = new Meal(wilsonDoe, "20190315");
-    Meal mealTwo = new Meal(wilsonDoe, "20190316");
-    Meal mealThree = new Meal(wilsonDoe, "20190317");
+    Meal mealOne = new Meal(wilsonDoe, "2018-09-14");
+    Meal mealTwo = new Meal(wilsonDoe, "2018-09-17");
+    Meal mealThree = new Meal(wilsonDoe, "2018-09-18");
     Menu menuOne = new Menu("Lasagnes, Yaourt");
     Menu menuTwo = new Menu("Pizza, Frites");
 
@@ -133,8 +133,8 @@ public class SetupService implements ISetupService {
         mealTwo = mealRepository.save(mealTwo);
         mealThree = mealRepository.save(mealThree);
 
-        Meal mealFour = new Meal(eliseDoe, "20190315");
-        Meal mealFive = new Meal(eliseDoe, "20190316");
+        Meal mealFour = new Meal(eliseDoe, "2018-09-14");
+        Meal mealFive = new Meal(eliseDoe, "2018-09-17");
         mealFour = mealRepository.save(mealFour);
         mealFive = mealRepository.save(mealFive);
 

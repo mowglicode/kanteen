@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {PrivacyAdminService} from "../privacy-admin.service";
-import {HttpClient} from "@angular/common/http";
+import {Contract, PrivacyService} from "../../privacy.service";
+import {HttpClient} from "../../../../node_modules/@angular/common/http";
+import {Options, PrivacyAdminService} from "../privacy-admin.service";
 
 @Component({
   selector: 'app-privacy-admin',
@@ -9,8 +10,13 @@ import {HttpClient} from "@angular/common/http";
 })
 export class PrivacyAdminComponent implements OnInit {
 
-  title : string ;
-  description:string;
+  id:number
+  title:string
+  description:string
+  options: Options[]
+  withOption: boolean
+  optionName:string
+
 
   constructor(public service:PrivacyAdminService, public http:HttpClient) {
     this.service.fetchContract();
@@ -18,7 +24,16 @@ export class PrivacyAdminComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  onSaveContract(){
+    this.service.saveContract(this.id, this.title, this.description, this.options, this.withOption);
+  }
+
+  onDeleteContract(c:Contract){
+    this.service.deleteContract(c);
+  }
+
   onSubmit(){
-    this.service.saveContract(this.title,this.description);
+
   }
 }

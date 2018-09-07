@@ -1,17 +1,12 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "../../../node_modules/@angular/common/http";
-import {Contract} from "../privacy.service";
+import {HttpClient} from "@angular/common/http";
 
 export interface Contract {
-  title:string,
-  description:string,
-  options: Options[]
-  withOption: boolean;
-}
-export interface ContractLight {
-  title:string,
+  id:number
+  title:string
   description:string
-
+  options: Options[]
+  withOption: boolean
 }
 
 export interface Options {
@@ -22,10 +17,11 @@ export interface Options {
   providedIn: 'root'
 })
 export class PrivacyAdminService {
-  privacy: Contract[] = [];
 
-  constructor(public http: HttpClient) {
-  }
+  privacy: Contract[] = [];
+  privacy2: Contract
+
+  constructor(public http: HttpClient) { }
 
   fetchContract() {
     this.http.get<any[]>('http://localhost:8585/api/admin/privacy/contracts')
@@ -35,24 +31,39 @@ export class PrivacyAdminService {
       });
   }
 
-  saveContract(title:string, description:string){
-    let body:ContractLight={
-      title:title,
-      description:description
+
+  saveContract(id:number, title: string, description: string, options:Options[], withOption: boolean) {
+    let body: Contract = {
+      id:id,
+      title: title,
+      description: description,
+      options: options,
+      withOption: withOption
     }
+
+
     this.http.post('http://localhost:8585/api/admin/privacy/contracts', body)
-      .subscribe((r:any) => {
+      .subscribe((r: any) => {
         this.privacy.push(r)
         console.log(this.privacy);
       });
 
   }
 
+  deleteContract(c){
+    let id = c.id
+    this.http.delete('http://localhost:8585/api/admin/privacy/contracts/'+id)
+      .toPromise()
+      .then( ()=> this.privacy = this.privacy.filter(c=>c.id !==id));
+  }
+
 }
+
 
 
 function mapAnyToContract(contract: any): Contract {
   return {
+    id: contract.id,
     title: contract.title,
     description: contract.description,
     options: contract.options,

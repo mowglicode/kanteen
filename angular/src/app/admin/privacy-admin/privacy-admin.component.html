@@ -1,29 +1,12 @@
-<!--<div class="container">-->
-  <!--<h1>Nouveau contrat</h1>-->
-  <!--<form>-->
-    <!--<div class="form-group">-->
-      <!--<label for="titre">Titre</label>-->
-      <!--<input type="text" class="form-control" id="titre" required>-->
-    <!--</div>-->
+<app-privacy></app-privacy>
 
-    <!--<div class="form-group">-->
-      <!--<label for="alterEgo">Description</label>-->
-      <!--<textarea type="text" class="form-control" id="alterEgo"></textarea>-->
-    <!--</div>-->
-
-    <!---->
-
-    <!--<button type="submit" class="btn btn-success">Créer</button>-->
-
-  <!--</form>-->
-<!--</div>-->
 <h1>Nouveau contrat</h1>
 <form>
 
   <div class="container">
     <mat-form-field>
       <label for="titre">Titre:</label>
-      <input matInput class="week" type="text" placeholder="titre" [(ngModel)]="title" name="titre" id="titre">
+      <input matInput class="week" type="text" [(ngModel)]="title" name="titre" id="titre">
     </mat-form-field>
     <br>
     <mat-form-field>
@@ -34,6 +17,6 @@
   </div>
 
   <br>
-  <button class="button"> enregistrer </button>
+  <button class="button"> Valider </button>
 </form>
 

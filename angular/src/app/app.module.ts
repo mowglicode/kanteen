@@ -17,24 +17,22 @@ import {
   MatInputModule,
   MatListModule,
   MatMenuModule,
-  MatTableDataSource,
-  MatOptionModule,
   MatSelectModule,
+  MatTableDataSource,
   MatTableModule,
   MatTabsModule,
   MatToolbarModule
 } from "@angular/material";
+import {MenuAdminComponent} from './admin/menu-admin/menu-admin.component';
+import {HomeComponent} from './home/home.component';
+import {PrivacyComponent} from './privacy/privacy.component';
+import {AdminMainTabsComponent} from './admin/admin-main-tabs/admin-main-tabs.component';
+import {LoginComponent} from "./login/login.component";
+import {AdminHomeComponent} from "./admin/admin-home/admin-home.component";
 import {AdminMealsDatesComponent} from './admin/admin-meals-dates/admin-meals-dates.component';
 import {AdminMealsChildsComponent} from "./admin/admin-meals-childs/admin-meals-childs.component";
 import {AdminMealsComponent} from "./admin/admin-meals/admin-meals.component";
-import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
-import { HomeComponent } from './home/home.component';
-import { DataComponent } from './data/data.component';
-import { AdminMainTabsComponent } from './admin/admin-main-tabs/admin-main-tabs.component';
-import {PrivacyComponent} from "./privacy/privacy.component";
-import {AdminHomeComponent} from "./admin/admin-home/admin-home.component";
-import {LoginComponent} from "./login/login.component";
-import {PrivacyAdminComponent} from "./admin/privacy-admin/privacy-admin.component";
+import {PrivacyAdminComponent} from './admin/privacy-admin/privacy-admin.component';
 
 
 @NgModule({
@@ -45,7 +43,6 @@ import {PrivacyAdminComponent} from "./admin/privacy-admin/privacy-admin.compone
     AdminMealsComponent,
     AdminMealsDatesComponent,
     AppComponent,
-    DataComponent,
     HomeComponent,
     LoginComponent,
     MainTabsComponent,

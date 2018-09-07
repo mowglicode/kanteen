@@ -153,21 +153,6 @@ export class MealsService {
 
 }
 
-function mapParents(parent: any): Parent {
-  return {
-    id: parent.id,
-    account: parent.account,
-    name: parent.name,
-    children: parent.children,
-    school: parent.school
-  }
-}
-
-function mapchildren(child: any): Child {
-  return
-}
-
-
 
 function getDayByTickMapper(children: Child[]) {
 

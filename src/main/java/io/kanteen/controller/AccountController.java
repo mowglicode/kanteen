@@ -39,4 +39,10 @@ public class AccountController {
     public void deleteAccount(long id){
         accountService.deleteAccount(id);
     }
+
+    @ApiOperation(value = "Get isAdmin by email")
+    @RequestMapping(value = "/isAdmin/{email}",method = RequestMethod.GET)
+    public boolean getIsAdminByEmail(@PathVariable String email){
+        return accountService.getIsAdminByEmail(email);
+    }
 }

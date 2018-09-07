@@ -56,7 +56,7 @@ export class MealsService {
 
     eatableDay: string[] = [];
     childrenByParent: Child[] = [];
-    loggedParentId: number = this.loginService.idParentLogged;
+    loggedParentId: number = 1;
     //list des tickedChild
 
 

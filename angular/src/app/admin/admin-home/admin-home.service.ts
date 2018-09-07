@@ -120,11 +120,11 @@ export class AdminHomeService {
 
   delete(id) {
 
+    let infoToDelete: Information;
     this.http.delete(this.informationUrlToDelete + id)
+      .toPromise()
+      .then( ()=> this.notExpiredInformations = this.notExpiredInformations.filter(i=>i.id !== id));
 
-      .subscribe((result: any[]) => {
-
-      });
 
   }
 

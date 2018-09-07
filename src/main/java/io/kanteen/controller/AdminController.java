@@ -30,4 +30,10 @@ public class AdminController {
     public void deleteAdmin(@PathVariable long id) {
         adminService.deleteAdmin(id);
     }
+
+    @ApiOperation(value = "Get admin by email")
+    @RequestMapping(value = "/email/{email}", method = RequestMethod.GET)
+    public AdminDto getParentByEmail(@PathVariable(name = "email") String email){
+        return adminService.getAdminByEmail(email);
+    }
 }

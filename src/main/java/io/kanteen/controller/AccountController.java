@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/account")
+@RequestMapping("/api/accounts")
 public class AccountController {
 
     @Autowired
@@ -38,5 +38,11 @@ public class AccountController {
     @RequestMapping(value="/{id}",method = RequestMethod.DELETE)
     public void deleteAccount(long id){
         accountService.deleteAccount(id);
+    }
+
+    @ApiOperation(value = "Get isAdmin by email")
+    @RequestMapping(value = "/isAdmin/{email}",method = RequestMethod.GET)
+    public boolean getIsAdminByEmail(@PathVariable String email){
+        return accountService.getIsAdminByEmail(email);
     }
 }

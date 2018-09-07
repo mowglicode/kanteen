@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/child")
+@RequestMapping("/api/children")
 public class ChildController {
 
     @Autowired
@@ -40,9 +40,9 @@ public class ChildController {
     }
 
     @ApiOperation( value = "Get children by parent id")
-    @RequestMapping (value = "/{id_parent}", method = RequestMethod.GET)
-    public List<ChildDto> getChildrenByParentId(@PathVariable long parentId) {
-        return childService.getChildrenByParentId( parentId);
+    @RequestMapping (value = "/parent/{id_parent}", method = RequestMethod.GET)
+    public List<ChildDto> getChildrenByParentId(@PathVariable (name="id_parent") long parentId) {
+        return childService.getChildrenByParentId(parentId);
     }
 
 }

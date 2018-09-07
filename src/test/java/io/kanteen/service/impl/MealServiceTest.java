@@ -16,6 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 import java.util.Optional;
 
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
 @RunWith(SpringRunner.class)
@@ -165,6 +166,7 @@ public class MealServiceTest {
         MealDto m3 = mealService.saveMealNoDto(childAvecId2.getId(), dateString2);
 
         List<MealDto> meals = mealService.getMealsByParentId(parentDto.getId());
+        System.out.println("=====id====="+meals.get(0).getId()+"name"+meals.get(0).getChild() );
         assertTrue(meals.size() == 3);
 
         mealService.deleteMealById(m1.getId());
@@ -179,6 +181,9 @@ public class MealServiceTest {
 
         List<MealDto> meals = mealService.getMealsByChildId(childAvecId.getId());
         assertTrue(meals.size() == 2);
+        assertEquals(meals.get(0).getDay(),dateString);
+        assertEquals(meals.get(1).getDay(),dateString2);
+
         mealService.deleteMealById(m1.getId());
         mealService.deleteMealById(m2.getId());
 

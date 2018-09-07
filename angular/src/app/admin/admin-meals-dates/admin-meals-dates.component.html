@@ -12,8 +12,8 @@
     </thead>
 
     <tbody>  <!--TODO change date format to day name+date-->
-    <tr *ngFor="let d of this.service.nextDays"  > {{d}}  </tr>
-    <tr *ngFor="let n of this.service.numberMealsByDay"> {{n}}  repas annulés  </tr>
+
+    <tr *ngFor="let n of this.service.getNumberMealsByDay()"> <td>{{n.day}}</td> <td> {{n.number}} </td></tr>
     </tbody>
 
     <li *ngFor=""></li>

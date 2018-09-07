@@ -1,72 +1,218 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
+import {LoginService} from "../login.service";
+
+export interface Parent {
+    id: number;
+    name: string;
+    account: Account;
+    children: Array<Child>;
+    school?: string;
+}
+
+export interface Account {
+  id: number;
+  email: string;
+  phone?: string;
+  password?: string;
+}
 
 export interface Child {
-  id: number;
-  name: string;
-  grade: string;
+    id: number;
+    name: string;
+    grade: string;
 }
 
-// Like a Meal without a date
-export interface ChildPick {
-  child: Child;
-  picked: boolean;
+//// Like a Meal without a date ======= CheckedChild ou tickedChild ???Like a Meal without a date
+export interface TickedChild {
+    child: Child;
+    ticked: boolean;
 }
 
-/*
-export interface Meal{
-  id:number;
-  day:string;
-  child_id:number;
+// For ech day, we have many Ticks available: one per child
+export interface TicksByDay {
+    day: string,
+    ticks: TickedChild[]
 }
-*/
+
+
+export interface Meal {
+    id: number;
+    day: string;
+    child: Child;
+}
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class MealsService {
 
-  constructor(public http: HttpClient) {
-  }
+    constructor(public http: HttpClient, public loginService: LoginService) {
+    }
 
-  eatableDay: string[] = [];
-  childrenByParent: string[] = [];
-  loggedParentId: number = 1;
-  picks: ChildPick[] = [];
-  // Should have something with Meal and Date
+    // activeDay is needed for POSTING a new Meal
+    activeDay: string;
 
-  getEatableDay() {
-    this.http.get('http://localhost:8585/api/dates/eatableday')
-      .subscribe((r: any[]) => {
-        this.eatableDay = r;
-        console.log(this.eatableDay);
-      });
-  }
+    mailLogged: string = this.loginService.mailLogged;
+    parentLogged: Parent = undefined;
+    eatableDay: string[] = [];
+    childrenByParent: Child[] = [];
+    loggedParentId: number = 1;
+    //list des tickedChild
 
-  getChildrenByParentId(id) {
-    this.http.get('http://localhost:8585/api/children/parent/' + id)
-      .subscribe((r: any[]) => {
-        this.childrenByParent = r;
-        console.log(this.childrenByParent);
 
-        // Not the good api yet
-        this.picks = this.childrenByParent.map(mapChildByChildPick)
+    ticker: TicksByDay[] = [];
+    mealsParent: Meal[] = [];
+    ticked: boolean = false;
+
+
+    // Should have something with Meal and Date
+
+    getEatableDay() {
+        return this.http.get('http://localhost:8585/api/dates/eatableday')
+            .toPromise()
+            .then((r: any[]) => {
+                this.eatableDay = r;
+                console.log('Eateable day', this.eatableDay);
+                return this.eatableDay;
+            })
+    }
+
+    createTicker():TicksByDay[]{
+
+        if (this.eatableDay.length === 0){
+            console.error('no eatable day');
+            return []
+        }
+        if (this.childrenByParent.length === 0){
+            console.error('no child for parent '+this.loggedParentId);
+            return []
+        }
+
+        this.ticker = this.eatableDay.map(getDayByTickMapper(this.childrenByParent));
+
+        // Now check who is false or not
+        fillTickerWithMeals(this.ticker, this.mealsParent);
+
+        console.log('Ticker created : ', this.ticker);
+        return this.ticker;
+    }
+
+    getChildrenByParent(parentId) {
+        return this.http.get<Child[]>('http://localhost:8585/api/children/parent/' + parentId)
+            .toPromise()
+            .then(r =>this.childrenByParent = r)
+    }
+
+  getParentByEmail(email: string) {
+    this.http.get('http://localhost:8585/api/parents/email/' + email)
+      .subscribe((r: any) => {
+        this.loggedParentId = r.id;
       })
 
   }
 
-  saveMeal(childId, activeDay) {
-    this.http.post(`http://localhost:8585/api/meals/${childId}/${activeDay}`, null)
-      .subscribe();
+
+// Not the complete (good) api yet: need to check the meals present in the DB
+    // for each case, is it retired or not -> isRetired()
+
+
+    saveMeal(childId, activeDay) {
+        this.http.post(`http://localhost:8585/api/meals/${childId}/${activeDay}`, null)
+            .subscribe();
+    }
+
+    getMealsByParentId(id) {
+        return this.http.get('http://localhost:8585/api/meals/parent/' + id)
+            .toPromise()
+            .then((r: any[]) => {
+
+                this.mealsParent = r;
+                console.log('mealsparent', this.mealsParent);
+            })
+    }
+
+
+    getRetiredChildrenNames(tickedChildList: TickedChild[]) {
+
+        return tickedChildList.filter(tickedChild => tickedChild.ticked)
+            .map(c => c.child.name)
+    }
+
+    isRetired(childId: number, day: string) {
+        return this.mealsParent.some(function (meal) {
+            if (meal.child.id === childId && meal.day === day) {
+                return true;
+            } else {
+                return false;
+            }
+        })
+    }
+
+
+}
+
+function mapParents(parent: any): Parent {
+  return {
+    id: parent.id,
+    account: parent.account,
+    name: parent.name,
+    children: parent.children,
+    school: parent.school
   }
+}
+
+function mapchildren(child: any): Child {
+  return
+}
+
+
+
+function getDayByTickMapper(children: Child[]) {
+
+    // this mapper depends on parent children
+    return function mapDayByTick(day: string): TicksByDay {
+
+        return {
+            day,
+            ticks: children.map(child => ({
+                child,
+                ticked: false
+            }))
+        }
+
+    }
 
 }
 
 
-function mapChildByChildPick(child): ChildPick {
-  return {
-    child,
-    picked: false
-  }
+/**
+ * Mutative function that will go into the tree
+ * and eventually update ticker.ticks[].ticked to true
+ */
+function fillTickerWithMeals(ticker:TicksByDay[], meals:Meal[]){
+
+    ticker.forEach( (ticksByDay:TicksByDay) =>  {
+
+        meals.forEach(meal => {
+            if (meal.day === ticksByDay.day ){
+                ticksByDay.ticks.forEach(tick => {
+                    if (tick.child.id === meal.child.id){
+                        tick.ticked = true;
+                    }
+                })
+
+            }
+        })
+    })
+
+}
+
+
+function mapChildByChildPick(child, day) {
+    return {
+        child,
+        ticked: false
+    }
 }

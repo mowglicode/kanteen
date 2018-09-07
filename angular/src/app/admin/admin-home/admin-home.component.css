@@ -1,0 +1,50 @@
+.listButtonInformations {
+  color: white;
+  background: dodgerblue;
+  float: right;
+  margin-right: 15px;
+}
+.divListInformations {
+  border: #4ca1ff 3px solid;
+  display: grid;
+  border-bottom: none;
+}
+.divListInformations:last-of-type {
+  border-bottom: #4ca1ff 3px solid;
+}
+
+
+.formAddInformation {
+  margin-top: 15px;
+  padding-top: 10px;
+  padding: 20px;
+  border: #4ca1ff 3px solid;
+  display: flex;
+  align-content: stretch;
+}
+
+label {
+  padding-bottom: 10px;
+
+}
+
+#Description {
+  height: 30vw;
+  width: 90vw;
+}
+
+.inputDescription {
+ line-height: normal;
+}
+
+textarea {
+  resize: none;
+}
+
+.hasNotExpiration:checked ~ .hasExpiration {
+  display: none;
+}
+
+.hasNotExpiration:disabled ~ .hasExpiration {
+  display: block;
+}

@@ -1,36 +1,63 @@
-<h2 class="menus-h2">Menus</h2>
+<h2 class="menus-h2"> Liste des Menus</h2>
 
 <mat-accordion>
   <mat-expansion-panel *ngFor="let menu of this.service.menus" >
     <mat-expansion-panel-header>
-      <mat-panel-title>
-        Semaine n°: {{menu.week}}
+      <mat-panel-title class="menu_panel">
+         Semaine : {{menu.week}}
       </mat-panel-title>
-      <mat-panel-description>
+      <mat-panel-description class="menu_panel">
         Cliquez pour voir le menu
       </mat-panel-description>
+      <a class="delete_button" (click)="onDelete(menu)"><mat-icon>delete</mat-icon></a>
     </mat-expansion-panel-header>
-    <p>{{menu.content}}</p>
-    <button mat-flat-button (click)="onDelete(menu)"><mat-icon>delete</mat-icon></button>
+    <p *ngIf="edit === false">{{menu.content}}</p>
+
+    <form (submit)="modify(menu.id)">
+      <div *ngIf="edit === true">
+        <mat-form-field>
+          <input matInput type="number" [(ngModel)]="modifiedWeek" name="modifiedWeek" placeholder="N° de semaine" >
+        </mat-form-field>
+        <br>
+        <mat-form-field class="textarea-menu">
+          <textarea matInput matTextareaAutosize [matAutosizeMinRows]="6" [(ngModel)]="modifiedContent" name="modifiedContent" placeholder="Contenu du menu"></textarea>
+        </mat-form-field>
+      </div>
+
+    <br>
+      <a >
+      <button  *ngIf="edit === true" mat-stroked-button >
+        <mat-icon class="valid_button" matSuffix>done_outline</mat-icon> Valider
+      </button>
+      </a>
+
+      <a mat-stroked-button  (click)="onEdit(menu)" class="edit-button">
+        <mat-icon matSuffix>mode_edit</mat-icon> Modifier
+      </a>
+    </form>
+
+
   </mat-expansion-panel>
 </mat-accordion>
 
 <br>
 
-<form (submit)="onSubmit()">
+<h2>Ajouter un menu </h2>
+
+<form (submit)="onSubmit()" >
 
   <div class="container">
-    <mat-form-field>
-    <input matInput class="week" type="number" placeholder="semaine n°" [(ngModel)]="week" name="week">
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <textarea  matInput placeholder="Indiquez le menu" [(ngModel)]="content" name="content"></textarea>
+    <mat-form-field >
+    <input matInput class="week" type="number" placeholder="Semaine n°" [(ngModel)]="week" name="week" required>
     </mat-form-field>
 
+    <br>
+    <mat-form-field class="textarea-menu">
+      <textarea matInput matTextareaAutosize [matAutosizeMinRows]="6" placeholder="Indiquez le menu" [(ngModel)]="content" name="content" required></textarea>
+    </mat-form-field>
   </div>
 
 <br>
-  <button class="button"> enregistrer </button>
+  <button class="button" mat-flat-button> Enregistrer </button>
 </form>
-
+<br>

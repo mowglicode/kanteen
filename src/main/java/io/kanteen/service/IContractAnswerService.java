@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IContractAnswerService {
     List<ContractAnswerDto> displayContractAnswersDto();
-    ContractAnswerDto displayContractAnswerDtoById(long id);
+    List<ContractAnswerDto>  displayContractAnswerDtoByContractId(long id);
     void deleteContractAnswer(long id);
     ContractAnswerDto saveContractAnswer(ContractAnswerDto contractAnswerDto);
 

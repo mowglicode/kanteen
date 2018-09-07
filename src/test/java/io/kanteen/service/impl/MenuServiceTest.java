@@ -45,7 +45,7 @@ public class MenuServiceTest {
     public void getMenuById() {
         Menu menuViande = new Menu();
         menuViande.setContent("poulet");
-
+        menuViande.setWeek(3);
        MenuDto poulet = service.saveMenu(menuViande);
         MenuDto viande= service.getMenuById(poulet.getId());
         assertEquals(poulet.getId(), viande.getId());
@@ -57,13 +57,13 @@ public class MenuServiceTest {
 
         Menu lundi = new Menu();
         lundi.setContent("sauceGombo");
-
+        lundi.setWeek(3);
         Menu mardi = new Menu();
         mardi.setContent("pouletYassa");
-
+        mardi.setWeek(3);
         Menu mercredi = new Menu();
         mercredi.setContent("grillade");
-
+        mercredi.setWeek(3);
         MenuDto lundiDto = service.saveMenu(lundi);
         MenuDto mardiDto = service.saveMenu(mardi);
         MenuDto mercrediDto = service.saveMenu(mercredi);
@@ -82,6 +82,7 @@ public class MenuServiceTest {
 
         Menu menuPatte = new Menu();
         menuPatte.setContent("patte");
+        menuPatte.setWeek(3);
         MenuDto patte= service.saveMenu(menuPatte);
         service.delete(patte.getId());
 

@@ -14,12 +14,16 @@ public class ContractAnswer {
     @ManyToOne
     Contract contract;
 
+    @ManyToOne
+    Parent parent;
+
+
     // Without action, it's not accepted
     private boolean accepted = false;
 
     // Nullable :
     @ManyToOne
-    @JoinColumn(nullable = true)
+//    @JoinColumn(nullable = true)
     private ContractOption option = null;
 
     public long getId() {

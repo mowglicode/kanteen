@@ -134,13 +134,14 @@ export class AdminHomeService {
 
     // i.expiry
 
-    this.http.post(this.informationUrl, i)
+    this.http.post<Information>(this.informationUrl, i)
+      .toPromise()
+      .then((result:Information) => {
 
-      .subscribe((result => {
+        this.informations.push(result);
+        this.notExpiredInformations.push(result);
 
-        console.log(result);
-
-      }));
+      });
 
   }
 

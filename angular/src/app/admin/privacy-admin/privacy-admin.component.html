@@ -1,4 +1,26 @@
-<app-privacy></app-privacy>
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel *ngFor="let c of service.privacy">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{c.title}}
+      </mat-panel-title>
+      <mat-panel-description>
+        Cliquez pour voir le contenu
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>{{c.description}}</p>
+    <mat-form-field *ngIf="this.c.withOption">
+      <mat-select placeholder="Sélectionner un choix">
+        <mat-option *ngFor="let o of c.options" [value]="o.optionName">
+          {{o.optionName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-flat-button class="accept">Accepter</button>
+    <button mat-flat-button >Refuser</button>
+  </mat-expansion-panel>
+
+</mat-accordion>
 
 <h1>Nouveau contrat</h1>
 <form>
@@ -17,6 +39,6 @@
   </div>
 
   <br>
-  <button class="button"> Valider </button>
+  <button class="button" (click)="onSubmit()"> Valider </button>
 </form>
 

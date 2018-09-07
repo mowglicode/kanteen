@@ -27,7 +27,6 @@ import {
 import {AdminMealsDatesComponent} from './admin/admin-meals-dates/admin-meals-dates.component';
 import {AdminMealsChildsComponent} from "./admin/admin-meals-childs/admin-meals-childs.component";
 import {AdminMealsComponent} from "./admin/admin-meals/admin-meals.component";
-import {PrivacyAdminComponent} from './admin/privacy-admin/privacy-admin.component';
 import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
 import { HomeComponent } from './home/home.component';
 import { DataComponent } from './data/data.component';
@@ -35,6 +34,7 @@ import { AdminMainTabsComponent } from './admin/admin-main-tabs/admin-main-tabs.
 import {PrivacyComponent} from "./privacy/privacy.component";
 import {AdminHomeComponent} from "./admin/admin-home/admin-home.component";
 import {LoginComponent} from "./login/login.component";
+import {PrivacyAdminComponent} from "./admin/privacy-admin/privacy-admin.component";
 
 
 @NgModule({
@@ -52,8 +52,8 @@ import {LoginComponent} from "./login/login.component";
     MenusComponent,
     MealsComponent,
     MenuAdminComponent,
-    PrivacyAdminComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    PrivacyAdminComponent
   ],
   imports: [
     BrowserModule,

@@ -70,9 +70,10 @@ public class SetupService implements ISetupService {
     ContractOption optionOne = new ContractOption(contractThree, "choix1");
     ContractOption optionTwo = new ContractOption(contractThree, "choix2");
 
-    Information infoOne = new Information("Absence de Mme Oliviera","Mme Oliviera sera absente jusqu\\'au 17/09/2018");
-    Information infoTwo = new Information("Bâtiment B renové", "Le bâtiment B est rénové toute cette semaine. La peinture est fraîche !");
-    Information infoThree = new Information("Carnaval", "Le carnaval aura lieu le vendredi 8 mars 2019.");
+    // THIS IS THE REAL VERSION OF INFORMATION SETUP. PLEASE KEEP IT.
+    Information infoOne = new Information("Mme Oliviera sera absente jusqu\\'au 17/09/2018", "2018-06-05");
+    Information infoTwo = new Information("Le bâtiment B est rénové toute cette semaine. La peinture est fraîche !", "2018-10-12");
+    Information infoThree = new Information("Le carnaval aura lieu le vendredi 8 mars 2019.", "06-12-2018");
 
     public void setUp() {
         //Set up to start the ghost database

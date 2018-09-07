@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MenusService, Menu} from "../../menus/menus.service";
+import {Menu, MenusService} from "../../menus/menus.service";
 
 
 @Component({
@@ -42,4 +42,7 @@ modifyContent(){
   modify(id:number) {
     this.service.editMenu(id, this.modifiedContent, this.modifiedWeek)
   }
+
+
+
 }

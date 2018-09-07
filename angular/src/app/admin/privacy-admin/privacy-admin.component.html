@@ -1,4 +1,5 @@
 <mat-accordion class="example-headers-align">
+
   <mat-expansion-panel *ngFor="let c of service.privacy">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -8,37 +9,42 @@
         Cliquez pour voir le contenu
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>{{c.description}}</p>
-    <mat-form-field *ngIf="this.c.withOption">
-      <mat-select placeholder="Sélectionner un choix">
-        <mat-option *ngFor="let o of c.options" [value]="o.optionName">
-          {{o.optionName}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <button mat-flat-button class="accept">Accepter</button>
-    <button mat-flat-button >Refuser</button>
+    <p>Liste des parents ayant accepté</p>
+    <button mat-flat-button (click)="onSubmit()" class="accept">Relancer</button>
+    <button mat-flat-button (click)="onDeleteContract(c)" class="accept">Supprimer</button>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+    <mat-panel-title>
+      Créer un nouveau contrat
+    </mat-panel-title>
+      <mat-panel-description>
+        Cliquez pour voir le contenu
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+        <h1>Nouveau contrat</h1>
+        <form>
+          <div class="container">
+            <mat-form-field>
+              <label for="titre">Titre:</label>
+              <input matInput class="week" type="text" placeholder="Titre" [(ngModel)]="title" name="titre" id="titre">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <label for="content">Description:</label>
+              <textarea  matInput placeholder="Description" [(ngModel)]="description" name="content" id="content"></textarea>
+            </mat-form-field>
+          </div>
+          <br>
+          <button mat-flat-button (click)="onSubmit()" class="accept" >Ajouter un choix</button>
+          <button  mat-flat-button (click)="onSaveContract()" >Enregistrer</button>
+        </form>
   </mat-expansion-panel>
 
 </mat-accordion>
 
-<h1>Nouveau contrat</h1>
-<form>
 
-  <div class="container">
-    <mat-form-field>
-      <label for="titre">Titre:</label>
-      <input matInput class="week" type="text" [(ngModel)]="title" name="titre" id="titre">
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <label for="content">Description</label>
-      <textarea  matInput placeholder="Description" [(ngModel)]="description" name="content" id="content"></textarea>
-    </mat-form-field>
 
-  </div>
 
-  <br>
-  <button class="button" (click)="onSubmit()"> Valider </button>
-</form>
 

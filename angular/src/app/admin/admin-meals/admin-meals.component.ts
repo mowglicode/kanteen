@@ -8,7 +8,10 @@ import {AdminMealsService} from "./admin-meals.service";
 })
 export class AdminMealsComponent implements OnInit {
 
-  constructor(public service: AdminMealsService) { }
+  constructor(public service: AdminMealsService) {
+    this.service.getNextDays();
+    this.service.getMealsByDay();
+  }
 
   ngOnInit() {
   }

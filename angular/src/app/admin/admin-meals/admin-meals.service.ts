@@ -3,10 +3,6 @@ import {HttpClient} from "@angular/common/http";
 import {Meal} from "../../meals/meals.service";
 
 
-
-
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -16,9 +12,9 @@ export class AdminMealsService {
   }
 
   activeTab: string = 'dates';
-  nextDays: string[]=[];
-  numberMealsByDay: number []=[];
-  mealsbyDay: Meal[]=[];
+  nextDays: string[] = [];
+  mealsbyDay: Meal[] = [];
+  meals: Meal[] = [];
 
   updateActiveTab(tabName) {
     this.activeTab = tabName;
@@ -28,43 +24,48 @@ export class AdminMealsService {
   getNextDays() {
     this.http
       .get('http://localhost:8585/api/dates/week')
-      .subscribe((result: any[])=> {
+      .subscribe((result: any[]) => {
         this.nextDays = result;
         console.log('nextDays', this.nextDays);
       });
   }
 
-  /*
-getMealsByDay(){
+
+  getMeals() {
     this.http
-      .get('http://localhost:8585/api/meals/day/'+this.nextDays)//
-      .subscribe((r:any[])=>{
-        this.mealsbyDay=r;
-        console.log('mealsByDay', this.mealsbyDay);
+      .get('http://localhost:8585/api/meals/')//
+      .subscribe((r: any[]) => {
+        this.meals = r;
+        console.log('allmeals', this.meals);
 
       })
-}
-
-getNumbermealsByDay(){
-    this.nextDays.forEach(function(day){
-      this.mealsbyDay.reduce(function(nbr, meal) {
-        return nbr+1;
-      },0)
-    })
+  }
 
 
-}*/
+  getNumberMealsByDay() {
+    var that = this;
+    let result = this.nextDays.map(function (day) {
+      return {
+        day,
+        number: that.meals.filter(meal => meal.day === day).length
+      }
+    });
 
-/*
-   getMealsByParent(id) {
-        return this.http.get('http://localhost:8585/api/meals/parent/' + id)
-            .toPromise()
-            .then((r: any[]) => {
 
-                this.mealsParent = r;
-                console.log('mealsparent', this.mealsParent);
-            })
-    }*/
+    return result;
+
+  }
+
+  /*
+     getMealsByParent(id) {
+          return this.http.get('http://localhost:8585/api/meals/parent/' + id)
+              .toPromise()
+              .then((r: any[]) => {
+
+                  this.mealsParent = r;
+                  console.log('mealsparent', this.mealsParent);
+              })
+      }*/
 
 
 }

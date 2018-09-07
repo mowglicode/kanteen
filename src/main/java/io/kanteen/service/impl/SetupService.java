@@ -67,10 +67,11 @@ public class SetupService implements ISetupService {
     Contract contractOne = new Contract("Conditions d'utilisation", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae consectetur cumque dolorem ducimus, error facere fugiat", true, false);
     Contract contractTwo = new Contract("Voyage Angleterre", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae consectetur cumque dolorem ducimus, error facere fugiat", true, false);
     Contract contractThree = new Contract("Repas de Noël", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae consectetur cumque dolorem ducimus, error facere fugiat", false, true);
-    Contract contractFour = new Contract("", "", true, false);
+    Contract contractFour = new Contract("Kermesse annuelle", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae consectetur cumque dolorem ducimus, error facere fugiat", true, false);
 
-    ContractOption optionOne = new ContractOption(contractThree, "choix1");
-    ContractOption optionTwo = new ContractOption(contractThree, "choix2");
+    ContractOption optionOne = new ContractOption(contractThree, "Fromage");
+    ContractOption optionTwo = new ContractOption(contractThree, "Vin de messe");
+    ContractOption optionFive = new ContractOption(contractThree, "Dessert");
     ContractOption optionThree = new ContractOption(contractFour, "choix3");
     ContractOption optionFour = new ContractOption(contractFour, "choix4");
 
@@ -151,6 +152,7 @@ public class SetupService implements ISetupService {
         optionOne = contractOptionRepository.save(optionOne);
         optionTwo = contractOptionRepository.save(optionTwo);
         optionThree = contractOptionRepository.save(optionThree);
+        optionFive = contractOptionRepository.save(optionFive);
 
         answerOne = contractAnswerRepository.save(answerOne);
         answerTwo = contractAnswerRepository.save(answerTwo);

@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     this.service.checkLoginStatus(this.user.email);
+    (this.isAdmin())? this.service.getAdminByEmail(this.user.email): this.service.getParentByEmail(this.user.email);
   }
 
   isAdmin(){

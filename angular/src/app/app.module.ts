@@ -56,10 +56,10 @@ import {LoginComponent} from "./login/login.component";
     PrivacyComponent
   ],
   imports: [
-    BrowserAnimationsModule,
     BrowserModule,
-    FormsModule,
     HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatExpansionModule,
@@ -67,6 +67,12 @@ import {LoginComponent} from "./login/login.component";
     MatInputModule,
     MatListModule,
     MatMenuModule,
+    MatIconModule,
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
     MatTabsModule,
     MatSelectModule,
     MatTableModule,
@@ -78,5 +84,4 @@ import {LoginComponent} from "./login/login.component";
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {
-}
+export class AppModule { }

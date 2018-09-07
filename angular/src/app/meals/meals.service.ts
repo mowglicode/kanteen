@@ -152,7 +152,7 @@ export class MealsService {
 }
 
 
-function getDayByTickMapper(children: Child[]) {
+function getDayByTickMapper(children: Child[]): (string)=>TicksByDay {
 
     // this mapper depends on parent children
     return function mapDayByTick(day: string): TicksByDay {

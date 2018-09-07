@@ -41,4 +41,10 @@ export class LoginComponent implements OnInit {
     return this.service.isLogged;
   }
 
+  isDBCreate(){
+    if(this.isAdmin() !== undefined){
+      return true
+    }
+  }
+
 }

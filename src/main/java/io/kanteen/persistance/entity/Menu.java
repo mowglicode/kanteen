@@ -20,7 +20,7 @@ public class Menu {
 
     @Column(nullable = false)
     @NotNull
-    @Min(1)
+//    @Min(1)
     private int week;
 
     public Menu(String content) {

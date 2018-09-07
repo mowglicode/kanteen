@@ -1,27 +1,53 @@
 <h2 class="mat-h2">Informations</h2>
+
 <div>
+
   <div *ngFor="let information of this.service.notExpiredInformations" class="divListInformations">
+
     <ul>
+
       <li>{{information.description}}
-        <button class="listButtonInformations">
+
+        <button class="listButtonInformations" (click)="this.service.delete(information.id)">
+
           <mat-icon>clear</mat-icon>
+
         </button>
+
       </li>
+
     </ul>
+
   </div>
+
 </div>
 
+
+
 <div class="formAddInformation">
-  <form>
+
+  <form #Information="ngForm" (submit)="this.service.addInformation(Information.value)" >
+
     <label>Entrez des informations :</label><br>
-    <textarea class="inputDescription" name="Description" required="required" value="Description" id="Description"></textarea><br>
+
+    <textarea class="inputDescription" name="description" required="required"  id="Description" ngModel=""></textarea><br>
+
     <div>
-      <input class="hasNotExpiration" type="checkbox" name="hasNotExpiration"><label>Expiration indéterminée</label><br><br>
+
+      <input class="hasNotExpiration" type="checkbox" name="hasExpiration" ngModel="" checked="true" value="true"><label>Expiration indéterminée</label><br><br>
+
       <div class="hasExpiration">
+
         <label>Date d'expiration :</label><br>
-        <input type="date" name="Expiry"><br>
+
+        <input type="date" name="expiry" ngModel="12-12-2100"><br>
+
       </div>
+
     </div><br><br>
-    <input type="button" value="Ajouter">
+
+    <input type="submit" value="Ajouter">
+
   </form>
+
 </div>

@@ -11,11 +11,10 @@ export class MenuAdminComponent implements OnInit {
 
   content: string;
   id: number;
-  week: number;
+  week: number = null;
   edit: boolean = false;
   modifiedContent:string;
   modifiedWeek:number;
-  displayedColumns: string[] = ['menu', 'week'];
 
   constructor(public service: MenusService) {
     service.getAllMenus();

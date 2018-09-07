@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Menu} from "./menus/menus.service";
 
 export interface Contract {
   title:string,
@@ -13,12 +14,15 @@ export interface Options {
 }
 
 
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class PrivacyService {
 
   privacy: Contract[] = [];
+
 
   constructor(public http: HttpClient) {
   }
@@ -30,9 +34,7 @@ export class PrivacyService {
         console.log('contracts', this.privacy);
       });
   }
-
 }
-
 
   function mapAnyToContract(contract: any): Contract {
     return {
@@ -42,6 +44,8 @@ export class PrivacyService {
       withOption: contract.withOption
     }
   }
+
+
 
 
 

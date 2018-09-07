@@ -1,0 +1,8 @@
+.card-login {
+  margin-top: 30%;
+}
+
+.card-login .mat-card-header h3 {
+  text-transform: uppercase;
+  text-align: center !important;
+}

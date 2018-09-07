@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
 import {LoginService} from "../login.service";
+import {Observable} from "rxjs";
 
 export interface Parent {
     id: number;
@@ -103,14 +104,6 @@ export class MealsService {
             .then(r =>this.childrenByParent = r)
     }
 
-  // getParentByEmail(email: string) {
-  //   this.http.get('http://localhost:8585/api/parents/email/' + email)
-  //     .subscribe((r: any) => {
-  //       this.loggedParentId = r.id;
-  //     })
-  //
-  // }
-
 
 // Not the complete (good) api yet: need to check the meals present in the DB
     // for each case, is it retired or not -> isRetired()
@@ -128,7 +121,11 @@ export class MealsService {
 
                 this.mealsParent = r;
                 console.log('mealsparent', this.mealsParent);
-            })
+            }).catch(((error:any) => {
+            if (error.status < 400 ||  error.status ===500) {
+              return Observable.throw(new Error(error.status));
+            }
+          }))
     }
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoginService} from "../login.service";
 
 @Component({
@@ -8,26 +8,36 @@ import {LoginService} from "../login.service";
 })
 export class LoginComponent implements OnInit {
 
-  user ={
+  user = {
     email: "janeDoe@kanteen.com",
-    password:"zzz",
+    password: "zzz",
   }
 
-  constructor(public service:LoginService) { }
+  enoughInfo = false;
+
+  constructor(public service: LoginService) {
+  }
 
   ngOnInit() {
   }
 
-  onSubmit(){
-    this.service.checkLoginStatus(this.user.email);
-    (this.isAdmin())? this.service.getAdminByEmail(this.user.email): this.service.getParentByEmail(this.user.email);
+  onSubmit() {
+    this.service.checkLoginStatus(this.user.email)
+      .then(isAdmin => {
+          let promise = isAdmin ?
+            this.service.getAdminByEmail(this.user.email) :
+            this.service.getParentByEmail(this.user.email)
+          return promise.then(() => this.enoughInfo = true);
+        }
+      )
+
   }
 
-  isAdmin(){
+  isAdmin() {
     return this.service.isAdmin;
   }
 
-  isLogged(){
+  isLogged() {
     return this.service.isLogged;
   }
 

@@ -33,6 +33,8 @@ export class AdminMealsService {
         console.log('nextDays', this.nextDays);
       });
   }
+
+  /*
 getMealsByDay(){
     this.http
       .get('http://localhost:8585/api/meals/day/'+this.nextDays)//
@@ -51,7 +53,7 @@ getNumbermealsByDay(){
     })
 
 
-}
+}*/
 
 /*
    getMealsByParent(id) {

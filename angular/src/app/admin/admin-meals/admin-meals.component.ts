@@ -10,7 +10,7 @@ export class AdminMealsComponent implements OnInit {
 
   constructor(public service: AdminMealsService) {
     this.service.getNextDays();
-    this.service.getMealsByDay();
+    //this.service.getMealsByDay();
   }
 
   ngOnInit() {

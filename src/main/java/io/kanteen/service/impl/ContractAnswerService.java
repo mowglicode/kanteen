@@ -26,7 +26,6 @@ public class ContractAnswerService implements IContractAnswerService {
     @Autowired
     private IContractRepository contractRepository;
 
-
     @Autowired
     private ModelMapper modelMapper;
 

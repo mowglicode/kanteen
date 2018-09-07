@@ -17,13 +17,32 @@ public class ContractAnswer {
     @ManyToOne
     Parent parent;
 
+    public ContractAnswer() {
+    }
+
+    public ContractAnswer(Contract contract, Parent parent, boolean accepted, ContractOption option) {
+        this.contract = contract;
+        this.parent = parent;
+        this.accepted = accepted;
+        this.option = option;
+    }
+
+    public ContractAnswer(Contract contract, boolean accepted, ContractOption option) {
+        this.contract = contract;
+        this.accepted = accepted;
+        this.option = option;
+    }
+
+    public ContractAnswer(Contract contract, ContractOption option) {
+        this.contract = contract;
+        this.option = option;
+    }
 
     // Without action, it's not accepted
     private boolean accepted = false;
 
     // Nullable :
     @ManyToOne
-//    @JoinColumn(nullable = true)
     private ContractOption option = null;
 
     public long getId() {

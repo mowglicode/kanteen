@@ -23,7 +23,7 @@ export class LoginService {
         if (this.isAdmin !== undefined) {
           this.isLogged = true;
           this.mailLogged = email;
-          (this.isAdmin)? this.getAdminByEmail(email) : this.getParentByEmail(email);
+          // (this.isAdmin)? this.getAdminByEmail(email) : this.getParentByEmail(email);
         }
       });
 

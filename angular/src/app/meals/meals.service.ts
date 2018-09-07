@@ -54,11 +54,9 @@ export class MealsService {
     // activeDay is needed for POSTING a new Meal
     activeDay: string;
 
-    mailLogged: string = this.loginService.mailLogged;
-    parentLogged: Parent = undefined;
     eatableDay: string[] = [];
     childrenByParent: Child[] = [];
-    loggedParentId: number = 1;
+    loggedParentId: number = this.loginService.idParentLogged;
     //list des tickedChild
 
 
@@ -86,7 +84,7 @@ export class MealsService {
             return []
         }
         if (this.childrenByParent.length === 0){
-            console.error('no child for parent '+this.loggedParentId);
+            console.error('no child for parent '+this.loginService.idParentLogged);
             return []
         }
 
@@ -105,13 +103,13 @@ export class MealsService {
             .then(r =>this.childrenByParent = r)
     }
 
-  getParentByEmail(email: string) {
-    this.http.get('http://localhost:8585/api/parents/email/' + email)
-      .subscribe((r: any) => {
-        this.loggedParentId = r.id;
-      })
-
-  }
+  // getParentByEmail(email: string) {
+  //   this.http.get('http://localhost:8585/api/parents/email/' + email)
+  //     .subscribe((r: any) => {
+  //       this.loggedParentId = r.id;
+  //     })
+  //
+  // }
 
 
 // Not the complete (good) api yet: need to check the meals present in the DB

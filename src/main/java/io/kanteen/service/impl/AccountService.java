@@ -1,5 +1,6 @@
 package io.kanteen.service.impl;
 
+import io.kanteen.configuration.UpdatableBCrypt;
 import io.kanteen.dto.AccountDto;
 import io.kanteen.exception.NotFoundException;
 import io.kanteen.persistance.entity.Account;
@@ -9,14 +10,15 @@ import io.kanteen.persistance.repository.IAccountRepository;
 import io.kanteen.persistance.repository.IAdminRepository;
 import io.kanteen.persistance.repository.IParentRepository;
 import io.kanteen.service.IAccountService;
-import io.kanteen.service.IParentService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
 @Service
 public class AccountService implements IAccountService {
@@ -31,6 +33,8 @@ public class AccountService implements IAccountService {
     @Autowired
     private ModelMapper modelMapper;
 
+    private static final UpdatableBCrypt bcrypt = new UpdatableBCrypt(11);
+
     @Override
     public AccountDto saveAccount(Account account) {
         Account accountService = modelMapper.map(account, Account.class);
@@ -41,6 +45,8 @@ public class AccountService implements IAccountService {
     @Override
     public AccountDto saveAccount(AccountDto accountDto) {
         Account account = modelMapper.map(accountDto, Account.class);
+        String pass = account.getPassword();
+        account.setPassword(hash(pass));
         accountRepository.save(account);
         return getAccountById(account.getId());
     }
@@ -109,5 +115,49 @@ public class AccountService implements IAccountService {
         } else {
             throw new NotFoundException("Account not found with that email");
         }
+    }
+
+    @Override
+    public boolean getIsAdminByEmailAndPass(String email, String passEncoded) {
+        Optional<Account> accountOptional = accountRepository.findByEmail(email);
+
+        if (accountOptional.isPresent()) {
+            Account account = modelMapper.map(accountOptional.get(), Account.class);
+            //on a un account, on cherche alors s'il appartient à un parent ou a un admin
+            Optional<Admin> adminOptional = adminRepository.findAdminByAccountId(account.getId());
+            Optional<Parent> parentOptional = parentRepository.findParentByAccountId(account.getId());
+            String hash = hash(account.getPassword());
+            byte[] decoded = Base64.getMimeDecoder().decode(passEncoded);
+            String pass = new String(decoded);
+            if (verifyAndUpdateHash(pass,hash,update)) {
+                if (adminOptional.isPresent()) {
+                    //if the account is linked to an admin
+                    Admin admin = modelMapper.map(adminOptional.get(), Admin.class);
+                    return admin.isAdmin();
+                } else if (parentOptional.isPresent()){
+                    //else the account is linked to a parent
+                    Parent parent = modelMapper.map(parentOptional.get(), Parent.class);
+                    return parent.isAdmin();
+                } else {
+                    throw new NotFoundException("Account found but not linked to parent or admin...");
+                }
+            } else {
+                throw new NotFoundException("Wrong password");
+            }
+        } else {
+            throw new NotFoundException("Account not found with that email");
+        }
+    }
+
+    String[] mutableHash = new String[1];
+
+    Function<String, Boolean> update = hash -> { mutableHash[0] = hash; return true; };
+
+    public static String hash(String password) {
+        return bcrypt.hash(password);
+    }
+
+    public static boolean verifyAndUpdateHash(String password, String hash, Function<String, Boolean> updateFunc) {
+        return bcrypt.verifyAndUpdateHash(password, hash, updateFunc);
     }
 }

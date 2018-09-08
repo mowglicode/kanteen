@@ -13,4 +13,5 @@ public interface IAccountService {
     void deleteAccount(long id);
     AccountDto getAccountByEmail(String email);
     boolean getIsAdminByEmail(String email);
+    boolean getIsAdminByEmailAndPass(String email, String pass);
 }

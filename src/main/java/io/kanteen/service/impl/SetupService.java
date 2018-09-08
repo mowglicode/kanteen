@@ -1,5 +1,6 @@
 package io.kanteen.service.impl;
 
+import io.kanteen.configuration.UpdatableBCrypt;
 import io.kanteen.persistance.entity.*;
 import io.kanteen.persistance.repository.*;
 import io.kanteen.service.ISetupService;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 @Service
 public class SetupService implements ISetupService {
@@ -17,6 +19,8 @@ public class SetupService implements ISetupService {
     private IParentRepository parentRepository;
     @Autowired
     private IAccountRepository accountRepository;
+    @Autowired
+    private AccountService accountService;
     @Autowired
     private IChildRepository childRepository;
     @Autowired
@@ -35,6 +39,8 @@ public class SetupService implements ISetupService {
     @Autowired
     private IAdminRepository adminRepository;
 
+
+    private static final UpdatableBCrypt bcrypt = new UpdatableBCrypt(11);
 
     Child wilsonDoe = new Child("Wilson Doe", "CM2");
     Child eliseDoe = new Child("Elise Doe", "CE1");
@@ -97,8 +103,11 @@ public class SetupService implements ISetupService {
         doeChild.add(wilsonDoe);
         doeChild.add(eliseDoe);
 
-        accountOne.setPassword("toto");
-        accountTwo.setPassword("tata");
+        accountOne.setPassword(hash("toto"));
+        accountTwo.setPassword(hash("tata"));
+        accountThree.setPassword(hash("123456"));
+        accountFour.setPassword(hash("gj_@ç't5_qçzfo éjf'"));
+        directorAccount.setPassword(hash("admin"));
         List<Child> smithChild = new ArrayList<>();
         smithChild.add(laraSmith);
         smithChild.add(tomSmith);
@@ -174,5 +183,17 @@ public class SetupService implements ISetupService {
         contractRepository.deleteAll();
         infoRepository.deleteAll();
         contractOptionRepository.deleteAll();
+    }
+
+    String[] mutableHash = new String[1];
+
+    Function<String, Boolean> update = hash -> { mutableHash[0] = hash; return true; };
+
+    public static String hash(String password) {
+        return bcrypt.hash(password);
+    }
+
+    public static boolean verifyAndUpdateHash(String password, String hash, Function<String, Boolean> updateFunc) {
+        return bcrypt.verifyAndUpdateHash(password, hash, updateFunc);
     }
 }

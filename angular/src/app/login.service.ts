@@ -12,7 +12,6 @@ export class LoginService {
   mailLogged: string = undefined;
   idParentLogged: number = undefined;
   idAdminLogged: number = undefined;
-  response:number = undefined;
 
   constructor(private http: HttpClient) {
   }

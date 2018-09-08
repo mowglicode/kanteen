@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
 @Service
 public class AccountService implements IAccountService {
@@ -33,8 +32,6 @@ public class AccountService implements IAccountService {
     @Autowired
     private ModelMapper modelMapper;
 
-    private static final UpdatableBCrypt bcrypt = new UpdatableBCrypt(11);
-
     @Override
     public AccountDto saveAccount(Account account) {
         Account accountService = modelMapper.map(account, Account.class);
@@ -46,7 +43,7 @@ public class AccountService implements IAccountService {
     public AccountDto saveAccount(AccountDto accountDto) {
         Account account = modelMapper.map(accountDto, Account.class);
         String pass = account.getPassword();
-        account.setPassword(hash(pass));
+        account.setPassword(UpdatableBCrypt.hash(pass));
         accountRepository.save(account);
         return getAccountById(account.getId());
     }
@@ -126,10 +123,11 @@ public class AccountService implements IAccountService {
             //on a un account, on cherche alors s'il appartient à un parent ou a un admin
             Optional<Admin> adminOptional = adminRepository.findAdminByAccountId(account.getId());
             Optional<Parent> parentOptional = parentRepository.findParentByAccountId(account.getId());
-            String hash = hash(account.getPassword());
+            String hash = account.getPassword();
             byte[] decoded = Base64.getMimeDecoder().decode(passEncoded);
             String pass = new String(decoded);
-            if (verifyAndUpdateHash(pass,hash,update)) {
+            System.out.println(pass);
+            if (UpdatableBCrypt.verifyHash(pass,hash)) {
                 if (adminOptional.isPresent()) {
                     //if the account is linked to an admin
                     Admin admin = modelMapper.map(adminOptional.get(), Admin.class);
@@ -149,15 +147,4 @@ public class AccountService implements IAccountService {
         }
     }
 
-    String[] mutableHash = new String[1];
-
-    Function<String, Boolean> update = hash -> { mutableHash[0] = hash; return true; };
-
-    public static String hash(String password) {
-        return bcrypt.hash(password);
-    }
-
-    public static boolean verifyAndUpdateHash(String password, String hash, Function<String, Boolean> updateFunc) {
-        return bcrypt.verifyAndUpdateHash(password, hash, updateFunc);
-    }
 }

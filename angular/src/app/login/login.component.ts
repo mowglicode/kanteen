@@ -10,7 +10,7 @@ export class LoginComponent implements OnInit {
 
   user = {
     email: "janeDoe@kanteen.com",
-    password: "zzz",
+    password: "tata",
   }
 
   enoughInfo = false;
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service.checkLoginStatus(this.user.email)
+    this.service.checkLoginStatus(this.user.email,this.user.password)
       .then(isAdmin => {
           let promise = isAdmin ?
             this.service.getAdminByEmail(this.user.email) :

@@ -20,8 +20,8 @@ public class AdminController {
     }
 
     @ApiOperation(value = "Get admin by ID")
-    @RequestMapping(method = RequestMethod.GET)
-    public AdminDto getAdminById(long id){
+    @RequestMapping(value="/{id}",method = RequestMethod.GET)
+    public AdminDto getAdminById(@PathVariable long id){
         return adminService.getAdminById(id);
     }
 

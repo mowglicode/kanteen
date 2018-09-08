@@ -23,8 +23,10 @@ export class MenuAdminComponent implements OnInit {
   ngOnInit() {
   }
 
+modifyContent(){
 
-  onSubmit() {
+}
+  onSubmit(){
     this.service.saveMenu(this.content, this.week);
     console.log(this.content, this.week);
     this.content = null;
@@ -32,17 +34,10 @@ export class MenuAdminComponent implements OnInit {
 
   }
 
-  onDelete(menu: Menu) {
+  onDelete(menu:Menu){
     this.service.deleteMenu(menu);
   }
 
-  onEdit(menu) {
-    this.edit = !this.edit;
-    if (this.edit){
-      this.modifiedContent = menu.content;
-      this.modifiedWeek = menu.week;
-    }
-  }
 
   modify(id:number) {
     this.service.editMenu(id, this.modifiedContent, this.modifiedWeek)

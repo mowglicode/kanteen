@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {MenusComponent} from './menus/menus.component';
@@ -9,7 +9,7 @@ import {MainTabsComponent} from './main-tabs/main-tabs.component';
 import {MealsComponent} from './meals/meals.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
-  MatButtonModule,
+  MatButtonModule, MatCardModule,
   MatCheckboxModule,
   MatExpansionModule,
   MatFormFieldModule,
@@ -49,14 +49,14 @@ import {PrivacyAdminComponent} from './admin/privacy-admin/privacy-admin.compone
     MenusComponent,
     MealsComponent,
     MenuAdminComponent,
-    PrivacyAdminComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    PrivacyAdminComponent
   ],
   imports: [
-    BrowserAnimationsModule,
     BrowserModule,
-    FormsModule,
     HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatExpansionModule,
@@ -64,16 +64,22 @@ import {PrivacyAdminComponent} from './admin/privacy-admin/privacy-admin.compone
     MatInputModule,
     MatListModule,
     MatMenuModule,
+    MatIconModule,
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
     MatTabsModule,
     MatSelectModule,
     MatTableModule,
     MatTabsModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
 })
-export class AppModule {
-}
+export class AppModule { }

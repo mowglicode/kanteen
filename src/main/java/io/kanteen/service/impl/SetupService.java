@@ -29,6 +29,8 @@ public class SetupService implements ISetupService {
     private IInformationRepository infoRepository;
     @Autowired
     private IContractOptionRepository contractOptionRepository;
+    @Autowired
+    private IContractAnswerRepository contractAnswerRepository;
     //Children for ghost database
     @Autowired
     private IAdminRepository adminRepository;
@@ -67,8 +69,16 @@ public class SetupService implements ISetupService {
     Contract contractThree = new Contract("Repas de Noël", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae consectetur cumque dolorem ducimus, error facere fugiat", false, true);
     Contract contractFour = new Contract("Kermesse annuelle", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae consectetur cumque dolorem ducimus, error facere fugiat", true, false);
 
-    ContractOption optionOne = new ContractOption(contractThree, "choix1");
-    ContractOption optionTwo = new ContractOption(contractThree, "choix2");
+    ContractOption optionOne = new ContractOption(contractThree, "Fromage");
+    ContractOption optionTwo = new ContractOption(contractThree, "Vin de messe");
+    ContractOption optionFive = new ContractOption(contractThree, "Dessert");
+    ContractOption optionThree = new ContractOption(contractFour, "choix3");
+    ContractOption optionFour = new ContractOption(contractFour, "choix4");
+
+    ContractAnswer answerOne = new ContractAnswer(contractThree, true, optionOne);
+    ContractAnswer answerTwo = new ContractAnswer(contractThree, false,optionTwo );
+    ContractAnswer answerThree = new ContractAnswer(contractFour, optionThree);
+    ContractAnswer answerFour = new ContractAnswer(contractFour, optionFour);
 
     // THIS IS THE REAL VERSION OF INFORMATION SETUP. PLEASE KEEP IT.
     Information infoOne = new Information("Mme Oliviera sera absente jusqu\\'au 17/09/2018", "2018-06-05");
@@ -131,6 +141,8 @@ public class SetupService implements ISetupService {
         mealFive = mealRepository.save(mealFive);
 
 
+        menuOne.setWeek(1);
+        menuTwo.setWeek(2);
         menuOne = menuRepository.save(menuOne);
         menuTwo = menuRepository.save(menuTwo);
 
@@ -141,6 +153,12 @@ public class SetupService implements ISetupService {
 
         optionOne = contractOptionRepository.save(optionOne);
         optionTwo = contractOptionRepository.save(optionTwo);
+        optionThree = contractOptionRepository.save(optionThree);
+        optionFive = contractOptionRepository.save(optionFive);
+
+        answerOne = contractAnswerRepository.save(answerOne);
+        answerTwo = contractAnswerRepository.save(answerTwo);
+
 
         infoOne = infoRepository.save(infoOne);
         infoTwo = infoRepository.save(infoTwo);

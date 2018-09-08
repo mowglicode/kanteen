@@ -1,0 +1,19 @@
+h2{
+  text-align: center;
+  color:rgb(0,0,200);
+}
+
+.container{
+  text-align: center;
+
+}
+
+.container button {
+  min-width: 15%;
+  height: 40px;
+  border-radius: 8px;
+  color:rgb(0,0,102);
+  font-size: 1em;
+  font-weight: bolder;
+  margin: 20px 20px;
+}

@@ -8,14 +8,12 @@ export type Menu = {
   week:number;
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class MenusService {
   menus: Menu[] = [];
   menu : Menu ;
-
 
 
   constructor(public http:HttpClient) {}
@@ -40,8 +38,6 @@ export class MenusService {
       content: content,
       week: week,
     }
-
-
     this.http.post('http://localhost:8585/api/menus', body)
       .subscribe((r:any) => {
         this.menus.push(r)

@@ -9,8 +9,8 @@ import {LoginService} from "../login.service";
 export class LoginComponent implements OnInit {
 
   user = {
-    email: "janeDoe@kanteen.com",
-    password: "tata",
+    email: "director@kanteen.com",
+    password: "admin",
   }
 
   enoughInfo = false;

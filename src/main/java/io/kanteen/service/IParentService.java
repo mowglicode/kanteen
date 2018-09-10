@@ -15,4 +15,5 @@ public interface IParentService {
     ParentDtoFull saveParentWithChildId(ParentDtoFull parentDtoFull,long id);
     ParentDtoFull removeChildFromParent(long id_parent, long id_child);
     ParentDtoFull getParentByEmail(String email);
+    ParentDtoLight createParent(ParentDtoLight parentDtoLight);
 }

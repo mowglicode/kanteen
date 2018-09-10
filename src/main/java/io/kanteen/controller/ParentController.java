@@ -41,6 +41,11 @@ public class ParentController {
         return parentService.saveParentWithIdAccount(parentDtoFull, id);
     }
 
+    @ApiOperation(value="Create new parent")
+    @RequestMapping(method = RequestMethod.POST)
+    public ParentDtoLight createParent(@RequestBody ParentDtoLight parentDtoLight){
+        return parentService.createParent(parentDtoLight);
+    }
     @ApiOperation(value = "Save parent linked with child ID",
             notes = "")
     @RequestMapping(value = "/child/{id_child}", method = RequestMethod.POST)

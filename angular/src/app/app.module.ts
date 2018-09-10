@@ -33,7 +33,9 @@ import {AdminMealsDatesComponent} from './admin/admin-meals-dates/admin-meals-da
 import {AdminMealsChildsComponent} from "./admin/admin-meals-childs/admin-meals-childs.component";
 import {AdminMealsComponent} from "./admin/admin-meals/admin-meals.component";
 import {PrivacyAdminComponent} from './admin/privacy-admin/privacy-admin.component';
-import { AdminUserComponent } from './admin/admin-user/admin-user.component';
+import { AdminUserComponent } from './admin/add-user/admin-user.component';
+import { ParentComponent } from './admin/add-user/parent/parent.component';
+import { AdminComponent } from './admin/add-user/admin/admin.component';
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { AdminUserComponent } from './admin/admin-user/admin-user.component';
     MenuAdminComponent,
     PrivacyComponent,
     PrivacyAdminComponent,
-    AdminUserComponent
+    AdminUserComponent,
+    ParentComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

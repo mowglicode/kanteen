@@ -14,6 +14,11 @@ export type Admin = {
   name: string;
 
 }
+export type Parent = {
+  id?:number;
+  name:string;
+  account:Account;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +29,9 @@ export class AdminUserService {
   }
 
   admins: Admin[] = [];
+  parents:Parent[] = [];
 
-
-  postNewUser(name: string, email: string, phone: string, pass: string) {
+  postNewAdmin(name: string, email: string, phone: string, pass: string) {
     let newAccount: Account = {
       id:0,
       email: email,
@@ -44,12 +49,34 @@ export class AdminUserService {
       });
   }
 
+  postNewParent(name:string,email:string,phone:string,pass:string){
+    let newAccount: Account = {
+      id:0,
+      email:email,
+      phone:phone,
+      password:pass
+    }
+    let body:Parent = {
+      name:name,
+      account:newAccount
+    }
+    this.http.post('http://localhost:8585/api/parents',body)
+      .subscribe((r:any)=>{
+        this.parents.push(r);
+      })
+  }
   getAllAdmins() {
     this.http.get('http://localhost:8585/api/admins')
       .subscribe((r: any) => {
-        this.admins = r
-        console.log(this.admins);
+        this.admins = r;
       });
+  }
+
+  getAllParents(){
+    this.http.get('http://localhost:8585/api/parents')
+      .subscribe((r:any)=>{
+        this.parents = r;
+      })
   }
 
   // deleteAdmin(idAdmin:number,idAccount:number){

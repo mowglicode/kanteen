@@ -1,5 +1,6 @@
 package io.kanteen.service.impl;
 
+import io.kanteen.configuration.UpdatableBCrypt;
 import io.kanteen.dto.ParentDtoFull;
 import io.kanteen.dto.ParentDtoLight;
 import io.kanteen.exception.NotFoundException;
@@ -15,6 +16,7 @@ import io.kanteen.service.IParentService;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.Option;
@@ -166,5 +168,22 @@ public class ParentService implements IParentService {
             throw new NotFoundException("Account not found with this email");
         }
 
+    }
+
+    @Override
+    public ParentDtoLight createParent(ParentDtoLight parentDtoLight) {
+        Parent parent = modelMapper.map(parentDtoLight, Parent.class);
+        Optional<Account> accountOptional = accountRepository.findById(parent.getId());
+        if (accountOptional.isPresent()) {
+            parent = parentRepository.save(parent);
+        } else {
+            Account account = modelMapper.map(parentDtoLight.getAccount(),Account.class);
+            String pass = account.getPassword();
+            account.setPassword(UpdatableBCrypt.hash(pass));
+            parent.setAccount(account);
+            parentRepository.save(parent);
+        }
+        //TODO create function returning ParentDtoLight
+        return null;
     }
 }

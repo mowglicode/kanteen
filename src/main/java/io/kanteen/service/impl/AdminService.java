@@ -1,5 +1,6 @@
 package io.kanteen.service.impl;
 
+import io.kanteen.configuration.UpdatableBCrypt;
 import io.kanteen.dto.AdminDto;
 import io.kanteen.exception.NotFoundException;
 import io.kanteen.persistance.entity.Account;
@@ -11,6 +12,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -32,12 +35,24 @@ public class AdminService implements IAdminService {
             admin = adminRepository.save(admin);
         } else {
             Account account = modelMapper.map(adminDto.getAccount(),Account.class);
+            String pass = account.getPassword();
+            account.setPassword(UpdatableBCrypt.hash(pass));
             account = accountRepository.save(account);
             admin.setAccount(account);
             adminRepository.save(admin);
         }
 
         return getAdminById(admin.getId());
+    }
+
+    @Override
+    public List<AdminDto> getAllAdmins() {
+        List<Admin> admins = adminRepository.findAll();
+        List<AdminDto> adminResult = new ArrayList<>();
+        for (Admin a: admins){
+            adminResult.add(modelMapper.map(a,AdminDto.class));
+        }
+        return adminResult;
     }
 
     @Override
@@ -76,4 +91,5 @@ public class AdminService implements IAdminService {
         }
 
     }
+
 }

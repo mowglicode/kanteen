@@ -28,6 +28,11 @@ public class ParentController {
         return parentService.displayParentById(id);
     }
 
+    @ApiOperation(value = "Get parent by email")
+    @RequestMapping(value = "/email/{email}", method = RequestMethod.GET)
+    public ParentDtoFull getParentByEmail(@PathVariable(name = "email") String email){
+        return parentService.getParentByEmail(email);
+    }
 
     @ApiOperation(value = "Save parent linked with account ID",
             notes = "")
@@ -54,11 +59,5 @@ public class ParentController {
     @RequestMapping(value = "/{id_parent}/{id_child}", method = RequestMethod.DELETE)
     public ParentDtoFull removeChildFromParent(@PathVariable(name = "id_parent") long id_parent, @PathVariable(name = "id_child") long id_child) {
         return parentService.removeChildFromParent(id_parent, id_child);
-    }
-
-    @ApiOperation(value = "Get parent by email")
-    @RequestMapping(value = "/email/{email}", method = RequestMethod.GET)
-    public ParentDtoFull getParentByEmail(@PathVariable(name = "email") String email){
-        return parentService.getParentByEmail(email);
     }
 }

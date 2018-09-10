@@ -1,7 +1,6 @@
 package io.kanteen.controller;
 
 import io.kanteen.dto.AccountDto;
-import io.kanteen.persistance.entity.Account;
 import io.kanteen.service.IAccountService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +23,26 @@ public class AccountController {
 
     @ApiOperation(value = "Get account by ID")
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public AccountDto getAccoundById(@PathVariable long id){
+    public AccountDto getAccountById(@PathVariable long id){
         return accountService.getAccountById(id);
+    }
+
+    @ApiOperation(value = "Get isAdmin by email")
+    @RequestMapping(value = "/isAdmin/{email}",method = RequestMethod.GET)
+    public boolean getIsAdminByEmail(@PathVariable String email){
+        return accountService.getIsAdminByEmail(email);
+    }
+
+    @ApiOperation(value = "Check credentials")
+    @RequestMapping(value = "/login/{email}/{pass}",method = RequestMethod.GET)
+    public boolean getIsAdminByEmailAndPass(@PathVariable(name="email")String email, @PathVariable(name = "pass")String pass){
+        return accountService.getIsAdminByEmailAndPass(email,pass);
     }
 
     @ApiOperation(value = "Save account")
     @RequestMapping(method = RequestMethod.POST)
-    public AccountDto saveAccount(@RequestBody Account account){
-        return accountService.saveAccount(account);
+    public AccountDto saveAccount(@RequestBody AccountDto accountDto){
+        return accountService.saveAccount(accountDto);
     }
 
     @ApiOperation(value = "Delete account by ID")
@@ -40,9 +51,5 @@ public class AccountController {
         accountService.deleteAccount(id);
     }
 
-    @ApiOperation(value = "Get isAdmin by email")
-    @RequestMapping(value = "/isAdmin/{email}",method = RequestMethod.GET)
-    public boolean getIsAdminByEmail(@PathVariable String email){
-        return accountService.getIsAdminByEmail(email);
-    }
+
 }

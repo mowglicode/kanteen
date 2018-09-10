@@ -1,12 +1,12 @@
 package io.kanteen.service.impl;
 
+import io.kanteen.configuration.UpdatableBCrypt;
 import io.kanteen.persistance.entity.*;
 import io.kanteen.persistance.repository.*;
 import io.kanteen.service.ISetupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,8 +97,11 @@ public class SetupService implements ISetupService {
         doeChild.add(wilsonDoe);
         doeChild.add(eliseDoe);
 
-        accountOne.setPassword("toto");
-        accountTwo.setPassword("tata");
+        accountOne.setPassword(UpdatableBCrypt.hash("toto"));
+        accountTwo.setPassword(UpdatableBCrypt.hash("tata"));
+        accountThree.setPassword(UpdatableBCrypt.hash("123456"));
+        accountFour.setPassword(UpdatableBCrypt.hash("gj_@ç't5_qçzfo éjf'"));
+        directorAccount.setPassword(UpdatableBCrypt.hash("admin"));
         List<Child> smithChild = new ArrayList<>();
         smithChild.add(laraSmith);
         smithChild.add(tomSmith);

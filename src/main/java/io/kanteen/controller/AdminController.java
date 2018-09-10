@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/admins")
 public class AdminController {
@@ -17,6 +19,12 @@ public class AdminController {
     @RequestMapping(method = RequestMethod.POST)
     public AdminDto saveAdmin(@RequestBody AdminDto adminDto) {
         return adminService.saveAdmin(adminDto);
+    }
+
+    @ApiOperation(value = "Get all admins")
+    @RequestMapping(method = RequestMethod.GET)
+    public List<AdminDto> getAdminById(){
+        return adminService.getAllAdmins();
     }
 
     @ApiOperation(value = "Get admin by ID")

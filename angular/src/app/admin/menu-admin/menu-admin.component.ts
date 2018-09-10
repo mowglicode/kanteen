@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Menu, MenusService} from "../../menus/menus.service";
 
 
@@ -19,6 +19,7 @@ export class MenuAdminComponent implements OnInit {
   constructor(public service: MenusService) {
     service.getAllMenus();
   }
+
 
   ngOnInit() {
   }

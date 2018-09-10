@@ -12,20 +12,18 @@ export class LoginService {
   mailLogged: string = undefined;
   idParentLogged: number = undefined;
   idAdminLogged: number = undefined;
-  response:number = undefined;
 
   constructor(private http: HttpClient) {
   }
 
-  checkLoginStatus(email: string) {
-    return this.http.get("http://localhost:8585/api/accounts/isAdmin/" + email)
+  checkLoginStatus(email: string, password:string) {
+    return this.http.get("http://localhost:8585/api/accounts/login/" + email+"/"+btoa(password))
       .toPromise()
       .then((t: boolean) => {
         this.isAdmin = t;
         if (this.isAdmin !== undefined) {
           this.isLogged = true;
           this.mailLogged = email;
-          // (this.isAdmin)? this.getAdminByEmail(email) : this.getParentByEmail(email);
         }
         return this.isAdmin;
       });

@@ -1,0 +1,47 @@
+<h2>Parents</h2>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let parent of this.service.parents">
+    <mat-expansion-panel-header>
+
+      <mat-panel-title>
+        {{parent.name}}
+      </mat-panel-title>
+      <mat-panel-description>
+        Voir les détails
+      </mat-panel-description>
+      <!--<a class="delete" (click)="deleteUser(admin)">-->
+      <!--<mat-icon>delete</mat-icon>-->
+      <!--</a>-->
+    </mat-expansion-panel-header>
+    {{parent.account.email}}, {{parent.account.phone}}
+  </mat-expansion-panel>
+  <a class="create" (click)="createUser()">
+    <mat-icon></mat-icon>
+  </a>
+</mat-accordion>
+
+
+<h2>Ajouter un parent</h2>
+
+<form (submit)="onSubmit()" >
+
+  <div class="container">
+    <mat-form-field >
+      <mat-label for="name">Nom : </mat-label><input id="name" matInput class="name" type="text" [(ngModel)]="name" name="name" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label for="mail">Mail : </mat-label><input id="mail" matInput type="email" [(ngModel)]="mail" name="mail" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label for="tel">Téléphone : </mat-label><input id="tel" matInput type="tel" [(ngModel)]="tel" name="tel">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Mot de passe provisoire : </mat-label><input matInput type="text" name="pass" [(ngModel)]="pass">
+    </mat-form-field>
+  </div>
+
+  <br>
+  <button class="button" mat-flat-button mat-button> Enregistrer </button>
+</form>
+<br>

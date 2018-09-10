@@ -11,7 +11,7 @@ import java.util.*;
 public class DateService implements IDateService {
 
 
-    private static long DAY_IN_MS = 1000 * 60 * 60 * 25;
+    private static long DAY_IN_MS = 1000 * 60 * 60 * 24;
     @Override
     public List<String> getNextDates() {
         int number = 5;
